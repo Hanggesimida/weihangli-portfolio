@@ -19,8 +19,7 @@
 - **动效：** Motion
 - **滚动：** Lenis
 - **表单：** react-hook-form
-- **邮件：** Resend，出站模板使用 `@react-email/components`
-
+- **邮件：** Resend
 ## 环境要求
 
 - **Node.js** — 建议使用当前的 **LTS** 版本（与 Next.js 16 常见要求一致）。

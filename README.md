@@ -19,8 +19,7 @@ A single-page portfolio site for **Weihang Li** (Full Stack Developer), built wi
 - **Motion:** Motion
 - **Scrolling:** Lenis
 - **Forms:** react-hook-form
-- **Email:** Resend + `@react-email/components` for the outgoing template
-
+- **Email:** Resend
 ## Prerequisites
 
 - **Node.js** — use a current **LTS** release (recommended for Next.js 16).
