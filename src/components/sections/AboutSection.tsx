@@ -4,8 +4,9 @@ import DecryptedText from "@/components/text/DecryptedText";
 import FadeUp from "@/components/text/FadeUp";
 import SplitText from "@/components/text/SplitText";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
-import { useMemo, useRef } from "react";
+import { useLenis } from "lenis/react";
+import { motion, useMotionValue, useTransform } from "motion/react";
+import { useCallback, useEffect, useMemo, useRef } from "react";
 import { useTranslations } from "next-intl";
 
 const SKILL_ITEMS = [
@@ -60,10 +61,24 @@ export default function AboutSection() {
     }));
   }, [t]);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
+  // Driven by Lenis (same frame as the scroll write) instead of useScroll, which lags one frame.
+  const scrollYProgress = useMotionValue(0);
+
+  const updateProgress = useCallback(() => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const rect = el.getBoundingClientRect();
+    if (rect.height === 0) return;
+    scrollYProgress.set(Math.min(Math.max(-rect.top / rect.height, 0), 1));
+  }, [scrollYProgress]);
+
+  useLenis(updateProgress);
+
+  useEffect(() => {
+    updateProgress();
+    window.addEventListener("resize", updateProgress, { passive: true });
+    return () => window.removeEventListener("resize", updateProgress);
+  }, [updateProgress]);
 
   const scale = useTransform(scrollYProgress, [0.1, 1], [1, 0.9]);
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);

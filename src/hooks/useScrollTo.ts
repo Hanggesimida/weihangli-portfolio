@@ -2,6 +2,7 @@
 
 import {
   SCROLL_DURATION,
+  SCROLL_EASING,
   type SectionId,
 } from "@/components/scroll/config";
 import { useLenis } from "lenis/react";
@@ -17,7 +18,7 @@ export function useScrollTo() {
     if (lenis) {
       // Overlay menus call lenis.stop(); resume so programmatic scroll still runs.
       if (lenis.isStopped) lenis.start();
-      lenis.scrollTo(target, { duration: SCROLL_DURATION });
+      lenis.scrollTo(target, { duration: SCROLL_DURATION, easing: SCROLL_EASING });
       return;
     }
 

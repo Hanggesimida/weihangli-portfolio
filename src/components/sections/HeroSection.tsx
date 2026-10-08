@@ -67,10 +67,11 @@ export default function HeroSection() {
 
   const scrollProgress = useMotionValue(0);
 
-  useLenis(({ scroll }) => {
+  // actualScroll is the pixel-snapped position the browser rendered, not Lenis's fractional value.
+  useLenis(({ actualScroll }) => {
     const el = containerRef.current;
     if (!el) return;
-    const progress = Math.min(Math.max((scroll - el.offsetTop) / el.offsetHeight, 0), 1);
+    const progress = Math.min(Math.max((actualScroll - el.offsetTop) / el.offsetHeight, 0), 1);
     scrollProgress.set(progress);
   });
 
