@@ -14,7 +14,9 @@ const PROJECT_ASSETS = [
   },
   {
     bgImage: "/images/projects/works_bg_04.webp",
-    previewImage: "/images/projects/works_jinwen.png",
+    previewImage: "/images/projects/works_kbd.png",
+    siteUrl: "https://kbd.weihangli.dev",
+    githubUrl: "https://github.com/Hanggesimida/keyboard-designer",
   },
   {
     bgImage: "/images/projects/works_bg_02.webp",
@@ -38,6 +40,7 @@ export default function SelectedWorksSection() {
   const t = useTranslations("Works");
   const projects = t.raw("projects") as ProjectCopy[];
   const overviewLabel = t("overviewLabel");
+  const visitLabel = t("visitLabel");
   const merged = PROJECT_ASSETS.map((assets, idx) => ({
     ...assets,
     ...projects[idx],
@@ -80,6 +83,7 @@ export default function SelectedWorksSection() {
               key={`${project.title}-${idx}`}
               ref={setItemRef(idx)}
               overviewLabel={overviewLabel}
+              visitLabel={visitLabel}
               {...project}
             />
           ))}

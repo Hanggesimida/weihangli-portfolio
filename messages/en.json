@@ -75,6 +75,7 @@
     "label": "(PROJECTS)",
     "intro": "Thoughtfully crafted digital experiences that blend utility and aesthetics into something functional, memorable, and refined.",
     "overviewLabel": "Overview",
+    "visitLabel": "Visit site",
     "projects": [
       {
         "category": "Modern Portfolio Website",
@@ -84,11 +85,11 @@
         "summary": "A self-designed single-page portfolio that presents full-stack craft and selected work to a global audience. Built with Next.js for localized routing and a contact-form email loop, plus GSAP / Motion / Lenis for smooth scroll and entrance motion."
       },
       {
-        "category": "SaaS Platform",
-        "title": "Jinwen Peripherals",
+        "category": "Open Source Tool",
+        "title": "Keyboard Designer",
         "year": "2026",
-        "tags": ["Next.js", "Nest"],
-        "summary": "A browser-based keycap design and fulfillment platform that connects visual customization, production jig export, and checkout. Features a layer-based editor, Three.js dye-sublimation 3D preview, and B2B / B2C collaboration with monthly settlement."
+        "tags": ["Next.js", "Three.js"],
+        "summary": "An open-source keycap designer that runs in the browser. Pick a layout, tune colors, place artwork, preview in real-time 3D, and export PNG, SVG, JSON, or production jigs. No sign-up; designs stay in your browser."
       },
       {
         "category": "SaaS Platform",

@@ -2,6 +2,7 @@
 
 import React, { forwardRef, useState } from "react";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 import { motion, useReducedMotion } from "motion/react";
 import Badge from "@/components/badge/Badge";
 import DecryptedText from "@/components/text/DecryptedText";
@@ -17,6 +18,9 @@ interface ProjectCardProps {
   tags?: string[];
   summary: string;
   overviewLabel: string;
+  visitLabel?: string;
+  siteUrl?: string;
+  githubUrl?: string;
   videoElement?: React.ReactNode;
   className?: string;
 }
@@ -34,6 +38,9 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
       tags = ["Development"],
       summary,
       overviewLabel,
+      visitLabel,
+      siteUrl,
+      githubUrl,
       videoElement,
       className,
     }: ProjectCardProps,
@@ -146,6 +153,33 @@ const ProjectCard = forwardRef<HTMLDivElement, ProjectCardProps>(
             <Badge variant="filled">{year}</Badge>
           </div>
         </div>
+
+        {(siteUrl || githubUrl) && (
+          <div className="flex items-center gap-x-5 font-mono text-xs font-medium uppercase tracking-tight">
+            {siteUrl && (
+              <a
+                href={siteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-x-1 text-secondary-foreground/70 transition-colors hover:text-secondary-foreground"
+              >
+                {visitLabel ?? "Visit"}
+                <ArrowUpRight className="h-[1.1em] w-[1.1em]" />
+              </a>
+            )}
+            {githubUrl && (
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-x-1 text-secondary-foreground/70 transition-colors hover:text-secondary-foreground"
+              >
+                GitHub
+                <ArrowUpRight className="h-[1.1em] w-[1.1em]" />
+              </a>
+            )}
+          </div>
+        )}
 
         {/* Mobile: always-visible summary under title meta */}
         <div className="space-y-1.5 md:hidden">
