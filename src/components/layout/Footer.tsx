@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ArrowUp } from "lucide-react";
 import { motion } from "motion/react";
@@ -58,27 +58,37 @@ function LocalClock() {
 
 function WeChatItem({ label, qrAlt }: { label: string; qrAlt: string }) {
   const [open, setOpen] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpen(false);
     };
+    const onPointerDown = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setOpen(false);
+    };
     window.addEventListener("keydown", onKeyDown);
-    return () => window.removeEventListener("keydown", onKeyDown);
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.removeEventListener("pointerdown", onPointerDown);
+    };
   }, [open]);
 
   return (
     <div
+      ref={rootRef}
       className="relative inline-block"
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
+      onPointerEnter={(e) => e.pointerType === "mouse" && setOpen(true)}
+      onPointerLeave={(e) => e.pointerType === "mouse" && setOpen(false)}
     >
       <button
         type="button"
         aria-expanded={open}
         aria-haspopup="true"
-        className="group text-secondary/60 tracking-tighter hover:text-secondary/80 transition-colors overflow-hidden cursor-default"
+        onClick={() => setOpen((v) => !v)}
+        className="group text-secondary/60 tracking-tighter hover:text-secondary/80 transition-colors overflow-hidden cursor-pointer"
       >
         <RollingText className="text-base sm:text-lg lg:text-xl">{label}</RollingText>
       </button>

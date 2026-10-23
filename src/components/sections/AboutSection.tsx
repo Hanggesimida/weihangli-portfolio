@@ -129,7 +129,7 @@ export default function AboutSection() {
                         <ul className="space-y-1 text-base md:text-lg lg:text-xl">
                           {group.items.map((item) => (
                             <li key={item}>
-                              <DecryptedText once={false} className="font-mono font-[400] text-secondary-foreground/75">
+                              <DecryptedText once={false} className="font-mono font-normal text-secondary-foreground/75">
                                 {item}
                               </DecryptedText>
                             </li>

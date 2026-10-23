@@ -1,7 +1,7 @@
 "use client";
 
 import { useInView } from "motion/react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 const DEFAULT_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*<>[]{}";
 
@@ -33,83 +33,70 @@ export default function DecryptedText({
   chars = DEFAULT_CHARS,
 }: DecryptedTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const charsRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { amount: threshold, once });
-
-  const [displayChars, setDisplayChars] = useState<string[]>(() =>
-    children.split("")
-  );
+  const original = Array.from(children);
 
   useEffect(() => {
-    setDisplayChars(
-      children.split("").map(c =>
-        c === " " ? " " : chars[Math.floor(Math.random() * chars.length)]
-      )
-    );
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    const nodes = Array.from(charsRef.current?.children ?? []) as HTMLElement[];
+    const target = Array.from(children);
+    const randomChar = () => chars[Math.floor(Math.random() * chars.length)];
+    const write = (node: HTMLElement, value: string) => {
+      if (node.firstChild) node.firstChild.nodeValue = value;
+    };
+    const scrambleAll = () =>
+      nodes.forEach((node, i) => {
+        if (target[i] !== " ") write(node, randomChar());
+      });
 
-  const randomChar = () => chars[Math.floor(Math.random() * chars.length)];
-
-  useEffect(() => {
+    scrambleAll();
     if (!isInView) return;
 
-    const intervals: ReturnType<typeof setInterval>[] = [];
-    const timeouts: ReturnType<typeof setTimeout>[] = [];
+    let raf = 0;
+    let lastScramble = 0;
+    let start: number | null = null;
+    const resolved = target.map((c) => c === " ");
 
-    children.split("").forEach((char, i) => {
-      if (char === " ") {
-        setDisplayChars(prev => {
-          const next = [...prev];
-          next[i] = " ";
-          return next;
-        });
-        return;
-      }
+    const tick = (now: number) => {
+      start ??= now;
+      const elapsed = now - start;
+      const shouldScramble = now - lastScramble >= scrambleSpeed;
+      if (shouldScramble) lastScramble = now;
 
-      const startAt = i * stagger;
+      let pending = false;
+      nodes.forEach((node, i) => {
+        if (resolved[i]) return;
+        const begin = i * stagger;
+        if (elapsed >= begin + duration) {
+          write(node, target[i]);
+          resolved[i] = true;
+          return;
+        }
+        pending = true;
+        if (elapsed >= begin && shouldScramble) write(node, randomChar());
+      });
 
-      const startTimer = setTimeout(() => {
-        const interval = setInterval(() => {
-          setDisplayChars(prev => {
-            const next = [...prev];
-            next[i] = randomChar();
-            return next;
-          });
-        }, scrambleSpeed);
-        intervals.push(interval);
-
-        const resolveTimer = setTimeout(() => {
-          clearInterval(interval);
-          setDisplayChars(prev => {
-            const next = [...prev];
-            next[i] = char;
-            return next;
-          });
-        }, duration);
-        timeouts.push(resolveTimer);
-      }, startAt);
-
-      timeouts.push(startTimer);
-    });
-
-    return () => {
-      intervals.forEach(clearInterval);
-      timeouts.forEach(clearTimeout);
+      if (pending) raf = requestAnimationFrame(tick);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isInView]);
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [isInView, children, chars, stagger, duration, scrambleSpeed]);
 
   return (
-    <span ref={ref} className={className} aria-label={children}>
-      {displayChars.map((char, i) => (
-        <span
-          key={i}
-          className="inline-block"
-          style={{ whiteSpace: char === " " ? "pre" : undefined }}
-        >
-          {char}
-        </span>
-      ))}
+    <span ref={ref} className={className}>
+      <span className="sr-only">{children}</span>
+      <span ref={charsRef} aria-hidden="true">
+        {original.map((char, i) => (
+          <span
+            key={i}
+            className="inline-block"
+            style={{ whiteSpace: char === " " ? "pre" : undefined }}
+          >
+            {char}
+          </span>
+        ))}
+      </span>
     </span>
   );
 }

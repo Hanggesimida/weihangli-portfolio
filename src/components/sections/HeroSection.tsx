@@ -11,6 +11,7 @@ import Image from "next/image";
 import { useMemo, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useScrollTo } from "@/hooks/useScrollTo";
+import { useHydrated } from "@/hooks/useHydrated";
 
 const WIPE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -46,8 +47,10 @@ export default function HeroSection() {
   const locale = useLocale();
   const scrollTo = useScrollTo();
   const containerRef = useRef<HTMLDivElement>(null);
+  const hydrated = useHydrated();
 
   const todayLabel = useMemo(() => {
+    if (!hydrated) return "\u00A0";
     const d = new Date();
     const loc =
       locale === "zh-TW"
@@ -63,7 +66,7 @@ export default function HeroSection() {
       month: "short",
       day: "2-digit",
     }).format(d);
-  }, [locale]);
+  }, [hydrated, locale]);
 
   const scrollProgress = useMotionValue(0);
 

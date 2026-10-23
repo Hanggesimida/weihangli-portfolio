@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Copy, Check } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
@@ -57,6 +57,15 @@ export default function NavOverlay() {
 
   useLenisLock(isOpen);
 
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false);
+    };
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isOpen]);
+
   useLenis(({ scroll }) => {
     const next = scroll >= window.innerHeight * 0.8;
     setShowButton((prev) => (prev === next ? prev : next));
@@ -80,6 +89,9 @@ export default function NavOverlay() {
         style={{ pointerEvents: showButton ? "auto" : "none", cursor: "pointer" }}
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? tOverlay("closeMenu") : tOverlay("openMenu")}
+        aria-expanded={isOpen}
+        aria-controls="nav-overlay"
+        inert={!showButton && !isOpen}
         type="button"
         className="fixed top-9 right-8 z-[9999] p-3 bg-secondary-foreground rounded-full shadow-lg"
       >
@@ -120,6 +132,8 @@ export default function NavOverlay() {
         initial="closed"
         animate={isOpen ? "opened" : "closed"}
         onClick={close}
+        id="nav-overlay"
+        inert={!isOpen}
         className="fixed top-0 right-0 h-screen w-screen flex justify-end"
         style={{ zIndex: 998 }}
       >

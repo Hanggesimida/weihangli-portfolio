@@ -56,7 +56,7 @@ export default function SelectedWorksSection() {
         </SplitText>
         <div className="grid grid-cols-12 gap-x-6">
           <div className="col-span-12 flex flex-col gap-x-18 gap-y-6 md:col-start-6 md:col-span-7 sm:flex-row">
-            <span className="text-md text-nowrap text-secondary-foreground/50 tracking-tighter uppercase">
+            <span className="text-base text-nowrap text-secondary-foreground/50 tracking-tighter uppercase">
               {t("label")}
             </span>
 
