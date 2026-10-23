@@ -27,7 +27,7 @@ function Digit({
 }) {
   return (
     <div
-      className={cn("overflow-hidden", digitClassName, "leading-[0.8]")}
+      className={cn("overflow-y-clip", digitClassName, "leading-[0.8]")}
       style={{ height: height || "auto" }}
     >
       <motion.div

@@ -54,7 +54,7 @@ export default function SplitText({
             {tokens.map((chars, ti) => (
               <span
                 key={ti}
-                className="inline-block overflow-hidden whitespace-nowrap pt-[0.1em] pb-[0.15em] -mt-[0.1em] -mb-[0.15em]"
+                className="inline-block overflow-y-clip whitespace-nowrap pt-[0.1em] pb-[0.15em] -mt-[0.1em] -mb-[0.15em]"
               >
                 {chars.map((char, ci) => {
                   const i = index++;

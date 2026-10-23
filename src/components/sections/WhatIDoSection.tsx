@@ -12,52 +12,44 @@ type Service = {
   skills: string[];
 };
 
-function getOffsets(prefix: number[], index: number) {
-  const top = prefix[index];
-  const remaining = prefix[prefix.length - 1] - prefix[index + 1];
-  return { top, remaining };
-}
+const height = (el?: HTMLDivElement) => el?.getBoundingClientRect().height ?? 0;
 
 export default function WhatIDoSection() {
   const t = useTranslations("WhatIDo");
   const services = t.raw("services") as Service[];
 
   const headerRefs = useRef<HTMLDivElement[]>([]);
-  const [headerHeightsPx, setHeaderHeightsPx] = useState<number[]>(() =>
-    Array(services.length).fill(0),
-  );
+  const cardRefs = useRef<HTMLDivElement[]>([]);
+  const [heights, setHeights] = useState(() => ({
+    headers: Array<number>(services.length).fill(0),
+    cards: Array<number>(services.length).fill(0),
+  }));
 
   const measure = useCallback(() => {
-    setHeaderHeightsPx(
-      services.map(
-        (_, i) => headerRefs.current[i]?.getBoundingClientRect().height ?? 0,
-      ),
-    );
+    setHeights({
+      headers: services.map((_, i) => height(headerRefs.current[i])),
+      cards: services.map((_, i) => height(cardRefs.current[i])),
+    });
   }, [services]);
 
-  const prefixHeights = useMemo(() => {
-    const arr = [0];
-    for (let i = 0; i < headerHeightsPx.length; i++) {
-      arr[i + 1] = arr[i] + headerHeightsPx[i];
-    }
-    return arr;
-  }, [headerHeightsPx]);
+  const offsets = useMemo(() => {
+    const tops = heights.headers.map((_, i) =>
+      heights.headers.slice(0, i).reduce((sum, h) => sum + h, 0),
+    );
+    const bottoms = tops.map((top, i) => top + heights.cards[i]);
+    const maxBottom = Math.max(...bottoms);
+    return tops.map((top, i) => ({ top, extra: maxBottom - bottoms[i] }));
+  }, [heights]);
 
   useLayoutEffect(() => {
-    const nodes = headerRefs.current.filter(Boolean) as HTMLDivElement[];
-    if (nodes.length !== services.length) return;
+    const nodes = [...headerRefs.current, ...cardRefs.current].filter(Boolean);
+    if (nodes.length !== services.length * 2) return;
 
     measure();
 
-    const observers = nodes.map((node) => {
-      const ro = new ResizeObserver(measure);
-      ro.observe(node);
-      return ro;
-    });
-
-    return () => {
-      observers.forEach((o) => o.disconnect());
-    };
+    const ro = new ResizeObserver(measure);
+    nodes.forEach((node) => ro.observe(node));
+    return () => ro.disconnect();
   }, [measure, services.length]);
 
   return (
@@ -84,17 +76,17 @@ export default function WhatIDoSection() {
 
       <div className="py-4">
         {services.map((service, index) => {
-          const { top: topOffsetPx, remaining: remainingHeadersPx } = getOffsets(
-            prefixHeights,
-            index,
-          );
+          const { top, extra } = offsets[index];
           return (
             <div
               key={service.number}
+              ref={(el) => {
+                if (el) cardRefs.current[index] = el;
+              }}
               className="sticky border-t border-secondary-border bg-secondary [--sticky-top:8vh] sm:[--sticky-top:15vh] md:[--sticky-top:20vh] [--sticky-bottom:2em] md:[--sticky-bottom:8em]"
               style={{
-                top: `calc(var(--sticky-top) + ${topOffsetPx}px)`,
-                marginBottom: `calc(${remainingHeadersPx}px + var(--sticky-bottom))`,
+                top: `calc(var(--sticky-top) + ${top}px)`,
+                marginBottom: `calc(${extra}px + var(--sticky-bottom))`,
                 zIndex: index,
               }}
             >

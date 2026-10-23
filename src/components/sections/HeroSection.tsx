@@ -157,8 +157,9 @@ export default function HeroSection() {
                 <Availability label={t("availabilityDesktop")} />
                 <p
                   className={cn(
-                    "whitespace-nowrap font-semibold uppercase leading-[0.85] tracking-tighter text-foreground/85",
+                    "whitespace-nowrap font-semibold uppercase tracking-tighter text-foreground/85",
                     wideDate ? "text-4xl" : "text-5xl",
+                    "leading-[0.85]",
                   )}
                 >
                   {todayLabel}
@@ -216,8 +217,9 @@ export default function HeroSection() {
                 <Availability label={t("availabilityDesktop")} className="xl:text-sm" />
                 <p
                   className={cn(
-                    "whitespace-nowrap text-foreground/85 font-semibold uppercase leading-[0.8] tracking-tighter",
+                    "whitespace-nowrap text-foreground/85 font-semibold uppercase tracking-tighter",
                     wideDate ? "text-[5.5vw]" : "text-[8vw]",
+                    "leading-[0.8]",
                   )}
                 >
                   {todayLabel}

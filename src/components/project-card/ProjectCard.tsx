@@ -5,7 +5,6 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import Badge from "@/components/badge/Badge";
-import Reveal from "@/components/media/Reveal";
 import DecryptedText from "@/components/text/DecryptedText";
 import SplitText from "@/components/text/SplitText";
 import { EASE_OUT as EASE } from "@/lib/animations";
@@ -68,16 +67,14 @@ export default function ProjectCard({
 
   const visual = (
     <>
-      <Reveal className="absolute inset-0">
-        <Image
-          src={bgImage}
-          alt=""
-          aria-hidden
-          fill
-          sizes="(max-width: 768px) 100vw, 60vw"
-          className="object-cover object-center"
-        />
-      </Reveal>
+      <Image
+        src={bgImage}
+        alt=""
+        aria-hidden
+        fill
+        sizes="(max-width: 768px) 100vw, 60vw"
+        className="object-cover object-center"
+      />
 
       <div className="relative z-10 w-full">
         <motion.div
