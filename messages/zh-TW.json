@@ -15,15 +15,9 @@
     "roleMobile2": "開發者",
     "roleDesktop": "全端開發者"
   },
-  "NavOverlay": {
-    "emailLabel": "電子郵件",
-    "copyEmail": "複製郵件",
-    "openMenu": "開啟選單",
-    "closeMenu": "關閉選單",
-    "github": "Github",
-    "telegram": "Telegram",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp"
+  "Dock": {
+    "label": "頁面導覽",
+    "toggle": "跳至章節"
   },
   "Hero": {
     "tagline": "我致力於打造高效能、現代化的軟體。作為全端開發者，我為全球客戶提供開發服務",
@@ -137,7 +131,8 @@
   "Contact": {
     "heading": "一起把想法落地",
     "subheading": "有專案想聊聊？",
-    "direct": "或直接聯絡我"
+    "direct": "或直接聯絡我",
+    "copyEmail": "複製郵件"
   },
   "Form": {
     "namePlaceholder": "您的姓名",

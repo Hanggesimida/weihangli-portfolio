@@ -15,15 +15,9 @@
     "roleMobile2": "開発者",
     "roleDesktop": "フルスタック開発者"
   },
-  "NavOverlay": {
-    "emailLabel": "メールアドレス",
-    "copyEmail": "メールをコピー",
-    "openMenu": "メニューを開く",
-    "closeMenu": "メニューを閉じる",
-    "github": "Github",
-    "telegram": "Telegram",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp"
+  "Dock": {
+    "label": "セクションナビゲーション",
+    "toggle": "セクションへ移動"
   },
   "Hero": {
     "tagline": "高性能でモダンなソフトウェアづくりに取り組んでいます。フルスタック開発者として、世界中のクライアントに開発サービスを提供しています",
@@ -137,7 +131,8 @@
   "Contact": {
     "heading": "アイデアを一緒に形に",
     "subheading": "相談したいプロジェクトはありますか？",
-    "direct": "または直接ご連絡ください"
+    "direct": "または直接ご連絡ください",
+    "copyEmail": "メールをコピー"
   },
   "Form": {
     "namePlaceholder": "お名前",

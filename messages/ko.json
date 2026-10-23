@@ -15,15 +15,9 @@
     "roleMobile2": "개발자",
     "roleDesktop": "풀스택 개발자"
   },
-  "NavOverlay": {
-    "emailLabel": "이메일 주소",
-    "copyEmail": "이메일 복사",
-    "openMenu": "메뉴 열기",
-    "closeMenu": "메뉴 닫기",
-    "github": "Github",
-    "telegram": "Telegram",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp"
+  "Dock": {
+    "label": "섹션 내비게이션",
+    "toggle": "섹션으로 이동"
   },
   "Hero": {
     "tagline": "고성능의 현대적인 소프트웨어를 만듭니다. 풀스택 개발자로서 전 세계 고객에게 개발 서비스를 제공합니다",
@@ -137,7 +131,8 @@
   "Contact": {
     "heading": "아이디어를 함께 실현해요",
     "subheading": "이야기하고 싶은 프로젝트가 있나요?",
-    "direct": "또는 직접 연락하세요"
+    "direct": "또는 직접 연락하세요",
+    "copyEmail": "이메일 복사"
   },
   "Form": {
     "namePlaceholder": "이름",

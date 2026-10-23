@@ -1,5 +1,5 @@
 import "@/styles/globals.css";
-import NavOverlay from "@/components/layout/NavOverlay";
+import SectionDock from "@/components/layout/SectionDock";
 import SmoothScrolling from "@/components/scroll/SmoothScrolling";
 import { SITE_URL } from "@/config/site";
 import { getPathname } from "@/i18n/navigation";
@@ -90,8 +90,8 @@ export default async function LocaleLayout({
       <body className="font-sans">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrolling>
-            <NavOverlay />
             {children}
+            <SectionDock />
           </SmoothScrolling>
         </NextIntlClientProvider>
       </body>

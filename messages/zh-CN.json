@@ -15,15 +15,9 @@
     "roleMobile2": "开发者",
     "roleDesktop": "全栈开发者"
   },
-  "NavOverlay": {
-    "emailLabel": "电子邮箱",
-    "copyEmail": "复制邮箱",
-    "openMenu": "打开菜单",
-    "closeMenu": "关闭菜单",
-    "github": "Github",
-    "telegram": "Telegram",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp"
+  "Dock": {
+    "label": "页面导航",
+    "toggle": "跳转到章节"
   },
   "Hero": {
     "tagline": "我致力于打造高性能、现代化的软件。作为全栈开发者，我为全球客户提供开发服务",
@@ -137,7 +131,8 @@
   "Contact": {
     "heading": "一起把想法落地",
     "subheading": "有项目想聊聊？",
-    "direct": "或直接联系我"
+    "direct": "或直接联系我",
+    "copyEmail": "复制邮箱"
   },
   "Form": {
     "namePlaceholder": "您的姓名",

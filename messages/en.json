@@ -15,15 +15,9 @@
     "roleMobile2": "& Designer",
     "roleDesktop": "Web Developer & Designer"
   },
-  "NavOverlay": {
-    "emailLabel": "Email Address",
-    "copyEmail": "Copy email",
-    "openMenu": "Open menu",
-    "closeMenu": "Close menu",
-    "github": "Github",
-    "telegram": "Telegram",
-    "instagram": "Instagram",
-    "whatsapp": "WhatsApp"
+  "Dock": {
+    "label": "Section navigation",
+    "toggle": "Jump to section"
   },
   "Hero": {
     "tagline": "I build fast, modern digital products that drive business growth, available for freelance projects worldwide.",
@@ -137,7 +131,8 @@
   "Contact": {
     "heading": "Let's Make It Happen",
     "subheading": "Have a project in mind?",
-    "direct": "Or reach me directly"
+    "direct": "Or reach me directly",
+    "copyEmail": "Copy email"
   },
   "Form": {
     "namePlaceholder": "Your name",

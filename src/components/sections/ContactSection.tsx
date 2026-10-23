@@ -6,7 +6,6 @@ import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
   const t = useTranslations("Contact");
-  const tNav = useTranslations("NavOverlay");
 
   return (
     <section id="contact" className="px-3 pt-3 sm:px-6 sm:pt-6">
@@ -25,7 +24,7 @@ export default function ContactSection() {
             <span className="eyebrow block text-secondary-foreground/45">{t("direct")}</span>
             <CopyEmail
               email={CONTACT_EMAIL}
-              copyLabel={tNav("copyEmail")}
+              copyLabel={t("copyEmail")}
               linkClassName="break-all text-xl font-medium tracking-tight underline decoration-secondary-foreground/25 underline-offset-[6px] sm:text-2xl lg:text-3xl"
             />
           </div>

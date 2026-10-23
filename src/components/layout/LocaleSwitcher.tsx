@@ -13,29 +13,10 @@ const LOCALE_LABEL_KEYS = {
   ko: "ko",
 } as const satisfies Record<(typeof routing.locales)[number], string>;
 
-type Tone = "default" | "onDark";
-
-export default function LocaleSwitcher({
-  className,
-  tone = "default",
-}: {
-  className?: string;
-  tone?: Tone;
-}) {
+export default function LocaleSwitcher({ className }: { className?: string }) {
   const t = useTranslations("LocaleSwitcher");
   const pathname = usePathname();
   const locale = useLocale();
-
-  const active =
-    tone === "onDark"
-      ? "font-medium text-secondary-foreground"
-      : "font-medium text-foreground";
-  const inactive =
-    tone === "onDark"
-      ? "text-secondary-foreground/45 hover:text-secondary-foreground"
-      : "text-foreground/45 hover:text-foreground";
-  const divider =
-    tone === "onDark" ? "text-secondary-foreground/25" : "text-foreground/25";
 
   return (
     <nav
@@ -49,7 +30,7 @@ export default function LocaleSwitcher({
         {routing.locales.map((code, index) => (
           <li key={code} className="flex items-center gap-x-2">
             {index > 0 && (
-              <span className={divider} aria-hidden>
+              <span className="text-foreground/25" aria-hidden>
                 /
               </span>
             )}
@@ -61,7 +42,9 @@ export default function LocaleSwitcher({
               aria-current={locale === code ? "true" : undefined}
               className={cn(
                 "transition-colors duration-200",
-                locale === code ? active : inactive,
+                locale === code
+                  ? "font-medium text-foreground"
+                  : "text-foreground/45 hover:text-foreground",
               )}
             >
               {t(LOCALE_LABEL_KEYS[code])}

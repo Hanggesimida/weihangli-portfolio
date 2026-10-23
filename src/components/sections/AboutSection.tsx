@@ -1,48 +1,19 @@
 "use client";
 
-import Reveal from "@/components/media/Reveal";
 import DecryptedText from "@/components/text/DecryptedText";
 import FadeUp from "@/components/text/FadeUp";
 import SplitText from "@/components/text/SplitText";
 import Image from "next/image";
-import { useLenis } from "lenis/react";
-import { motion, useMotionValue, useTransform } from "motion/react";
-import { useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
 import { SKILL_GROUPS } from "@/config/site";
 
 export default function AboutSection() {
   const t = useTranslations("About");
-  const sectionRef = useRef<HTMLElement>(null);
-
-  // Driven by Lenis (same frame as the scroll write) instead of useScroll, which lags one frame.
-  const exitProgress = useMotionValue(0);
-
-  const updateProgress = useCallback(() => {
-    const el = sectionRef.current;
-    if (!el) return;
-    const { bottom } = el.getBoundingClientRect();
-    const vh = window.innerHeight;
-    exitProgress.set(Math.min(Math.max((vh - bottom) / vh, 0), 1));
-  }, [exitProgress]);
-
-  useLenis(updateProgress);
-
-  useEffect(() => {
-    updateProgress();
-    window.addEventListener("resize", updateProgress, { passive: true });
-    return () => window.removeEventListener("resize", updateProgress);
-  }, [updateProgress]);
-
-  const scale = useTransform(exitProgress, [0, 1], [1, 0.94]);
 
   return (
-    <section id="about" ref={sectionRef} className="mt-[-2vh]">
+    <section id="about" className="mt-[-2vh]">
       <div className="relative z-10">
-        <motion.div
-          style={{ scale, willChange: "transform", transformOrigin: "bottom center" }}
-          className="rounded-b-3xl bg-secondary px-6 sm:px-10 pt-16 md:pt-[14vh] pb-20 sm:pb-32 text-secondary-foreground space-y-20 md:space-y-32"
-        >
+        <div className="rounded-b-3xl bg-secondary px-6 sm:px-10 pt-16 md:pt-[14vh] pb-20 sm:pb-32 text-secondary-foreground space-y-20 md:space-y-32">
           <div className="grid grid-cols-12 gap-x-6 gap-y-14">
             <h2 className="col-span-12 flex flex-col font-semibold tracking-tighter leading-[0.9] uppercase lg:col-span-6 text-[15vw] sm:text-7xl md:text-[88px] lg:text-[7vw]">
               <SplitText>{t("line1")}</SplitText>
@@ -77,7 +48,7 @@ export default function AboutSection() {
           </div>
 
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <Reveal className="relative col-span-12 aspect-[4/5] w-full self-start rounded-2xl sm:col-span-8 md:col-span-4 lg:col-span-3">
+            <div className="relative col-span-12 aspect-[4/5] w-full self-start overflow-hidden rounded-2xl sm:col-span-8 md:col-span-4 lg:col-span-3">
               <Image
                 src="/images/about/me.webp"
                 alt={t("aboutImageAlt")}
@@ -85,7 +56,7 @@ export default function AboutSection() {
                 sizes="(max-width: 768px) 100vw, 25vw"
                 className="object-cover object-center grayscale transition-[filter] duration-700 hover:grayscale-0"
               />
-            </Reveal>
+            </div>
 
             <div className="col-span-12 flex flex-col gap-y-10 lg:gap-y-16 md:col-span-7 md:col-start-6">
               <FadeUp className="max-w-[30ch] text-balance text-3xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.15] tracking-tight">
@@ -108,7 +79,7 @@ export default function AboutSection() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
