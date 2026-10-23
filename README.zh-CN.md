@@ -54,8 +54,11 @@ npm run dev
 联系表单对应的后端接口在 [`src/app/api/send/route.ts`](src/app/api/send/route.ts) 中使用 Resend。
 
 - **`RESEND_API_KEY`** — 从 API 路由发信所必需。请在本地（例如 `.env.local`）以及生产与预览部署环境的托管平台中配置。
+- **`CONTACT_FROM_EMAIL`**（可选）— 发件人，例如 `Weihang Li <hello@your-domain.com>`，需为 Resend 已验证域名；默认 `onboarding@resend.dev`。
+- **`CONTACT_TO_EMAIL`**（可选）— 收件邮箱，默认取 `src/config/site.ts` 中的 `CONTACT_EMAIL`。
+- **`NEXT_PUBLIC_SITE_URL`**（可选）— 站点正式域名，用于 SEO 元数据、sitemap 与 robots，默认 `https://weihangli.dev`。
 
-请在 Resend 控制台完成发信域名验证，并在 `route.ts` 中将 `from` 等字段改为与你的已验证域名一致。切勿将真实 API 密钥提交到仓库。
+请在 Resend 控制台完成发信域名验证，并将 `CONTACT_FROM_EMAIL` 设置为该域名下的地址。切勿将真实 API 密钥提交到仓库。
 
 ## 部署
 

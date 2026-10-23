@@ -12,6 +12,7 @@ type FormState = {
   name: string;
   email: string;
   message: string;
+  website: string;
 };
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
@@ -24,7 +25,7 @@ export default function ContactForm() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm<FormState>({
-    defaultValues: { name: "", email: "", message: "" },
+    defaultValues: { name: "", email: "", message: "", website: "" },
   });
 
   const [status, setStatus] = useState<SubmitStatus>("idle");
@@ -62,8 +63,19 @@ export default function ContactForm() {
             : "opacity-100",
         )}
       >
+        <input
+          type="text"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute -left-[9999px] size-px opacity-0"
+          {...register("website")}
+        />
+
         <FormField
           placeholder={t("namePlaceholder")}
+          aria-label={t("namePlaceholder")}
+          maxLength={100}
           {...register("name", { required: t("nameRequired") })}
           error={errors.name?.message}
         />
@@ -71,6 +83,8 @@ export default function ContactForm() {
         <FormField
           type="email"
           placeholder={t("emailPlaceholder")}
+          aria-label={t("emailPlaceholder")}
+          maxLength={254}
           {...register("email", {
             required: t("emailRequired"),
             pattern: {
@@ -83,6 +97,8 @@ export default function ContactForm() {
 
         <FormField
           placeholder={t("messagePlaceholder")}
+          aria-label={t("messagePlaceholder")}
+          maxLength={5000}
           textarea
           {...register("message", {
             required: t("messageRequired"),

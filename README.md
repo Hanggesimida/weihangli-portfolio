@@ -55,8 +55,11 @@ Open [http://localhost:3000](http://localhost:3000) in your browser. Edit files 
 The contact flow in [`src/app/api/send/route.ts`](src/app/api/send/route.ts) uses Resend.
 
 - **`RESEND_API_KEY`** — required for sending mail from the API route. Set it locally (e.g. `.env.local`) and in your hosting provider’s environment settings for production and preview deployments.
+- **`CONTACT_FROM_EMAIL`** (optional) — sender, e.g. `Weihang Li <hello@your-domain.com>`; must be on a Resend-verified domain. Defaults to `onboarding@resend.dev`.
+- **`CONTACT_TO_EMAIL`** (optional) — recipient. Defaults to `CONTACT_EMAIL` in `src/config/site.ts`.
+- **`NEXT_PUBLIC_SITE_URL`** (optional) — canonical site URL used for SEO metadata, sitemap and robots. Defaults to `https://weihangli.dev`.
 
-Verify your sending domain in the Resend dashboard and adjust the `from` address (and any routing) in `route.ts` to match your verified domain. Do not commit real API keys.
+Verify your sending domain in the Resend dashboard and point `CONTACT_FROM_EMAIL` at it. Do not commit real API keys.
 
 ## Deploy
 
