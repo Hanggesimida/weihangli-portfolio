@@ -14,11 +14,11 @@ export default function Badge({
     return (
         <span
             className={cn(
-                "rounded-full px-3 py-1 text-xs lg:text-sm font-medium tracking-tight",
+                "eyebrow inline-flex items-center rounded-full px-3 py-1.5 text-xs",
                 {
-                    "border-[1.75px] border-secondary-foreground/70 text-secondary-foreground/70 uppercase":
+                    "border border-secondary-foreground/25 text-secondary-foreground/75":
                         variant === "outline",
-                    "bg-secondary-foreground/70 text-secondary":
+                    "bg-secondary-foreground text-secondary":
                         variant === "filled",
                 },
                 className

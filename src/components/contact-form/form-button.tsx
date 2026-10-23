@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowUpRight } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Spinner } from "@/components/ui/spinner";
 
@@ -14,10 +15,16 @@ export function FormSubmitButton({ loading }: FormSubmitButtonProps) {
     <button
       type="submit"
       disabled={loading}
-      className="inline-flex w-full items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold text-base sm:text-lg transition-all duration-150 bg-secondary-foreground text-secondary hover:bg-white active:scale-[0.98] disabled:opacity-60 disabled:cursor-not-allowed"
+      className="group mt-4 inline-flex w-full items-center justify-between gap-2 rounded-full bg-secondary-foreground py-2 pl-7 pr-2 text-base font-semibold tracking-tight text-secondary transition-colors duration-300 hover:bg-white active:scale-[0.99] disabled:opacity-60 disabled:cursor-not-allowed sm:text-lg cursor-pointer"
     >
-      {loading && <Spinner className="size-[1.125em] shrink-0 text-secondary" />}
       {loading ? t("submitSending") : t("submitIdle")}
+      <span className="grid size-11 place-items-center rounded-full bg-secondary text-secondary-foreground transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:rotate-45">
+        {loading ? (
+          <Spinner className="size-[1.125em] shrink-0" />
+        ) : (
+          <ArrowUpRight className="size-5" />
+        )}
+      </span>
     </button>
   );
 }

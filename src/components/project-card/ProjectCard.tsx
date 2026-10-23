@@ -1,11 +1,13 @@
 "use client";
 
-import { useState, type ReactNode, type Ref } from "react";
+import { useState, type MouseEvent, type ReactNode, type Ref } from "react";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import { motion, useReducedMotion } from "motion/react";
+import { motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
 import Badge from "@/components/badge/Badge";
+import Reveal from "@/components/media/Reveal";
 import DecryptedText from "@/components/text/DecryptedText";
+import SplitText from "@/components/text/SplitText";
 import { EASE_OUT as EASE } from "@/lib/animations";
 import { cn } from "@/lib/utils";
 
@@ -21,11 +23,15 @@ interface ProjectCardProps {
   summary: string;
   overviewLabel: string;
   visitLabel?: string;
+  viewLabel?: string;
   siteUrl?: string;
   githubUrl?: string;
   videoElement?: ReactNode;
   className?: string;
 }
+
+const linkClass =
+  "eyebrow inline-flex items-center gap-1.5 rounded-full border border-secondary-foreground/25 px-4 py-2.5 text-xs text-secondary-foreground/85 transition-colors duration-300 hover:border-secondary-foreground hover:bg-secondary-foreground hover:text-secondary";
 
 export default function ProjectCard({
   ref,
@@ -38,6 +44,7 @@ export default function ProjectCard({
   summary,
   overviewLabel,
   visitLabel,
+  viewLabel = "View",
   siteUrl,
   githubUrl,
   videoElement,
@@ -46,102 +53,142 @@ export default function ProjectCard({
   const [hovered, setHovered] = useState(false);
   const prefersReducedMotion = useReducedMotion();
   const duration = prefersReducedMotion ? 0 : 0.5;
+  const href = siteUrl ?? githubUrl;
 
-  return (
-    <div
-      className={cn("space-y-2", className)}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      <div
-        ref={ref}
-        className="relative flex aspect-square items-center justify-center overflow-hidden rounded-md p-7 sm:p-9 xl:p-18"
-      >
+  const cursorX = useMotionValue(0);
+  const cursorY = useMotionValue(0);
+  const springX = useSpring(cursorX, { stiffness: 500, damping: 40, mass: 0.5 });
+  const springY = useSpring(cursorY, { stiffness: 500, damping: 40, mass: 0.5 });
+
+  const onMouseMove = (e: MouseEvent<HTMLElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    cursorX.set(e.clientX - rect.left);
+    cursorY.set(e.clientY - rect.top);
+  };
+
+  const visual = (
+    <>
+      <Reveal className="absolute inset-0">
         <Image
           src={bgImage}
           alt=""
           aria-hidden
           fill
-          sizes="(max-width: 768px) 100vw, 50vw"
+          sizes="(max-width: 768px) 100vw, 60vw"
           className="object-cover object-center"
         />
+      </Reveal>
 
-        {/* In-flow stack so preview (+ overview on hover) stay vertically centered as a group */}
-        <div className="relative z-10 w-full">
-          <motion.div
-            className="relative z-10 w-full aspect-[4/3] overflow-hidden rounded-lg bg-background/90 shadow-2xl will-change-transform"
-            animate={{
-              scale: hovered && !prefersReducedMotion ? 1.02 : 1,
-            }}
-            transition={{ duration, ease: EASE }}
-          >
-            {videoElement ? (
-              videoElement
-            ) : previewImage ? (
-              <Image
-                src={previewImage}
-                alt={title}
-                fill
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover object-top"
-              />
-            ) : (
-              <div className="flex h-full w-full items-center justify-center text-muted-foreground">
-                Video Placeholder
-              </div>
-            )}
-          </motion.div>
-
-          {/* Desktop: expands in flow so the whole group re-centers on the bg */}
-          <motion.div
-            className="pointer-events-none hidden overflow-hidden md:block"
-            initial={false}
-            animate={{
-              height: hovered ? "auto" : 0,
-              opacity: hovered ? 1 : 0,
-            }}
-            transition={{
-              duration,
-              ease: EASE,
-              opacity: {
-                duration: prefersReducedMotion ? 0 : 0.35,
-                delay: hovered && !prefersReducedMotion ? 0.05 : 0,
-              },
-            }}
-          >
-            <div className="pt-3">
-              <p className="mb-1.5 font-mono text-xs font-medium uppercase tracking-tight text-white/70 [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
-                {overviewLabel}
-              </p>
-              <p className="max-w-[52ch] text-sm leading-snug text-white/90 line-clamp-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)] md:text-[0.95rem]">
-                {summary}
-              </p>
+      <div className="relative z-10 w-full">
+        <motion.div
+          className="relative z-10 w-full aspect-[4/3] overflow-hidden rounded-lg bg-background/90 shadow-[0_30px_60px_-20px_rgb(0_0_0/0.6)] will-change-transform"
+          animate={{ scale: hovered && !prefersReducedMotion ? 1.03 : 1 }}
+          transition={{ duration: 0.7, ease: EASE }}
+        >
+          {videoElement ? (
+            videoElement
+          ) : previewImage ? (
+            <Image
+              src={previewImage}
+              alt={title}
+              fill
+              sizes="(max-width: 768px) 90vw, 50vw"
+              className="object-cover object-top"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center text-muted-foreground">
+              Video Placeholder
             </div>
-          </motion.div>
-        </div>
+          )}
+        </motion.div>
+
+        <motion.div
+          className="pointer-events-none hidden overflow-hidden md:block"
+          initial={false}
+          animate={{
+            height: hovered ? "auto" : 0,
+            opacity: hovered ? 1 : 0,
+          }}
+          transition={{
+            duration,
+            ease: EASE,
+            opacity: {
+              duration: prefersReducedMotion ? 0 : 0.35,
+              delay: hovered && !prefersReducedMotion ? 0.05 : 0,
+            },
+          }}
+        >
+          <div className="pt-4">
+            <p className="eyebrow mb-2 text-xs text-white/70 [text-shadow:0_1px_2px_rgba(0,0,0,0.45)]">
+              {overviewLabel}
+            </p>
+            <p className="max-w-[52ch] text-sm leading-snug text-white/90 line-clamp-3 [text-shadow:0_1px_3px_rgba(0,0,0,0.5)] md:text-[0.95rem]">
+              {summary}
+            </p>
+          </div>
+        </motion.div>
       </div>
 
-      <div className="flex flex-col justify-between gap-y-4 lg:flex-row">
-        <div className="flex flex-col gap-y-2">
+      {href && (
+        <motion.span
+          aria-hidden="true"
+          className="pointer-events-none absolute left-0 top-0 z-20 hidden -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 rounded-full bg-secondary-foreground px-5 py-3 text-sm font-semibold tracking-tight text-secondary md:inline-flex"
+          style={{ x: springX, y: springY }}
+          initial={false}
+          animate={{ scale: hovered ? 1 : 0, opacity: hovered ? 1 : 0 }}
+          transition={{ duration: 0.3, ease: EASE }}
+        >
+          {viewLabel}
+          <ArrowUpRight className="size-4" />
+        </motion.span>
+      )}
+    </>
+  );
+
+  const visualClass = cn(
+    "relative flex aspect-square items-center justify-center overflow-hidden rounded-2xl p-6 sm:p-9 xl:p-16",
+    href && "md:cursor-none",
+  );
+
+  return (
+    <article
+      className={cn("space-y-5", className)}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+    >
+      <div ref={ref}>
+        {href ? (
+          <a
+            href={href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`${title} — ${visitLabel ?? viewLabel}`}
+            className={visualClass}
+            onMouseMove={onMouseMove}
+          >
+            {visual}
+          </a>
+        ) : (
+          <div className={visualClass}>{visual}</div>
+        )}
+      </div>
+
+      <div className="flex flex-col justify-between gap-y-4 lg:flex-row lg:items-end">
+        <div className="flex flex-col gap-y-3">
           <DecryptedText
-            stagger={48}
+            stagger={40}
             duration={330}
             scrambleSpeed={34}
-            className="block font-mono font-medium text-secondary-foreground/70 tracking-tight leading-none uppercase"
+            className="eyebrow block text-secondary-foreground/55"
           >
             {category}
           </DecryptedText>
-          <DecryptedText
-            stagger={48}
-            duration={330}
-            scrambleSpeed={34}
-            className="block text-[clamp(27px,2.5vw,43px)] font-semibold leading-none tracking-tighter"
-          >
-            {title}
-          </DecryptedText>
+          <h3 className="text-[clamp(30px,2.8vw,46px)] font-semibold leading-none tracking-tighter">
+            <SplitText stagger={0.015}>{title}</SplitText>
+          </h3>
         </div>
 
-        <div className="flex items-end gap-x-2">
+        <div className="flex flex-wrap items-center gap-2">
           {tags.map((tag) => (
             <Badge key={tag} variant="outline">
               {tag}
@@ -151,42 +198,26 @@ export default function ProjectCard({
         </div>
       </div>
 
+      <p className="max-w-[52ch] text-base leading-snug text-secondary-foreground/70 md:hidden">
+        {summary}
+      </p>
+
       {(siteUrl || githubUrl) && (
-        <div className="flex items-center gap-x-5 font-mono text-xs font-medium uppercase tracking-tight">
+        <div className="flex flex-wrap items-center gap-2">
           {siteUrl && (
-            <a
-              href={siteUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-x-1 text-secondary-foreground/70 transition-colors hover:text-secondary-foreground"
-            >
+            <a href={siteUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
               {visitLabel ?? "Visit"}
-              <ArrowUpRight className="h-[1.1em] w-[1.1em]" />
+              <ArrowUpRight className="size-3.5" />
             </a>
           )}
           {githubUrl && (
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-x-1 text-secondary-foreground/70 transition-colors hover:text-secondary-foreground"
-            >
+            <a href={githubUrl} target="_blank" rel="noopener noreferrer" className={linkClass}>
               GitHub
-              <ArrowUpRight className="h-[1.1em] w-[1.1em]" />
+              <ArrowUpRight className="size-3.5" />
             </a>
           )}
         </div>
       )}
-
-      {/* Mobile: always-visible summary under title meta */}
-      <div className="space-y-1.5 md:hidden">
-        <p className="font-mono text-xs font-medium uppercase tracking-tight text-secondary-foreground/50">
-          {overviewLabel}
-        </p>
-        <p className="max-w-[52ch] text-sm leading-snug text-secondary-foreground/70">
-          {summary}
-        </p>
-      </div>
-    </div>
+    </article>
   );
 }

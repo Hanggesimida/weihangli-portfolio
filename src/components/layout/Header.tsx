@@ -1,8 +1,11 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { motion } from "motion/react";
 import { HEADER_SECTION_IDS } from "@/components/scroll/config";
+import { RollingText } from "@/components/ui/RollingText";
 import { useScrollTo } from "@/hooks/useScrollTo";
+import { HERO_VARIANTS } from "@/lib/animations";
 
 export default function Header() {
   const t = useTranslations("Nav");
@@ -10,30 +13,34 @@ export default function Header() {
   const scrollTo = useScrollTo();
 
   return (
-    <header className="flex justify-between items-start pt-4 sm:pt-8">
-      <div className="flex flex-wrap items-start justify-between gap-4 md:contents">
-        <button
-          type="button"
-          onClick={() => scrollTo("home")}
-          className="text-base leading-relaxed text-foreground/60 tracking-tight text-left font-medium"
-        >
-          <p className="md:hidden">{tHeader("roleMobile1")}</p>
-          <p className="md:hidden">{tHeader("roleMobile2")}</p>
-          <p className="hidden md:block md:text-lg lg:text-xl">{tHeader("roleDesktop")}</p>
-        </button>
-      </div>
-      <nav className="flex flex-col items-end gap-1 md:flex-row md:items-center md:gap-4">
+    <motion.header
+      className="flex justify-between items-start pt-5 sm:pt-8"
+      variants={HERO_VARIANTS}
+      initial="hidden"
+      animate="visible"
+      custom={0}
+    >
+      <button
+        type="button"
+        onClick={() => scrollTo("home")}
+        className="text-base leading-snug text-foreground/80 tracking-tight text-left font-medium cursor-pointer md:text-lg lg:text-xl"
+      >
+        <span className="block md:hidden">{tHeader("roleMobile1")}</span>
+        <span className="block md:hidden">{tHeader("roleMobile2")}</span>
+        <span className="hidden md:block">{tHeader("roleDesktop")}</span>
+      </button>
+      <nav className="flex flex-col items-end gap-0.5 md:flex-row md:items-center md:gap-7">
         {HEADER_SECTION_IDS.map((id) => (
           <button
             key={id}
             type="button"
             onClick={() => scrollTo(id)}
-            className="text-base text-foreground/60 md:text-lg lg:text-xl tracking-tight cursor-pointer font-medium"
+            className="group text-base text-foreground/80 hover:text-foreground transition-colors md:text-lg lg:text-xl tracking-tight cursor-pointer font-medium"
           >
-            {t(id)}
+            <RollingText>{t(id)}</RollingText>
           </button>
         ))}
       </nav>
-    </header>
+    </motion.header>
   );
 }

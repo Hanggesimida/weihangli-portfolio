@@ -1,26 +1,37 @@
 import ContactForm from "@/components/contact-form";
+import SplitText from "@/components/text/SplitText";
+import { CopyEmail } from "@/components/ui/CopyEmail";
+import { CONTACT_EMAIL } from "@/config/site";
 import { useTranslations } from "next-intl";
 
 export default function ContactSection() {
   const t = useTranslations("Contact");
+  const tNav = useTranslations("NavOverlay");
 
   return (
-    <section id="contact" className="px-4 sm:px-8 md:px-10 pt-16 pb-12 md:pb-32 -mt-[40vh] sm:-mt-[25vh]">
-      <div className="relative flex flex-col items-center rounded-md bg-contact-gradient border border-white/10 shadow-lg overflow-hidden px-4 pt-7 sm:p-7">
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-2xl bg-contact-radial-highlight"
-        />
+    <section id="contact" className="px-3 pt-3 sm:px-6 sm:pt-6">
+      <div className="grid grid-cols-12 gap-y-14 rounded-3xl bg-secondary px-6 py-14 text-secondary-foreground sm:px-10 md:py-20 lg:gap-x-16 lg:px-16 lg:py-24">
+        <div className="col-span-12 flex flex-col justify-between gap-12 lg:col-span-7">
+          <div className="space-y-8">
+            <h2 className="max-w-[12ch] text-[15vw] font-semibold uppercase leading-[0.88] tracking-tighter sm:text-7xl lg:text-[clamp(72px,7.5vw,136px)]">
+              <SplitText>{t("heading")}</SplitText>
+            </h2>
+            <p className="text-2xl font-medium tracking-tight text-secondary-foreground/70 md:text-3xl">
+              {t("subheading")}
+            </p>
+          </div>
 
-        <h2 className="max-w-[15ch] text-center text-balance text-[clamp(64px,9vw,144px)] font-semibold uppercase leading-[0.9] tracking-tighter text-secondary-foreground">
-          {t("heading")}
-        </h2>
+          <div className="space-y-3">
+            <span className="eyebrow block text-secondary-foreground/45">{t("direct")}</span>
+            <CopyEmail
+              email={CONTACT_EMAIL}
+              copyLabel={tNav("copyEmail")}
+              linkClassName="break-all text-xl font-medium tracking-tight underline decoration-secondary-foreground/25 underline-offset-[6px] sm:text-2xl lg:text-3xl"
+            />
+          </div>
+        </div>
 
-        <div className="w-full sm:max-w-[36rem] mx-auto my-5 sm:my-10 px-4 sm:px-10 py-6 md:py-12 xl:px-14 rounded-2xl backdrop-blur-sm border surface-contact-form">
-          <p className="text-center text-xl sm:text-2xl lg:text-3xl font-medium mb-8 text-secondary-foreground tracking-tight">
-            {t("subheading")}
-          </p>
-
+        <div className="col-span-12 lg:col-span-5 lg:pt-4">
           <ContactForm />
         </div>
       </div>

@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { Copy, Check } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { useLenis } from "lenis/react";
 import { SECTION_IDS, type SectionId } from "@/components/scroll/config";
 import { useLenisLock } from "@/hooks/useLenisLock";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
+import { CopyEmail } from "@/components/ui/CopyEmail";
 import { CONTACT_EMAIL as EMAIL, SOCIAL_LINKS } from "@/config/site";
 import { EASE_IN_OUT as EASE } from "@/lib/animations";
 
@@ -42,7 +42,6 @@ export default function NavOverlay() {
   const isChinese = locale.startsWith("zh");
   const [isOpen, setIsOpen] = useState(false);
   const [showButton, setShowButton] = useState(false);
-  const [copied, setCopied] = useState(false);
   const [hoveredId, setHoveredId] = useState<SectionId | null>(null);
   const scrollTo = useScrollTo();
   const toggleRef = useRef<HTMLButtonElement>(null);
@@ -70,12 +69,6 @@ export default function NavOverlay() {
     setShowButton((prev) => (prev === next ? prev : next));
   });
 
-  const handleCopyEmail = async () => {
-    await navigator.clipboard.writeText(EMAIL);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
   const close = () => setIsOpen(false);
 
   return (
@@ -93,9 +86,9 @@ export default function NavOverlay() {
         aria-controls="nav-overlay"
         inert={!showButton && !isOpen}
         type="button"
-        className="fixed top-9 right-8 z-[9999] p-3 bg-secondary-foreground rounded-full shadow-lg"
+        className="fixed top-5 right-5 sm:top-8 sm:right-8 z-[9999] p-2.5 sm:p-3 bg-white rounded-full mix-blend-difference"
       >
-        <svg width="35" height="35" viewBox="0 0 35 35" style={{ display: "block" }} aria-hidden="true">
+        <svg viewBox="0 0 35 35" className="block size-7 sm:size-[35px]" aria-hidden="true">
           <motion.line
             x1="2" y1="13.5" x2="33" y2="13.5"
             stroke="black" strokeWidth="2" strokeLinecap="round"
@@ -140,9 +133,9 @@ export default function NavOverlay() {
         <div
           ref={panelRef}
           onClick={(e) => e.stopPropagation()}
-          className="w-full relative flex max-w-2xl flex-col justify-end overflow-hidden xl:max-w-3xl"
+          className="w-full relative flex max-w-2xl flex-col justify-end overflow-hidden bg-secondary sm:rounded-l-3xl xl:max-w-3xl"
         >
-          <nav className="relative h-full px-10 sm:px-16 flex items-center">
+          <nav className="relative h-full px-8 sm:px-14 flex items-center">
             <ul
               className="flex flex-col justify-center"
               onMouseLeave={isChinese ? () => setHoveredId(null) : undefined}
@@ -150,7 +143,10 @@ export default function NavOverlay() {
               {SECTION_IDS.map((id, i) => {
                 const isDimmed = isChinese && hoveredId !== null && hoveredId !== id;
                 return (
-                  <li key={id} className="relative flex items-center overflow-hidden">
+                  <li key={id} className="relative flex items-start gap-4 overflow-hidden py-1">
+                    <span className="eyebrow pt-2 text-secondary-foreground/40" aria-hidden="true">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
                     <motion.button
                       type="button"
                       custom={i}
@@ -185,54 +181,21 @@ export default function NavOverlay() {
             variants={footerVariants}
             initial="initial"
             animate={isOpen ? "enter" : "initial"}
-            className="flex flex-col items-start gap-y-6 px-10 pb-10 sm:px-16 sm:pb-14"
+            className="flex flex-col items-start gap-y-7 border-t border-secondary-border mx-8 sm:mx-14 pt-8 pb-8 sm:pb-12"
           >
-            <LocaleSwitcher tone="onDark" className="text-sm" />
-            <div className="flex flex-col">
-              <span className="text-base font-bold uppercase text-white/40">
+            <div className="flex flex-col gap-2">
+              <span className="eyebrow text-secondary-foreground/45">
                 {tOverlay("emailLabel")}
               </span>
-              <div className="flex items-center gap-x-2">
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="font-mono font-medium text-secondary-foreground text-base"
-                >
-                  {EMAIL}
-                </a>
-                <button
-                  type="button"
-                  onClick={handleCopyEmail}
-                  aria-label={tOverlay("copyEmail")}
-                  className="text-white/40 hover:text-secondary-foreground transition-colors duration-200 cursor-pointer"
-                >
-                  <AnimatePresence mode="wait" initial={false}>
-                    {copied ? (
-                      <motion.span
-                        key="check"
-                        initial={{ scale: 0.6, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.6, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Check size={14} className="text-green-400" />
-                      </motion.span>
-                    ) : (
-                      <motion.span
-                        key="copy"
-                        initial={{ scale: 0.6, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.6, opacity: 0 }}
-                        transition={{ duration: 0.2 }}
-                      >
-                        <Copy size={14} />
-                      </motion.span>
-                    )}
-                  </AnimatePresence>
-                </button>
-              </div>
+              <CopyEmail
+                email={EMAIL}
+                copyLabel={tOverlay("copyEmail")}
+                linkClassName="text-lg sm:text-xl font-medium tracking-tight text-secondary-foreground"
+                className="text-secondary-foreground"
+              />
             </div>
 
-            <ul className="flex flex-nowrap gap-x-6">
+            <ul className="flex flex-wrap gap-x-6 gap-y-2">
               {SOCIAL_LINKS.map(({ id: labelKey, href }) => (
                 <li key={labelKey}>
                   <a
@@ -246,6 +209,8 @@ export default function NavOverlay() {
                 </li>
               ))}
             </ul>
+
+            <LocaleSwitcher tone="onDark" />
           </motion.div>
         </div>
       </motion.div>

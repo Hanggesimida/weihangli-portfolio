@@ -29,8 +29,6 @@
     "tagline": "我致力於打造高效能、現代化的軟體。作為全端開發者，我為全球客戶提供開發服務",
     "cta": "聯絡我",
     "imageAlt": "個人照片",
-    "availabilityMobileLine1": "我在",
-    "availabilityMobileLine2": "空閒中",
     "availabilityDesktop": "我在空閒中"
   },
   "WhatIDo": {
@@ -79,7 +77,7 @@
     "projects": {
       "portfolio": {
         "category": "現代作品集網站",
-        "title": "My Profolio",
+        "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
@@ -117,7 +115,8 @@
         ],
         "summary": "Electron 桌面端車輛協尋工具：批量匯入車牌、多執行緒自動化檢索停車紀錄，命中後即時推送。支援雙模式抓取、代理管控與一鍵打包交付。"
       }
-    }
+    },
+    "viewLabel": "查看"
   },
   "About": {
     "line1": "開發者",
@@ -137,7 +136,8 @@
   },
   "Contact": {
     "heading": "一起把想法落地",
-    "subheading": "有專案想聊聊？"
+    "subheading": "有專案想聊聊？",
+    "direct": "或直接聯絡我"
   },
   "Form": {
     "namePlaceholder": "您的姓名",
@@ -164,7 +164,8 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "localTime": "廣東",
-    "scrollToTop": "回到頂部"
+    "scrollToTop": "回到頂部",
+    "rights": "保留所有權利。"
   },
   "LocaleSwitcher": {
     "label": "語言",

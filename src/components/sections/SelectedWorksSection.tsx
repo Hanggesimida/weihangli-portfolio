@@ -19,8 +19,6 @@ type ProjectCopy = {
 export default function SelectedWorksSection() {
   const t = useTranslations("Works");
   const copy = t.raw("projects") as Record<(typeof PROJECTS)[number]["id"], ProjectCopy>;
-  const overviewLabel = t("overviewLabel");
-  const visitLabel = t("visitLabel");
   const merged = PROJECTS.map((project) => ({
     ...project,
     ...copy[project.id],
@@ -29,43 +27,47 @@ export default function SelectedWorksSection() {
   const { displayIndex, setItemRef } = useActiveWorkIndex(merged.length);
 
   return (
-    <section id="works" className="space-y-12 bg-secondary px-10 pt-10 pb-20 sm:py-20 text-secondary-foreground">
-      <div>
-        <h2 className="mb-20 text-6xl leading-none font-semibold tracking-tighter uppercase md:text-[7vw]">
-          <SplitText stagger={0.04} duration={0.8} yOffset={50}>
-            {t("heading")}
-          </SplitText>
+    <section id="works" className="bg-secondary px-6 sm:px-10 pt-20 pb-24 md:pt-32 md:pb-32 text-secondary-foreground">
+      <div className="mb-16 md:mb-28">
+        <h2 className="mb-12 md:mb-20 text-[13vw] sm:text-6xl leading-[0.9] font-semibold tracking-tighter uppercase md:text-[7vw]">
+          <SplitText>{t("heading")}</SplitText>
         </h2>
         <div className="grid grid-cols-12 gap-x-6">
-          <div className="col-span-12 flex flex-col gap-x-18 gap-y-6 md:col-start-6 md:col-span-7 sm:flex-row">
-            <span className="text-base text-nowrap text-secondary-foreground/50 tracking-tighter uppercase">
+          <div className="col-span-12 flex flex-col gap-x-16 gap-y-5 md:col-start-6 md:col-span-7 sm:flex-row">
+            <span className="eyebrow shrink-0 pt-1.5 text-secondary-foreground/50 md:w-32">
               {t("label")}
             </span>
 
             <FadeUp
-              className="w-full max-w-[25ch] text-balance text-lg leading-snug font-light text-secondary-foreground/80 md:text-2xl"
+              className="w-full max-w-[30ch] text-balance text-xl leading-snug tracking-tight text-secondary-foreground/85 md:text-2xl"
               delay={0.15}
-              once={false}
             >
               {t("intro")}
             </FadeUp>
           </div>
         </div>
       </div>
+
       <div className="grid grid-cols-12 gap-x-6">
-        <div className="col-span-12 sticky top-12 hidden self-start md:col-start-1 md:col-span-5 md:block">
-          <Counter
-            value={displayIndex}
-            digitClassName="text-[22vw] font-mono text-secondary-foreground/80"
-          />
+        <div className="sticky top-12 hidden self-start md:col-span-5 md:block">
+          <div className="flex items-start gap-4">
+            <Counter
+              value={displayIndex}
+              digitClassName="text-[19vw] font-semibold tracking-tighter tabular-nums text-secondary-foreground/90"
+            />
+            <span className="eyebrow mt-[1.5vw] text-secondary-foreground/40">
+              / {String(merged.length).padStart(2, "0")}
+            </span>
+          </div>
         </div>
-        <div className="col-span-12 flex flex-col gap-y-18 md:gap-y-20 lg:gap-y-28 md:col-span-7 md:pt-5">
+        <div className="col-span-12 flex flex-col gap-y-20 md:col-span-7 md:gap-y-28 lg:gap-y-36">
           {merged.map(({ id, ...project }, idx) => (
             <ProjectCard
               key={id}
               ref={setItemRef(idx)}
-              overviewLabel={overviewLabel}
-              visitLabel={visitLabel}
+              overviewLabel={t("overviewLabel")}
+              visitLabel={t("visitLabel")}
+              viewLabel={t("viewLabel")}
               {...project}
             />
           ))}

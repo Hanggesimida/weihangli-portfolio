@@ -29,18 +29,18 @@ export default function LocaleSwitcher({
   const active =
     tone === "onDark"
       ? "font-medium text-secondary-foreground"
-      : "font-medium text-foreground/80";
+      : "font-medium text-foreground";
   const inactive =
     tone === "onDark"
       ? "text-secondary-foreground/45 hover:text-secondary-foreground"
-      : "text-muted-foreground hover:text-foreground/70";
+      : "text-foreground/45 hover:text-foreground";
   const divider =
-    tone === "onDark" ? "text-secondary-foreground/25" : "text-muted-foreground/35";
+    tone === "onDark" ? "text-secondary-foreground/25" : "text-foreground/25";
 
   return (
     <nav
       className={cn(
-        "font-mono text-xs uppercase tracking-wider",
+        "eyebrow",
         className,
       )}
       aria-label={t("label")}

@@ -13,16 +13,17 @@ export type SocialId = (typeof SOCIAL_LINKS)[number]["id"];
 
 export const PROJECTS = [
   {
-    id: "portfolio",
-    bgImage: "/images/projects/works_bg_01.webp",
-    previewImage: "/images/projects/works_profolio.jpg",
-  },
-  {
     id: "keyboardDesigner",
     bgImage: "/images/projects/works_bg_04.webp",
     previewImage: "/images/projects/works_kbd.png",
     siteUrl: "https://kbd.weihangli.dev",
     githubUrl: "https://github.com/Hanggesimida/keyboard-designer",
+  },
+  {
+    id: "portfolio",
+    bgImage: "/images/projects/works_bg_01.webp",
+    previewImage: "/images/projects/works_portfolio.jpg",
+    githubUrl: "https://github.com/Hanggesimida/weihangli-portfolio",
   },
   {
     id: "hynel",

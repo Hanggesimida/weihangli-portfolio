@@ -29,8 +29,6 @@
     "tagline": "高性能でモダンなソフトウェアづくりに取り組んでいます。フルスタック開発者として、世界中のクライアントに開発サービスを提供しています",
     "cta": "お問い合わせ",
     "imageAlt": "プロフィール写真",
-    "availabilityMobileLine1": "現在",
-    "availabilityMobileLine2": "受付中",
     "availabilityDesktop": "現在受付中"
   },
   "WhatIDo": {
@@ -79,7 +77,7 @@
     "projects": {
       "portfolio": {
         "category": "モダンなポートフォリオサイト",
-        "title": "My Profolio",
+        "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
@@ -117,7 +115,8 @@
         ],
         "summary": "Electron 製の車両協尋デスクトップツール。ナンバープレートの一括取り込み、マルチスレッドでの駐車記録自動検索、ヒット時のリアルタイム通知に対応。二方式スクレイピング、プロキシ管理、ワンクリック配布も可能。"
       }
-    }
+    },
+    "viewLabel": "見る"
   },
   "About": {
     "line1": "開発者",
@@ -137,7 +136,8 @@
   },
   "Contact": {
     "heading": "アイデアを一緒に形に",
-    "subheading": "相談したいプロジェクトはありますか？"
+    "subheading": "相談したいプロジェクトはありますか？",
+    "direct": "または直接ご連絡ください"
   },
   "Form": {
     "namePlaceholder": "お名前",
@@ -164,7 +164,8 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "localTime": "広東",
-    "scrollToTop": "ページ上部へ"
+    "scrollToTop": "ページ上部へ",
+    "rights": "All rights reserved."
   },
   "LocaleSwitcher": {
     "label": "言語",

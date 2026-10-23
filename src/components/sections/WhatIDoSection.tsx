@@ -61,23 +61,20 @@ export default function WhatIDoSection() {
   }, [measure, services.length]);
 
   return (
-    <section id="services" className="px-10 pt-20 md:pt-20 bg-secondary rounded-t-3xl text-secondary-foreground relative z-10">
+    <section id="services" className="px-6 sm:px-10 pt-16 md:pt-24 bg-secondary rounded-t-3xl text-secondary-foreground relative z-10">
       <div className="mb-12 md:mb-24">
-        <h2 className="text-[54px] sm:text-6xl md:text-[8vw] font-semibold tracking-tighter uppercase leading-none mb-20">
-          <SplitText stagger={0.04} duration={0.8} yOffset={50}>
-            {t("heading")}
-          </SplitText>
+        <h2 className="text-[13vw] sm:text-6xl md:text-[8vw] font-semibold tracking-tighter uppercase leading-[0.9] mb-12 md:mb-20">
+          <SplitText>{t("heading")}</SplitText>
         </h2>
         <div className="grid grid-cols-12 gap-x-6">
-          <div className="col-span-12 md:col-start-6 md:col-span-7 flex flex-col sm:flex-row gap-x-18 gap-y-6">
-            <span className="uppercase text-nowrap text-base text-secondary-foreground/50 tracking-tighter">
+          <div className="col-span-12 md:col-start-6 md:col-span-7 flex flex-col sm:flex-row gap-x-16 gap-y-5">
+            <span className="eyebrow shrink-0 pt-1.5 text-secondary-foreground/50 md:w-32">
               {t("label")}
             </span>
 
             <FadeUp
-              className="w-full max-w-[35ch] text-balance text-lg md:text-2xl font-light leading-snug text-secondary-foreground/80"
+              className="w-full max-w-[36ch] text-balance text-xl md:text-2xl leading-snug tracking-tight text-secondary-foreground/85"
               delay={0.15}
-              once={false}
             >
               {t("intro")}
             </FadeUp>
@@ -105,35 +102,38 @@ export default function WhatIDoSection() {
                 ref={(el) => {
                   if (el) headerRefs.current[index] = el;
                 }}
-                className="flex gap-4 md:grid md:grid-cols-12 md:gap-x-4 items-center"
+                className="flex items-baseline gap-4 md:grid md:grid-cols-12 md:gap-x-6"
               >
-                <span className="col-span-2 text-4xl md:text-5xl lg:text-6xl font-semibold uppercase tracking-tighter">
+                <span className="eyebrow shrink-0 text-secondary-foreground/50 md:col-span-2 md:text-sm">
                   ({service.number})
                 </span>
 
-                <h3 className="col-span-7 col-start-6 text-4xl md:text-5xl lg:text-6xl font-semibold py-6 tracking-tighter">
+                <h3 className="md:col-span-7 md:col-start-6 text-[2.5rem] leading-none md:text-5xl lg:text-6xl font-semibold py-6 md:py-8 tracking-tighter">
                   {service.title}
                 </h3>
               </div>
 
-              <div className="md:grid md:grid-cols-12 min-h-[40vh] md:gap-x-6">
-                <div className="col-span-7 col-start-6 space-y-6 pt-4 pl-3">
-                  <p className="max-w-[40ch] text-balance text-lg md:text-xl font-light leading-snug text-secondary-foreground/80">
+              <div className="md:grid md:grid-cols-12 min-h-[40vh] md:gap-x-6 pb-6">
+                <div className="md:col-span-7 md:col-start-6 space-y-8">
+                  <p className="max-w-[42ch] text-balance text-lg md:text-xl leading-snug tracking-tight text-secondary-foreground/75">
                     {service.description}
                   </p>
 
-                  <div className="divide-y divide-secondary-border">
+                  <ul className="border-t border-secondary-border">
                     {service.skills.map((skill, i) => (
-                      <div key={i} className="flex items-center gap-6 py-4">
-                        <span className="text-lg md:text-xl font-mono text-secondary-foreground/50">
+                      <li
+                        key={i}
+                        className="group flex items-baseline gap-5 md:gap-8 border-b border-secondary-border py-4 md:py-5"
+                      >
+                        <span className="eyebrow text-secondary-foreground/40 transition-colors duration-300 group-hover:text-secondary-foreground">
                           {String(i + 1).padStart(2, "0")}
                         </span>
-                        <span className="text-2xl md:text-4xl tracking-tighter font-semibold text-secondary-foreground/90">
+                        <span className="text-2xl md:text-4xl tracking-tighter font-semibold text-secondary-foreground/90 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-3">
                           {skill}
                         </span>
-                      </div>
+                      </li>
                     ))}
-                  </div>
+                  </ul>
                 </div>
               </div>
             </div>

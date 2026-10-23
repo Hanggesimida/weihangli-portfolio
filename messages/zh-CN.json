@@ -29,8 +29,6 @@
     "tagline": "我致力于打造高性能、现代化的软件。作为全栈开发者，我为全球客户提供开发服务",
     "cta": "联系我",
     "imageAlt": "个人照片",
-    "availabilityMobileLine1": "我在",
-    "availabilityMobileLine2": "空闲中",
     "availabilityDesktop": "我在空闲中"
   },
   "WhatIDo": {
@@ -79,7 +77,7 @@
     "projects": {
       "portfolio": {
         "category": "现代作品集网站",
-        "title": "My Profolio",
+        "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
@@ -117,7 +115,8 @@
         ],
         "summary": "Electron 桌面端车辆协寻工具：批量导入车牌、多线程自动化检索停车记录，命中后实时推送。支持双模式抓取、代理管控与一键打包交付。"
       }
-    }
+    },
+    "viewLabel": "查看"
   },
   "About": {
     "line1": "开发者",
@@ -137,7 +136,8 @@
   },
   "Contact": {
     "heading": "一起把想法落地",
-    "subheading": "有项目想聊聊？"
+    "subheading": "有项目想聊聊？",
+    "direct": "或直接联系我"
   },
   "Form": {
     "namePlaceholder": "您的姓名",
@@ -164,7 +164,8 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "localTime": "广东",
-    "scrollToTop": "回到顶部"
+    "scrollToTop": "回到顶部",
+    "rights": "保留所有权利。"
   },
   "LocaleSwitcher": {
     "label": "语言",

@@ -6,7 +6,7 @@ import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
-import { Figtree } from "next/font/google";
+import { Figtree, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
@@ -16,6 +16,12 @@ const figtree = Figtree({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-figtree",
+});
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-geist-mono",
 });
 
 // 构建时（Build Time）告诉 Next.js：“我有 en, zh-CN, zh-TW, ja, ko 这几种语言，请把它们全部预渲染成静态 HTML”。
@@ -80,7 +86,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale} className={figtree.variable} suppressHydrationWarning>
+    <html lang={locale} className={`${figtree.variable} ${geistMono.variable}`} suppressHydrationWarning>
       <body className="font-sans">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrolling>

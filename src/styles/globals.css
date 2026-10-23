@@ -18,9 +18,9 @@
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-ring: var(--ring);
+  --color-live: var(--live);
   --font-sans: var(--font-figtree), var(--font-cjk);
-  --color-scroll-top-surface: var(--scroll-top-surface);
-  --color-scroll-top-foreground: var(--scroll-top-foreground);
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace, var(--font-cjk);
 }
 
 :root {
@@ -29,28 +29,12 @@
   --foreground: oklch(0.145 0 0);
   --secondary: #080807;
   --secondary-foreground: #d1d1c7;
-  --secondary-border: #393632;
-  --muted-foreground: oklch(0.556 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
+  --secondary-border: #2a2825;
+  --muted-foreground: oklch(0.48 0 0);
+  --destructive: oklch(0.65 0.2 27);
   --border: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
-  --scroll-top-surface: #bfbfb1;
-  --scroll-top-foreground: #524d47;
-  --contact-surface-top: #1a1814;
-  --contact-gradient: linear-gradient(
-    180deg,
-    var(--contact-surface-top),
-    var(--secondary) 20%,
-    var(--secondary-border)
-  );
-  --contact-radial-highlight: radial-gradient(
-    ellipse 80% 50% at 50% -20%,
-    rgb(255 255 255 / 0.04),
-    transparent
-  );
-  --contact-form-bg: rgb(209 209 199 / 0.05);
-  --contact-form-border: rgb(255 255 255 / 0.1);
-  --contact-form-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
+  --live: #3ecf6e;
   --font-cjk: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
 }
 
@@ -64,14 +48,24 @@
 
 :lang(ko) {
   --font-cjk: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  word-break: keep-all;
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
   body {
     @apply bg-background text-foreground;
+  }
+  ::selection {
+    background: var(--secondary);
+    color: var(--secondary-foreground);
   }
   :focus-visible {
     outline: 2px solid currentColor;
@@ -79,25 +73,19 @@
   }
 }
 
-@layer utilities {
-  .bg-contact-gradient {
-    background-image: var(--contact-gradient);
-  }
-  .bg-contact-radial-highlight {
-    background-image: var(--contact-radial-highlight);
-  }
-  .surface-contact-form {
-    background-color: var(--contact-form-bg);
-    border-color: var(--contact-form-border);
-    box-shadow: var(--contact-form-shadow);
-  }
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.25;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 
 /* Scrollbar */
 :root {
   --scrollbar-track: var(--background);
-  --scrollbar-thumb: var(--scroll-top-surface);
-  --scrollbar-thumb-hover: var(--scroll-top-foreground);
+  --scrollbar-thumb: #bfbfb1;
+  --scrollbar-thumb-hover: #524d47;
 }
 
 * {

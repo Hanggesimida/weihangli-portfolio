@@ -3,7 +3,8 @@
 import coverImage from "@/assets/image/cover.jpg";
 import Header from "@/components/layout/Header";
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
-import { HERO_VARIANTS, HERO_IMAGE_VARIANTS } from "@/lib/animations";
+import SplitText from "@/components/text/SplitText";
+import { HERO_BASE_DELAY, HERO_VARIANTS, HERO_IMAGE_VARIANTS } from "@/lib/animations";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
 import { useLenis } from "lenis/react";
 import { motion, useMotionValue, useTransform } from "motion/react";
@@ -12,6 +13,7 @@ import { useMemo, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { useHydrated } from "@/hooks/useHydrated";
+import { cn } from "@/lib/utils";
 
 const WIPE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -20,7 +22,10 @@ function CtaButton({ label, onClick, className }: { label: string; onClick: () =
     <motion.button
       type="button"
       onClick={onClick}
-      className={`relative overflow-hidden inline-flex items-center bg-foreground/80 text-background font-bold uppercase cursor-pointer ${className}`}
+      className={cn(
+        "relative overflow-hidden inline-flex items-center rounded-full bg-foreground/85 text-background font-bold uppercase tracking-tight cursor-pointer",
+        className,
+      )}
       whileHover="hover"
       whileTap={{ scale: 0.97 }}
       initial="initial"
@@ -33,12 +38,24 @@ function CtaButton({ label, onClick, className }: { label: string; onClick: () =
       <span className="relative z-10">{label}</span>
       <motion.span
         className="relative z-10"
-        variants={{ initial: { x: 0, scale: 1 }, hover: { x: 2, scale: 1.15 } }}
+        variants={{ initial: { x: 0, y: 0 }, hover: { x: 3, y: -3 } }}
         transition={{ duration: 0.25, ease: "easeOut" }}
       >
-        <ArrowUpRight className="w-[1em] h-[1em] ml-1" />
+        <ArrowUpRight className="w-[1em] h-[1em] ml-1.5" />
       </motion.span>
     </motion.button>
+  );
+}
+
+function Availability({ label, className }: { label: string; className?: string }) {
+  return (
+    <p className={cn("eyebrow inline-flex items-center gap-2 text-foreground/70", className)}>
+      <span className="relative flex size-2" aria-hidden="true">
+        <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-60" />
+        <span className="relative inline-flex size-2 rounded-full bg-live" />
+      </span>
+      {label}
+    </p>
   );
 }
 
@@ -48,6 +65,7 @@ export default function HeroSection() {
   const scrollTo = useScrollTo();
   const containerRef = useRef<HTMLDivElement>(null);
   const hydrated = useHydrated();
+  const wideDate = locale !== "en";
 
   const todayLabel = useMemo(() => {
     if (!hydrated) return "\u00A0";
@@ -67,13 +85,13 @@ export default function HeroSection() {
     scrollProgress.set(progress);
   });
 
-  const y = useTransform(scrollProgress, [0, 1], ["0%", "100%"]);
-  const opacity = useTransform(scrollProgress, [0, 0.6], [1, 0]);
-  const scale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
+  const y = useTransform(scrollProgress, [0, 1], ["0%", "60%"]);
+  const opacity = useTransform(scrollProgress, [0, 0.7], [1, 0]);
+  const scale = useTransform(scrollProgress, [0, 1], [1, 0.9]);
 
   return (
-    <div id="home" ref={containerRef} className="relative h-svh z-0">
-      <div className="top-0 h-svh flex flex-col px-8 pb-8">
+    <div id="home" ref={containerRef} className="relative h-svh min-h-[560px] z-0">
+      <div className="h-full flex flex-col px-6 pb-6 sm:px-8 sm:pb-8">
         <Header />
 
         <motion.div
@@ -83,40 +101,39 @@ export default function HeroSection() {
           <div className="flex-1 min-h-[30px]" />
 
           <div className="flex flex-col">
-            <motion.h1
-              className="text-7xl max-[380px]:text-[70px] font-semibold tracking-tighter uppercase md:text-[17.5vw] md:leading-[0.7] whitespace-nowrap flex justify-between text-foreground/95 scale-y-[0.88]"
-              variants={HERO_VARIANTS}
-              initial="hidden"
-              animate="visible"
-              custom={0}
-            >
-              WEIHANG
-              <br className="md:hidden" />
-              <span className="hidden md:inline"> </span>
-              LI
-            </motion.h1>
+            <h1 className="text-[19vw] leading-[0.8] font-semibold tracking-tighter uppercase md:text-[17.5vw] md:leading-[0.7] whitespace-nowrap flex flex-col md:flex-row md:justify-between text-foreground/95 scale-y-[0.88] origin-bottom">
+              <span className="sr-only">Weihang Li</span>
+              <SplitText decorative delay={HERO_BASE_DELAY} stagger={0.035} duration={1.1}>
+                WEIHANG
+              </SplitText>
+              <SplitText decorative delay={HERO_BASE_DELAY + 0.2} stagger={0.035} duration={1.1}>
+                LI
+              </SplitText>
+            </h1>
 
             <div className="relative grid grid-cols-12 gap-x-4 gap-y-6 md:hidden">
               <motion.div
-                className="col-span-12 space-y-4 mt-4"
+                className="col-span-12 space-y-5 mt-5"
                 variants={HERO_VARIANTS}
                 initial="hidden"
                 animate="visible"
-                custom={1}
+                custom={2}
               >
-                <p className="text-base max-w-[260px] text-balance text-foreground/60 font-medium">{t("tagline")}</p>
-                <div className="w-fit flex flex-col items-start gap-3">
+                <p className="text-lg leading-snug max-w-[30ch] text-balance text-foreground/70 font-medium tracking-tight">
+                  {t("tagline")}
+                </p>
+                <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
                   <CtaButton
                     label={t("cta")}
                     onClick={() => scrollTo("contact")}
-                    className="px-5 py-4 rounded-full text-sm"
+                    className="px-5 py-3.5 text-sm"
                   />
-                  <LocaleSwitcher className="self-center" />
+                  <LocaleSwitcher />
                 </div>
               </motion.div>
 
               <motion.div
-                className="col-span-4 overflow-hidden rounded-sm max-w-[300px]"
+                className="col-span-4 overflow-hidden rounded-xl"
                 variants={HERO_IMAGE_VARIANTS}
                 initial="hidden"
                 animate="visible"
@@ -125,62 +142,55 @@ export default function HeroSection() {
                 <Image
                   src={coverImage}
                   alt={t("imageAlt")}
-                  width={144}
-                  height={144}
-                  className="w-full h-full object-cover grayscale"
+                  sizes="30vw"
+                  className="aspect-[3/4] w-full h-full object-cover grayscale"
                 />
               </motion.div>
 
               <motion.div
-                className="col-span-8 flex items-end justify-end"
+                className="col-span-8 flex flex-col items-end justify-end gap-2"
                 variants={HERO_VARIANTS}
                 initial="hidden"
                 animate="visible"
                 custom={4}
               >
-                <div className="text-right">
-                  <p className="text-base uppercase text-muted-foreground leading-tight font-mono">
-                    {t("availabilityMobileLine1")}
-                  </p>
-                  <p className="text-base uppercase text-muted-foreground leading-tight font-mono">
-                    {t("availabilityMobileLine2")}
-                  </p>
-                  <p className="text-4xl font-semibold uppercase leading-none tracking-tight mt-1 text-foreground/80">
-                    {todayLabel}
-                  </p>
-                </div>
+                <Availability label={t("availabilityDesktop")} />
+                <p
+                  className={cn(
+                    "whitespace-nowrap font-semibold uppercase leading-[0.85] tracking-tighter text-foreground/85",
+                    wideDate ? "text-4xl" : "text-5xl",
+                  )}
+                >
+                  {todayLabel}
+                </p>
               </motion.div>
             </div>
 
-            <div className="hidden md:grid md:grid-cols-12 gap-x-6 mt-8">
+            <div className="hidden md:grid md:grid-cols-12 gap-x-6 mt-10">
               <motion.div
-                className="col-span-4 flex flex-col justify-between"
+                className="col-span-4 flex flex-col justify-end"
                 variants={HERO_VARIANTS}
                 initial="hidden"
                 animate="visible"
-                custom={1}
+                custom={2}
               >
-                <div className="space-y-12">
-                  <ArrowDownRight className="text-muted-foreground size-12" />
-                  <div className="flex flex-col gap-8 pl-3">
-                    <p className="text-2xl xl:text-3xl tracking-tight leading-[1.4] max-w-[32ch] text-balance text-foreground/60 font-medium">
-                      {t("tagline")}
-                    </p>
-                    <div className="w-fit flex flex-col items-start gap-6">
-                      <CtaButton
-                        label={t("cta")}
-                        onClick={() => scrollTo("contact")}
-                        className="tracking-tight px-4 py-3 text-xs md:px-6 md:py-4 md:text-base lg:px-8 lg:py-5 lg:text-lg rounded-full"
-                      />
-                      <LocaleSwitcher className="self-center md:text-sm" />
-                    </div>
-                  </div>
+                <ArrowDownRight className="text-foreground/40 size-10 lg:size-12 -ml-1.5 mb-8 lg:mb-10" strokeWidth={1.5} />
+                <p className="text-2xl xl:text-3xl tracking-tight leading-[1.3] max-w-[26ch] text-balance text-foreground/70 font-medium">
+                  {t("tagline")}
+                </p>
+                <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-4">
+                  <CtaButton
+                    label={t("cta")}
+                    onClick={() => scrollTo("contact")}
+                    className="px-6 py-4 text-base lg:px-8 lg:py-5 lg:text-lg"
+                  />
+                  <LocaleSwitcher />
                 </div>
               </motion.div>
 
-              <div className="col-span-4 flex justify-center">
+              <div className="col-span-4 flex justify-center items-end">
                 <motion.div
-                  className="h-[50vh] max-w-lg overflow-hidden rounded-sm w-fit"
+                  className="h-[46vh] max-h-[560px] aspect-[3/4] overflow-hidden rounded-xl"
                   variants={HERO_IMAGE_VARIANTS}
                   initial="hidden"
                   animate="visible"
@@ -189,27 +199,29 @@ export default function HeroSection() {
                   <Image
                     src={coverImage}
                     alt={t("imageAlt")}
-                    sizes="38vh"
-                    className="h-full w-full object-cover object-center"
+                    sizes="35vh"
+                    preload
+                    className="h-full w-full object-cover object-center grayscale"
                   />
                 </motion.div>
               </div>
 
               <motion.div
-                className="col-span-4 flex flex-col justify-end items-end"
+                className="col-span-4 flex flex-col justify-end items-end gap-3"
                 variants={HERO_VARIANTS}
                 initial="hidden"
                 animate="visible"
                 custom={4}
               >
-                <div className="text-right">
-                  <p className="text-sm xl:text-base uppercase text-muted-foreground leading-tight tracking-wider font-mono">
-                    {t("availabilityDesktop")}
-                  </p>
-                  <p className="text-[8vw] text-foreground/80 font-semibold uppercase leading-none tracking-tighter mt-1">
-                    {todayLabel}
-                  </p>
-                </div>
+                <Availability label={t("availabilityDesktop")} className="xl:text-sm" />
+                <p
+                  className={cn(
+                    "whitespace-nowrap text-foreground/85 font-semibold uppercase leading-[0.8] tracking-tighter",
+                    wideDate ? "text-[5.5vw]" : "text-[8vw]",
+                  )}
+                >
+                  {todayLabel}
+                </p>
               </motion.div>
             </div>
           </div>

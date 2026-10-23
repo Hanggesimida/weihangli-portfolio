@@ -1,5 +1,6 @@
 export const EASE_IN_OUT = [0.76, 0, 0.24, 1] as const;
 export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
+export const EASE_OUT_EXPO = [0.16, 1, 0.3, 1] as const;
 
 // 页面入场动画统一时间轴常量
 export const INTRO = {
@@ -9,7 +10,7 @@ export const INTRO = {
 };
 
 // Hero 各元素入场时机基准点（遮罩结束前 0.2s 开始交叠）
-const HERO_BASE_DELAY = INTRO.delay + INTRO.duration - 0.2;
+export const HERO_BASE_DELAY = INTRO.delay + INTRO.duration - 0.2;
 
 export const HERO_VARIANTS = {
   hidden: { opacity: 0, y: 40 },

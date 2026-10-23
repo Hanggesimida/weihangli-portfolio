@@ -1,5 +1,6 @@
 "use client";
 
+import Reveal from "@/components/media/Reveal";
 import DecryptedText from "@/components/text/DecryptedText";
 import FadeUp from "@/components/text/FadeUp";
 import SplitText from "@/components/text/SplitText";
@@ -15,15 +16,15 @@ export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
 
   // Driven by Lenis (same frame as the scroll write) instead of useScroll, which lags one frame.
-  const scrollYProgress = useMotionValue(0);
+  const exitProgress = useMotionValue(0);
 
   const updateProgress = useCallback(() => {
     const el = sectionRef.current;
     if (!el) return;
-    const rect = el.getBoundingClientRect();
-    if (rect.height === 0) return;
-    scrollYProgress.set(Math.min(Math.max(-rect.top / rect.height, 0), 1));
-  }, [scrollYProgress]);
+    const { bottom } = el.getBoundingClientRect();
+    const vh = window.innerHeight;
+    exitProgress.set(Math.min(Math.max((vh - bottom) / vh, 0), 1));
+  }, [exitProgress]);
 
   useLenis(updateProgress);
 
@@ -33,99 +34,74 @@ export default function AboutSection() {
     return () => window.removeEventListener("resize", updateProgress);
   }, [updateProgress]);
 
-  const scale = useTransform(scrollYProgress, [0.1, 1], [1, 0.9]);
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "-10%"]);
+  const scale = useTransform(exitProgress, [0, 1], [1, 0.94]);
 
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="mt-[-2vh]"
-    >
+    <section id="about" ref={sectionRef} className="mt-[-2vh]">
       <div className="relative z-10">
         <motion.div
-          style={{ scale, y, willChange: "transform", transformOrigin: "top center" }}
-          className="rounded-b-3xl bg-secondary px-10 pt-0 sm:pt-20 md:pt-[15vh] pb-20 sm:pb-40 text-secondary-foreground space-y-20 md:space-y-20"
+          style={{ scale, willChange: "transform", transformOrigin: "bottom center" }}
+          className="rounded-b-3xl bg-secondary px-6 sm:px-10 pt-16 md:pt-[14vh] pb-20 sm:pb-32 text-secondary-foreground space-y-20 md:space-y-32"
         >
-          <div className="grid grid-cols-12 gap-x-6 gap-y-12">
-            <h2 className="order-2 col-span-12 flex flex-col lg:pt-24 font-semibold tracking-tighter leading-none md:order-1 lg:col-span-6 text-[50px] sm:text-7xl md:text-[88px] lg:text-[96px]">
-              <span className="block">
-                <SplitText stagger={0.04} duration={0.8} yOffset={50}>
-                  {t("line1")}
-                </SplitText>
-              </span>
-              <span className="block">
-                <SplitText stagger={0.04} duration={0.8} yOffset={50}>
-                  {t("line2")}
-                </SplitText>
-              </span>
-              <span className="block">
-                <SplitText stagger={0.04} duration={0.8} yOffset={50}>
-                  {t("line3")}
-                </SplitText>
-              </span>
+          <div className="grid grid-cols-12 gap-x-6 gap-y-14">
+            <h2 className="col-span-12 flex flex-col font-semibold tracking-tighter leading-[0.9] uppercase lg:col-span-6 text-[15vw] sm:text-7xl md:text-[88px] lg:text-[7vw]">
+              <SplitText>{t("line1")}</SplitText>
+              <SplitText delay={0.1}>{t("line2")}</SplitText>
+              <SplitText delay={0.2}>{t("line3")}</SplitText>
             </h2>
 
-            <div className="order-1 col-span-12 overflow-hidden md:order-2 lg:col-span-6">
-              <section className="self-start px-3 py-5 md:px-6">
-                <div className="mx-auto max-w-6xl">
-                  <div className="mb-8 text-center tracking-tighter font-semibold text-[40px] sm:text-[50px] md:text-[clamp(70px,calc(70px+(90-70)*((100vw-768px)/(1280-768))),90px)] xl:text-[90px] leading-none">
-                    {t("skillsHeading")}
+            <div className="col-span-12 lg:col-span-6 lg:pt-3">
+              <h3 className="mb-6 text-3xl md:text-4xl font-semibold tracking-tighter">
+                {t("skillsHeading")}
+              </h3>
+              <div className="divide-y divide-secondary-border border-y border-secondary-border">
+                {SKILL_GROUPS.map((group) => (
+                  <div key={group.id} className="grid gap-4 py-5 sm:grid-cols-[10rem_1fr] sm:gap-6">
+                    <h4 className="eyebrow pt-2 text-secondary-foreground/50">
+                      {t(`skillGroups.${group.id}`)}
+                    </h4>
+                    <ul className="flex flex-wrap gap-2">
+                      {group.items.map((item) => (
+                        <li
+                          key={item}
+                          className="rounded-full border border-secondary-foreground/15 px-3 py-1.5 font-mono text-sm text-secondary-foreground/80 transition-colors duration-300 hover:border-secondary-foreground/60 hover:text-secondary-foreground"
+                        >
+                          <DecryptedText>{item}</DecryptedText>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-
-                  <div className="grid grid-cols-3 gap-0 p-0 md:gap-5 md:p-5">
-                    {SKILL_GROUPS.map((group) => (
-                      <div key={group.id} className="p-2">
-                        <h4 className="hidden md:flex text-xl font-semibold mb-4 tracking-tighter">
-                          {t(`skillGroups.${group.id}`)}
-                        </h4>
-                        <ul className="space-y-1 text-base md:text-lg lg:text-xl">
-                          {group.items.map((item) => (
-                            <li key={item}>
-                              <DecryptedText once={false} className="font-mono font-normal text-secondary-foreground/75">
-                                {item}
-                              </DecryptedText>
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="grid grid-cols-12 gap-x-6 gap-y-10">
-            <div className="pointer-events-none relative col-span-12 aspect-[4/5] w-full self-start overflow-clip rounded-md md:col-span-3">
+            <Reveal className="relative col-span-12 aspect-[4/5] w-full self-start rounded-2xl sm:col-span-8 md:col-span-4 lg:col-span-3">
               <Image
                 src="/images/about/me.webp"
                 alt={t("aboutImageAlt")}
                 fill
                 sizes="(max-width: 768px) 100vw, 25vw"
-                className="object-cover object-center"
+                className="object-cover object-center grayscale transition-[filter] duration-700 hover:grayscale-0"
               />
-            </div>
+            </Reveal>
 
-            <div className="col-span-12 flex flex-col gap-y-9 lg:gap-y-18 md:col-span-7 md:col-start-6">
-              <FadeUp
-                className="max-w-[39ch] text-balance text-2xl md:text-3xl lg:text-4xl font-medium leading-snug tracking-tight"
-                once={false}
-              >
+            <div className="col-span-12 flex flex-col gap-y-10 lg:gap-y-16 md:col-span-7 md:col-start-6">
+              <FadeUp className="max-w-[30ch] text-balance text-3xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.15] tracking-tight">
                 {t("lead")}
               </FadeUp>
 
-              <div className="flex flex-col gap-x-10 gap-y-4 lg:flex-row">
-                <span className="font-mono uppercase text-secondary-foreground/70">
+              <div className="flex flex-col gap-x-16 gap-y-5 lg:flex-row">
+                <span className="eyebrow shrink-0 pt-1.5 text-secondary-foreground/50 lg:w-32">
                   {t("aboutLabel")}
                 </span>
 
-                <div className="flex max-w-[38ch] flex-col gap-y-4 text-balance text-base md:text-lg lg:text-xl text-secondary-foreground/75 tracking-tight font-normal">
-                  <FadeUp once={false}>
+                <div className="flex max-w-[42ch] flex-col gap-y-5 text-pretty text-lg lg:text-xl leading-relaxed text-secondary-foreground/75 tracking-tight">
+                  <FadeUp>
                     <p>{t("p1")}</p>
                   </FadeUp>
-
-                  <FadeUp delay={0.12} once={false}>
+                  <FadeUp delay={0.12}>
                     <p>{t("p2")}</p>
                   </FadeUp>
                 </div>

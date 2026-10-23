@@ -18,11 +18,15 @@ export function FormField({
   error,
   type = "text",
   textarea = false,
-  rows = 5,
+  rows = 4,
   ...props
 }: FormFieldProps) {
-  const baseClass =
-    "w-full rounded-xl px-4 py-3 bg-white/5 border border-white/10 focus:border-white/35 text-secondary-foreground placeholder:text-white/30 focus:outline-none focus:ring-3 focus:ring-white/20 transition text-lg sm:text-xl font-mono font-normal tracking-tight";
+  const baseClass = cn(
+    "w-full resize-none border-0 border-b bg-transparent px-0 py-4 text-lg sm:text-xl tracking-tight text-secondary-foreground placeholder:text-secondary-foreground/35 transition-colors duration-300 focus:outline-none",
+    error
+      ? "border-destructive"
+      : "border-secondary-foreground/20 hover:border-secondary-foreground/40 focus:border-secondary-foreground",
+  );
 
   return (
     <div>
@@ -45,7 +49,7 @@ export function FormField({
       )}
       <p
         className={cn(
-          "text-destructive text-sm mt-0.5 sm:mt-1 h-3 sm:h-4 transition-all duration-300",
+          "text-destructive text-sm mt-2 h-4 transition-opacity duration-300",
           error ? "opacity-100" : "opacity-0",
         )}
       >

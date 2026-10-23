@@ -29,8 +29,6 @@
     "tagline": "I build fast, modern digital products that drive business growth, available for freelance projects worldwide.",
     "cta": "Contact",
     "imageAlt": "Profile photo",
-    "availabilityMobileLine1": "Available For",
-    "availabilityMobileLine2": "Work",
     "availabilityDesktop": "Available For Work"
   },
   "WhatIDo": {
@@ -79,7 +77,7 @@
     "projects": {
       "portfolio": {
         "category": "Modern Portfolio Website",
-        "title": "My Profolio",
+        "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
@@ -117,7 +115,8 @@
         ],
         "summary": "A desktop vehicle-search tool that batch-imports plates, runs multi-threaded parking lookups, and pushes Telegram alerts on hits. Supports Selenium and pure-HTTP scrapers, proxy pooling with traffic controls, and live status over WebSocket."
       }
-    }
+    },
+    "viewLabel": "View"
   },
   "About": {
     "line1": "DEVELOPER",
@@ -137,7 +136,8 @@
   },
   "Contact": {
     "heading": "Let's Make It Happen",
-    "subheading": "Have a project in mind?"
+    "subheading": "Have a project in mind?",
+    "direct": "Or reach me directly"
   },
   "Form": {
     "namePlaceholder": "Your name",
@@ -164,7 +164,8 @@
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
     "localTime": "Local Time",
-    "scrollToTop": "Scroll to top"
+    "scrollToTop": "Scroll to top",
+    "rights": "All rights reserved."
   },
   "LocaleSwitcher": {
     "label": "Language",
