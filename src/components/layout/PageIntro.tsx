@@ -1,24 +1,25 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useAnimate } from "motion/react";
+import { motion, useAnimate, useReducedMotion } from "motion/react";
 import { INTRO } from "@/lib/animations";
 
 export default function PageIntro() {
   const [scope, animate] = useAnimate();
   const [done, setDone] = useState(false);
+  const prefersReducedMotion = useReducedMotion();
 
   useEffect(() => {
     animate(
       scope.current,
-      { y: "-100%" },
+      prefersReducedMotion ? { opacity: 0 } : { y: "-100%" },
       {
         delay: INTRO.delay,
-        duration: INTRO.duration,
+        duration: prefersReducedMotion ? 0.3 : INTRO.duration,
         ease: INTRO.ease,
       }
     ).then(() => setDone(true));
-  }, [animate, scope]);
+  }, [animate, scope, prefersReducedMotion]);
 
   if (done) return null;
 

@@ -57,11 +57,12 @@ export default function SplitText({
       custom={stagger}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
-      aria-label={children}
     >
-      {children.split("").map((char, i) => (
+      <span className="sr-only">{children}</span>
+      {Array.from(children).map((char, i) => (
         <motion.span
           key={i}
+          aria-hidden="true"
           variants={charVariants}
           className="inline-block"
           style={{ whiteSpace: char === " " ? "pre" : undefined }}

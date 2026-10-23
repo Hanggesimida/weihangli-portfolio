@@ -5,7 +5,7 @@ import {
   LENIS_REDUCED_MOTION_OPTIONS,
 } from "@/components/scroll/config";
 import { ReactLenis, type LenisRef } from "lenis/react";
-import { cancelFrame, frame, useReducedMotion } from "motion/react";
+import { cancelFrame, frame, MotionConfig, useReducedMotion } from "motion/react";
 import { type ReactNode, useEffect, useRef } from "react";
 
 export default function SmoothScrolling({ children }: { children: ReactNode }) {
@@ -30,7 +30,7 @@ export default function SmoothScrolling({ children }: { children: ReactNode }) {
         prefersReducedMotion ? LENIS_REDUCED_MOTION_OPTIONS : LENIS_OPTIONS
       }
     >
-      {children}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
     </ReactLenis>
   );
 }

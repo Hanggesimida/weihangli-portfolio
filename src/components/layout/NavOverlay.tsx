@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { Copy, Check } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
@@ -45,11 +45,19 @@ export default function NavOverlay() {
   const [copied, setCopied] = useState(false);
   const [hoveredId, setHoveredId] = useState<SectionId | null>(null);
   const scrollTo = useScrollTo();
+  const toggleRef = useRef<HTMLButtonElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
+  const wasOpenRef = useRef(false);
 
   useLenisLock(isOpen);
 
   useEffect(() => {
-    if (!isOpen) return;
+    if (!isOpen) {
+      if (wasOpenRef.current) toggleRef.current?.focus({ preventScroll: true });
+      return;
+    }
+    wasOpenRef.current = true;
+    panelRef.current?.querySelector<HTMLElement>("nav button")?.focus({ preventScroll: true });
     const onKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
     };
@@ -73,6 +81,7 @@ export default function NavOverlay() {
   return (
     <>
       <motion.button
+        ref={toggleRef}
         animate={{ opacity: showButton ? 1 : 0, scale: showButton ? 1 : 0.8 }}
         whileHover={{ scale: 0.9 }}
         whileTap={{ scale: 0.95 }}
@@ -86,7 +95,7 @@ export default function NavOverlay() {
         type="button"
         className="fixed top-9 right-8 z-[9999] p-3 bg-secondary-foreground rounded-full shadow-lg"
       >
-        <svg width="35" height="35" viewBox="0 0 35 35" style={{ display: "block" }}>
+        <svg width="35" height="35" viewBox="0 0 35 35" style={{ display: "block" }} aria-hidden="true">
           <motion.line
             x1="2" y1="13.5" x2="33" y2="13.5"
             stroke="black" strokeWidth="2" strokeLinecap="round"
@@ -129,6 +138,7 @@ export default function NavOverlay() {
         style={{ zIndex: 998 }}
       >
         <div
+          ref={panelRef}
           onClick={(e) => e.stopPropagation()}
           className="w-full relative flex max-w-2xl flex-col justify-end overflow-hidden xl:max-w-3xl"
         >

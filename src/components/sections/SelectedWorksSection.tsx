@@ -31,9 +31,11 @@ export default function SelectedWorksSection() {
   return (
     <section id="works" className="space-y-12 bg-secondary px-10 pt-10 pb-20 sm:py-20 text-secondary-foreground">
       <div>
-        <SplitText stagger={0.04} duration={0.8} yOffset={50} className="mb-20 text-6xl leading-none font-semibold tracking-tighter uppercase md:text-[7vw]">
-          {t("heading")}
-        </SplitText>
+        <h2 className="mb-20 text-6xl leading-none font-semibold tracking-tighter uppercase md:text-[7vw]">
+          <SplitText stagger={0.04} duration={0.8} yOffset={50}>
+            {t("heading")}
+          </SplitText>
+        </h2>
         <div className="grid grid-cols-12 gap-x-6">
           <div className="col-span-12 flex flex-col gap-x-18 gap-y-6 md:col-start-6 md:col-span-7 sm:flex-row">
             <span className="text-base text-nowrap text-secondary-foreground/50 tracking-tighter uppercase">

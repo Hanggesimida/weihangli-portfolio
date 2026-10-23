@@ -75,7 +75,7 @@ export default function Counter({
     .split("");
 
   return (
-    <div className={cn("flex", className)}>
+    <div className={cn("flex", className)} aria-hidden="true">
       {digitList.map((d, i) => (
         <Digit
           key={i}

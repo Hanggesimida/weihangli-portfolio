@@ -1,6 +1,6 @@
 "use client";
 
-import { useInView } from "motion/react";
+import { useInView, useReducedMotion } from "motion/react";
 import { useEffect, useRef } from "react";
 
 const DEFAULT_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*<>[]{}";
@@ -35,9 +35,11 @@ export default function DecryptedText({
   const ref = useRef<HTMLSpanElement>(null);
   const charsRef = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { amount: threshold, once });
+  const prefersReducedMotion = useReducedMotion();
   const original = Array.from(children);
 
   useEffect(() => {
+    if (prefersReducedMotion) return;
     const nodes = Array.from(charsRef.current?.children ?? []) as HTMLElement[];
     const target = Array.from(children);
     const randomChar = () => chars[Math.floor(Math.random() * chars.length)];
@@ -81,7 +83,7 @@ export default function DecryptedText({
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [isInView, children, chars, stagger, duration, scrambleSpeed]);
+  }, [isInView, prefersReducedMotion, children, chars, stagger, duration, scrambleSpeed]);
 
   return (
     <span ref={ref} className={className}>

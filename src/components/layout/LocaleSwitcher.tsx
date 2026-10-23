@@ -56,6 +56,9 @@ export default function LocaleSwitcher({
             <Link
               href={pathname}
               locale={code}
+              hrefLang={code}
+              lang={code}
+              aria-current={locale === code ? "true" : undefined}
               className={cn(
                 "transition-colors duration-200",
                 locale === code ? active : inactive,
