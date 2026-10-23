@@ -6,27 +6,7 @@ import ProjectCard from "@/components/project-card/ProjectCard";
 import SplitText from "@/components/text/SplitText";
 import FadeUp from "@/components/text/FadeUp";
 import { useActiveWorkIndex } from "@/hooks/useActiveWorkIndex";
-
-const PROJECT_ASSETS = [
-  {
-    bgImage: "/images/projects/works_bg_01.webp",
-    previewImage: "/images/projects/works_profolio.jpg",
-  },
-  {
-    bgImage: "/images/projects/works_bg_04.webp",
-    previewImage: "/images/projects/works_kbd.png",
-    siteUrl: "https://kbd.weihangli.dev",
-    githubUrl: "https://github.com/Hanggesimida/keyboard-designer",
-  },
-  {
-    bgImage: "/images/projects/works_bg_02.webp",
-    previewImage: "/images/projects/works_hynel.jpg",
-  },
-  {
-    bgImage: "/images/projects/works_bg_03.webp",
-    previewImage: "/images/projects/works_vehicle_search.jpg",
-  },
-] as const;
+import { PROJECTS } from "@/config/site";
 
 type ProjectCopy = {
   category: string;
@@ -38,12 +18,12 @@ type ProjectCopy = {
 
 export default function SelectedWorksSection() {
   const t = useTranslations("Works");
-  const projects = t.raw("projects") as ProjectCopy[];
+  const copy = t.raw("projects") as Record<(typeof PROJECTS)[number]["id"], ProjectCopy>;
   const overviewLabel = t("overviewLabel");
   const visitLabel = t("visitLabel");
-  const merged = PROJECT_ASSETS.map((assets, idx) => ({
-    ...assets,
-    ...projects[idx],
+  const merged = PROJECTS.map((project) => ({
+    ...project,
+    ...copy[project.id],
   }));
 
   const { displayIndex, setItemRef } = useActiveWorkIndex(merged.length);
@@ -78,9 +58,9 @@ export default function SelectedWorksSection() {
           />
         </div>
         <div className="col-span-12 flex flex-col gap-y-18 md:gap-y-20 lg:gap-y-28 md:col-span-7 md:pt-5">
-          {merged.map((project, idx) => (
+          {merged.map(({ id, ...project }, idx) => (
             <ProjectCard
-              key={`${project.title}-${idx}`}
+              key={id}
               ref={setItemRef(idx)}
               overviewLabel={overviewLabel}
               visitLabel={visitLabel}

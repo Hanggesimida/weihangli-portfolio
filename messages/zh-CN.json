@@ -76,47 +76,59 @@
     "intro": "致力于打造兼具实用与美感的产品体验，让产品流畅、易用且富有质感。",
     "overviewLabel": "简介",
     "visitLabel": "访问网站",
-    "projects": [
-      {
+    "projects": {
+      "portfolio": {
         "category": "现代作品集网站",
         "title": "My Profolio",
         "year": "2026",
-        "tags": ["Next.js", "Framer Motion"],
+        "tags": [
+          "Next.js",
+          "Framer Motion"
+        ],
         "summary": "独立打造的多个人作品集，用于展示个人的全栈能力与精选项目。接入平滑滚动和动效，控制页面的整体节奏更能抓住访客的注意。"
       },
-      {
+      "keyboardDesigner": {
         "category": "开源工具",
         "title": "键盘设计器",
         "year": "2026",
-        "tags": ["Next.js", "Three.js"],
+        "tags": [
+          "Next.js",
+          "Three.js"
+        ],
         "summary": "在浏览器里设计整套键帽的开源工具。支持选配列、调配色、放贴图，实时 3D 预览，并可导出 PNG、SVG、JSON 与生产治具。无需注册，设计仅保存在本地。"
       },
-      {
+      "hynel": {
         "category": "SaaS 平台",
         "title": "Hynel Energy",
         "year": "2025",
-        "tags": ["Vue", "全栈"],
+        "tags": [
+          "Vue",
+          "全栈"
+        ],
         "summary": "电力市场数据分析与电价预测 SaaS，覆盖dashboard可视化、预测对照与订阅支付，实现广东与欧洲的电价市场多维可视化分析。"
       },
-      {
+      "vehicleSearch": {
         "category": "桌面应用",
         "title": "Vehicle Search Script",
         "year": "2025",
-        "tags": ["Electron", "工具"],
+        "tags": [
+          "Electron",
+          "工具"
+        ],
         "summary": "Electron 桌面端车辆协寻工具：批量导入车牌、多线程自动化检索停车记录，命中后实时推送。支持双模式抓取、代理管控与一键打包交付。"
       }
-    ]
+    }
   },
   "About": {
     "line1": "开发者",
     "line2": "设计师",
     "line3": "创造者/",
     "skillsHeading": "技术栈",
-    "skillGroups": [
-      { "title": "语言" },
-      { "title": "框架与库" },
-      { "title": "工具与数据库" }
-    ],
+    "skillGroups": {
+      "languages": "语言",
+      "frameworks": "框架与库",
+      "tools": "工具与数据库"
+    },
     "aboutImageAlt": "关于配图",
     "lead": "我是全栈开发者与设计师，专注打造高性能数字产品，在复杂业务逻辑与流畅用户体验之间找到平衡。",
     "aboutLabel": "（关于我）",

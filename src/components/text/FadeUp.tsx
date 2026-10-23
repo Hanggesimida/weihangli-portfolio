@@ -2,6 +2,7 @@
 
 import { motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
+import { EASE_OUT } from "@/lib/animations";
 
 interface FadeUpProps {
   children: React.ReactNode;
@@ -38,7 +39,7 @@ export default function FadeUp({
       transition: {
         duration,
         delay,
-        ease: [0.22, 1, 0.36, 1],
+        ease: EASE_OUT,
       },
     },
   };

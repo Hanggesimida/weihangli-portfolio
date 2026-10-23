@@ -9,7 +9,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 
-// 1. 定义字体
+// 定义字体
 const figtree = Figtree({
   subsets: ["latin"],
   display: "swap",
@@ -50,17 +50,9 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const messages = await getMessages();
 
-  // 2. 这里的 htmlClass 负责把所有的字体变量注入 DOM
-  const htmlClass = `${figtree.variable}`;
-
-  // 3. 构建字体栈
-  const getFontStack = () => {
-    return figtree.className;
-  };
-
   return (
-    <html lang={locale} className={htmlClass} suppressHydrationWarning>
-      <body className={getFontStack()}>
+    <html lang={locale} className={figtree.variable} suppressHydrationWarning>
+      <body className="font-sans">
         <NextIntlClientProvider messages={messages}>
           <SmoothScrolling>
             <NavOverlay />

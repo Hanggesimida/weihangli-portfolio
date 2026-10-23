@@ -76,47 +76,59 @@
     "intro": "実用性と美しさを兼ね備えたプロダクト体験づくりに取り組み、滑らかで使いやすく、質感のある仕上がりを目指します。",
     "overviewLabel": "概要",
     "visitLabel": "サイトを見る",
-    "projects": [
-      {
+    "projects": {
+      "portfolio": {
         "category": "モダンなポートフォリオサイト",
         "title": "My Profolio",
         "year": "2026",
-        "tags": ["Next.js", "Framer Motion"],
+        "tags": [
+          "Next.js",
+          "Framer Motion"
+        ],
         "summary": "フルスタックの実力と厳選プロジェクトを伝えるために、自ら構築したポートフォリオ。スムーズスクロールとモーションでページのリズムを整え、訪問者の注目を引きます。"
       },
-      {
+      "keyboardDesigner": {
         "category": "オープンソースツール",
         "title": "キーボードデザイナー",
         "year": "2026",
-        "tags": ["Next.js", "Three.js"],
+        "tags": [
+          "Next.js",
+          "Three.js"
+        ],
         "summary": "ブラウザ上でキーキャップ一式をデザインできるオープンソースツール。配列・配色・画像の配置、リアルタイム3Dプレビュー、PNG・SVG・JSONや生産用治具の書き出しに対応。登録不要で、データはブラウザ内にのみ保存されます。"
       },
-      {
+      "hynel": {
         "category": "SaaS プラットフォーム",
         "title": "Hynel Energy",
         "year": "2025",
-        "tags": ["Vue", "フルスタック"],
+        "tags": [
+          "Vue",
+          "フルスタック"
+        ],
         "summary": "電力市場のデータ分析と価格予測 SaaS。ダッシュボード可視化、予測比較、サブスクリプション決済を備え、広東と欧州の電力価格市場を多次元で可視化・分析。"
       },
-      {
+      "vehicleSearch": {
         "category": "デスクトップアプリ",
         "title": "Vehicle Search Script",
         "year": "2025",
-        "tags": ["Electron", "ツール"],
+        "tags": [
+          "Electron",
+          "ツール"
+        ],
         "summary": "Electron 製の車両協尋デスクトップツール。ナンバープレートの一括取り込み、マルチスレッドでの駐車記録自動検索、ヒット時のリアルタイム通知に対応。二方式スクレイピング、プロキシ管理、ワンクリック配布も可能。"
       }
-    ]
+    }
   },
   "About": {
     "line1": "開発者",
     "line2": "デザイナー",
     "line3": "クリエイター/",
     "skillsHeading": "技術スタック",
-    "skillGroups": [
-      { "title": "言語" },
-      { "title": "フレームワークとライブラリ" },
-      { "title": "ツールとデータベース" }
-    ],
+    "skillGroups": {
+      "languages": "言語",
+      "frameworks": "フレームワークとライブラリ",
+      "tools": "ツールとデータベース"
+    },
     "aboutImageAlt": "アバウト画像",
     "lead": "フルスタック開発者兼デザイナーとして、高性能なデジタルプロダクトづくりに注力し、複雑なビジネスロジックと滑らかなユーザー体験のバランスを追求しています。",
     "aboutLabel": "（私について）",

@@ -9,17 +9,8 @@ import { SECTION_IDS, type SectionId } from "@/components/scroll/config";
 import { useLenisLock } from "@/hooks/useLenisLock";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
-
-const socialLinks = [
-  { labelKey: "github" as const, href: "https://github.com/hanggesimida" },
-  { labelKey: "telegram" as const, href: "https://t.me/WeihangLi" },
-  { labelKey: "instagram" as const, href: "https://www.instagram.com/lwphgr/" },
-  { labelKey: "whatsapp" as const, href: "https://wa.me/8613728215486" },
-];
-
-const EMAIL = "hanggesimida@gmail.com";
-
-const EASE = [0.76, 0, 0.24, 1] as const;
+import { CONTACT_EMAIL as EMAIL, SOCIAL_LINKS } from "@/config/site";
+import { EASE_IN_OUT as EASE } from "@/lib/animations";
 
 const menuVariants = {
   closed: { x: "100%", transition: { duration: 0.6, ease: EASE } },
@@ -232,7 +223,7 @@ export default function NavOverlay() {
             </div>
 
             <ul className="flex flex-nowrap gap-x-6">
-              {socialLinks.map(({ labelKey, href }) => (
+              {SOCIAL_LINKS.map(({ id: labelKey, href }) => (
                 <li key={labelKey}>
                   <a
                     target="_blank"

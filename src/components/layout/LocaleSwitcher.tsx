@@ -2,9 +2,8 @@
 
 import { useLocale, useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-
-const LOCALES = ["en", "zh-CN", "zh-TW", "ja", "ko"] as const;
 
 const LOCALE_LABEL_KEYS = {
   en: "en",
@@ -12,7 +11,7 @@ const LOCALE_LABEL_KEYS = {
   "zh-TW": "zhTW",
   ja: "ja",
   ko: "ko",
-} as const;
+} as const satisfies Record<(typeof routing.locales)[number], string>;
 
 type Tone = "default" | "onDark";
 
@@ -47,7 +46,7 @@ export default function LocaleSwitcher({
       aria-label={t("label")}
     >
       <ul className="flex flex-wrap items-center gap-x-2">
-        {LOCALES.map((code, index) => (
+        {routing.locales.map((code, index) => (
           <li key={code} className="flex items-center gap-x-2">
             {index > 0 && (
               <span className={divider} aria-hidden>

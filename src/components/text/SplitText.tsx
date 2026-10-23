@@ -2,6 +2,7 @@
 
 import { motion, useInView, Variants } from "motion/react";
 import { useRef } from "react";
+import { EASE_OUT } from "@/lib/animations";
 
 interface SplitTextProps {
   children: string;
@@ -44,7 +45,7 @@ export default function SplitText({
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration, ease: [0.22, 1, 0.36, 1] },
+      transition: { duration, ease: EASE_OUT },
     },
   };
 

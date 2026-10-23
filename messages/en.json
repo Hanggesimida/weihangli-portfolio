@@ -76,47 +76,59 @@
     "intro": "Thoughtfully crafted digital experiences that blend utility and aesthetics into something functional, memorable, and refined.",
     "overviewLabel": "Overview",
     "visitLabel": "Visit site",
-    "projects": [
-      {
+    "projects": {
+      "portfolio": {
         "category": "Modern Portfolio Website",
         "title": "My Profolio",
         "year": "2026",
-        "tags": ["Next.js", "Framer Motion"],
+        "tags": [
+          "Next.js",
+          "Framer Motion"
+        ],
         "summary": "A self-designed single-page portfolio that presents full-stack craft and selected work to a global audience. Built with Next.js for localized routing and a contact-form email loop, plus GSAP / Motion / Lenis for smooth scroll and entrance motion."
       },
-      {
+      "keyboardDesigner": {
         "category": "Open Source Tool",
         "title": "Keyboard Designer",
         "year": "2026",
-        "tags": ["Next.js", "Three.js"],
+        "tags": [
+          "Next.js",
+          "Three.js"
+        ],
         "summary": "An open-source keycap designer that runs in the browser. Pick a layout, tune colors, place artwork, preview in real-time 3D, and export PNG, SVG, JSON, or production jigs. No sign-up; designs stay in your browser."
       },
-      {
+      "hynel": {
         "category": "SaaS Platform",
         "title": "Hynel Energy",
         "year": "2025",
-        "tags": ["Vue", "Full-stack"],
+        "tags": [
+          "Vue",
+          "Full-stack"
+        ],
         "summary": "An energy-market analytics and price-forecasting SaaS spanning dashboards, CMS, and subscription payments. Delivers multi-dimensional time-series and map visuals with ECharts and MapLibre, plus JWT / RBAC auth and an Alipay subscription loop."
       },
-      {
+      "vehicleSearch": {
         "category": "Desktop Application",
         "title": "Vehicle Search Script",
         "year": "2025",
-        "tags": ["Electron", "Tooling"],
+        "tags": [
+          "Electron",
+          "Tooling"
+        ],
         "summary": "A desktop vehicle-search tool that batch-imports plates, runs multi-threaded parking lookups, and pushes Telegram alerts on hits. Supports Selenium and pure-HTTP scrapers, proxy pooling with traffic controls, and live status over WebSocket."
       }
-    ]
+    }
   },
   "About": {
     "line1": "DEVELOPER",
     "line2": "DESIGNER",
     "line3": "CREATOR/",
     "skillsHeading": "Skills",
-    "skillGroups": [
-      { "title": "Languages" },
-      { "title": "Frameworks & Libraries" },
-      { "title": "Tools & Databases" }
-    ],
+    "skillGroups": {
+      "languages": "Languages",
+      "frameworks": "Frameworks & Libraries",
+      "tools": "Tools & Databases"
+    },
     "aboutImageAlt": "About image",
     "lead": "I'm a full-stack developer and designer dedicated to crafting high-performance digital products that bridge the gap between complex logic and fluid design.",
     "aboutLabel": "(About Me)",

@@ -18,7 +18,7 @@
   --color-destructive: var(--destructive);
   --color-border: var(--border);
   --color-ring: var(--ring);
-  --font-figtree: var(--font-figtree);
+  --font-sans: var(--font-figtree), var(--font-cjk);
   --color-scroll-top-surface: var(--scroll-top-surface);
   --color-scroll-top-foreground: var(--scroll-top-foreground);
 }
@@ -51,6 +51,19 @@
   --contact-form-bg: rgb(209 209 199 / 0.05);
   --contact-form-border: rgb(255 255 255 / 0.1);
   --contact-form-shadow: 0 4px 30px rgb(0 0 0 / 0.1);
+  --font-cjk: "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+}
+
+:lang(zh-TW) {
+  --font-cjk: "PingFang TC", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+}
+
+:lang(ja) {
+  --font-cjk: "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, "Noto Sans JP", sans-serif;
+}
+
+:lang(ko) {
+  --font-cjk: "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
 }
 
 @layer base {

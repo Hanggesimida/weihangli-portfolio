@@ -51,21 +51,10 @@ export default function HeroSection() {
 
   const todayLabel = useMemo(() => {
     if (!hydrated) return "\u00A0";
-    const d = new Date();
-    const loc =
-      locale === "zh-TW"
-        ? "zh-TW"
-        : locale === "zh-CN"
-          ? "zh-CN"
-          : locale === "ja"
-            ? "ja-JP"
-            : locale === "ko"
-              ? "ko-KR"
-              : "en-US";
-    return new Intl.DateTimeFormat(loc, {
+    return new Intl.DateTimeFormat(locale, {
       month: "short",
       day: "2-digit",
-    }).format(d);
+    }).format(new Date());
   }, [hydrated, locale]);
 
   const scrollProgress = useMotionValue(0);

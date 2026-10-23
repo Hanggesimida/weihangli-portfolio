@@ -8,18 +8,7 @@ import { useLocale, useTranslations } from "next-intl";
 import { SECTION_IDS } from "@/components/scroll/config";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { RollingText } from "@/components/ui/RollingText";
-
-type SocialItem =
-  | { kind: "link"; id: "github" | "telegram" | "instagram" | "whatsapp"; href: string }
-  | { kind: "wechat"; id: "wechat" };
-
-const socialItems: SocialItem[] = [
-  { kind: "link", id: "github", href: "https://github.com/hanggesimida" },
-  { kind: "link", id: "telegram", href: "https://t.me/WeihangLi" },
-  { kind: "link", id: "instagram", href: "https://www.instagram.com/lwphgr/" },
-  { kind: "link", id: "whatsapp", href: "https://wa.me/8613728215486" },
-  { kind: "wechat", id: "wechat" },
-];
+import { SOCIAL_LINKS } from "@/config/site";
 
 function LocalClock() {
   const locale = useLocale();
@@ -28,24 +17,13 @@ function LocalClock() {
   useEffect(() => {
     const update = () => {
       setTime(
-        new Date().toLocaleTimeString(
-          locale === "en"
-            ? "en-US"
-            : locale === "zh-TW"
-              ? "zh-TW"
-              : locale === "ja"
-                ? "ja-JP"
-                : locale === "ko"
-                  ? "ko-KR"
-                  : "zh-CN",
-          {
-            hour: "2-digit",
-            minute: "2-digit",
-            second: "2-digit",
-            hour12: false,
-            timeZoneName: "short",
-          },
-        ),
+        new Date().toLocaleTimeString(locale, {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          hour12: false,
+          timeZoneName: "short",
+        }),
       );
     };
     update();
@@ -174,24 +152,21 @@ export default function Footer() {
             {tFooter("socials")}
           </h3>
           <ul className="flex flex-col gap-1.5">
-            {socialItems.map((item) =>
-              item.kind === "wechat" ? (
-                <li key={item.id}>
-                  <WeChatItem label={tFooter("wechat")} qrAlt={tFooter("wechatQrAlt")} />
-                </li>
-              ) : (
-                <li key={item.id}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group text-secondary/60 tracking-tighter hover:text-secondary/80 transition-colors overflow-hidden"
-                  >
-                    <RollingText className="text-base sm:text-lg lg:text-xl">{tFooter(item.id)}</RollingText>
-                  </a>
-                </li>
-              ),
-            )}
+            {SOCIAL_LINKS.map((item) => (
+              <li key={item.id}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group text-secondary/60 tracking-tighter hover:text-secondary/80 transition-colors overflow-hidden"
+                >
+                  <RollingText className="text-base sm:text-lg lg:text-xl">{tFooter(item.id)}</RollingText>
+                </a>
+              </li>
+            ))}
+            <li>
+              <WeChatItem label={tFooter("wechat")} qrAlt={tFooter("wechatQrAlt")} />
+            </li>
           </ul>
         </div>
       </div>

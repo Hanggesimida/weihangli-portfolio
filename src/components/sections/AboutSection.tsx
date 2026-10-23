@@ -6,60 +6,13 @@ import SplitText from "@/components/text/SplitText";
 import Image from "next/image";
 import { useLenis } from "lenis/react";
 import { motion, useMotionValue, useTransform } from "motion/react";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { useTranslations } from "next-intl";
-
-const SKILL_ITEMS = [
-  [
-    "JavaScript",
-    "TypeScript",
-    "Java",
-    "Python",
-    "Dart",
-    "SQL",
-  ],
-  [
-    "Vue",
-    "React",
-    "Next.js",
-    "Node.js",
-    "Express.js",
-    "NestJS",
-    "Electron",
-    "React Native",
-    "Spring Boot",
-    "Three.js",
-    "ECharts",
-    "Tailwind CSS",
-    "Framer Motion",
-    "GSAP",
-  ],
-  [
-    "Git",
-    "Apifox",
-    "Docker",
-    "Vercel",
-    "Alibaba Cloud",
-    "Tencent Cloud",
-    "Prisma",
-    "PostgreSQL",
-    "MySQL",
-    "SQLite",
-    "Redis",
-  ],
-] as const;
+import { SKILL_GROUPS } from "@/config/site";
 
 export default function AboutSection() {
   const t = useTranslations("About");
   const sectionRef = useRef<HTMLElement>(null);
-
-  const skillGroups = useMemo(() => {
-    const titles = t.raw("skillGroups") as { title: string }[];
-    return titles.map((g, i) => ({
-      title: g.title,
-      items: [...SKILL_ITEMS[i]],
-    }));
-  }, [t]);
 
   // Driven by Lenis (same frame as the scroll write) instead of useScroll, which lags one frame.
   const scrollYProgress = useMotionValue(0);
@@ -121,10 +74,10 @@ export default function AboutSection() {
                   </div>
 
                   <div className="grid grid-cols-3 gap-0 p-0 md:gap-5 md:p-5">
-                    {skillGroups.map((group) => (
-                      <div key={group.title} className="p-2">
+                    {SKILL_GROUPS.map((group) => (
+                      <div key={group.id} className="p-2">
                         <h4 className="hidden md:flex text-xl font-semibold mb-4 tracking-tighter">
-                          {group.title}
+                          {t(`skillGroups.${group.id}`)}
                         </h4>
                         <ul className="space-y-1 text-base md:text-lg lg:text-xl">
                           {group.items.map((item) => (
