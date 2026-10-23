@@ -72,8 +72,8 @@ export default function HeroSection() {
   const scale = useTransform(scrollProgress, [0, 1], [1, 0.8]);
 
   return (
-    <div id="home" ref={containerRef} className="relative h-screen z-0">
-      <div className="top-0 h-screen flex flex-col px-8 pb-8">
+    <div id="home" ref={containerRef} className="relative h-svh z-0">
+      <div className="top-0 h-svh flex flex-col px-8 pb-8">
         <Header />
 
         <motion.div
@@ -189,6 +189,7 @@ export default function HeroSection() {
                   <Image
                     src={coverImage}
                     alt={t("imageAlt")}
+                    sizes="38vh"
                     className="h-full w-full object-cover object-center"
                   />
                 </motion.div>

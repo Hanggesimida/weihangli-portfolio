@@ -8,5 +8,5 @@ export default createMiddleware(routing);
 export const config = {
   // 匹配器：排除 api 路由、静态文件（_next, favicon.ico 等）
   // 只有正常的页面路径才会经过国际化中间件处理
-  matcher: ["/((?!api|_next|_vercel|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|.*opengraph-image|.*\\..*).*)"],
 };

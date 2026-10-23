@@ -1,6 +1,8 @@
 import "@/styles/globals.css";
 import NavOverlay from "@/components/layout/NavOverlay";
 import SmoothScrolling from "@/components/scroll/SmoothScrolling";
+import { SITE_URL } from "@/config/site";
+import { getPathname } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
@@ -29,9 +31,36 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "Metadata" });
+  const title = t("title");
+  const description = t("description");
+  const url = getPathname({ href: "/", locale });
+
   return {
-    title: t("title"),
-    description: t("description"),
+    metadataBase: new URL(SITE_URL),
+    title,
+    description,
+    alternates: {
+      canonical: url,
+      languages: {
+        ...Object.fromEntries(
+          routing.locales.map((l) => [l, getPathname({ href: "/", locale: l })]),
+        ),
+        "x-default": getPathname({ href: "/", locale: routing.defaultLocale }),
+      },
+    },
+    openGraph: {
+      type: "website",
+      url,
+      siteName: "Weihang Li",
+      title,
+      description,
+      locale: locale.replace("-", "_"),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
   };
 }
 

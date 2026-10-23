@@ -1,40 +1,39 @@
+import "@/styles/globals.css";
+import { Figtree } from "next/font/google";
 import Link from "next/link";
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-figtree",
+});
 
 export default function NotFound() {
   return (
-    <html lang="en">
-      <body style={{ margin: 0, background: "#0a0a0a", color: "#ededed", fontFamily: "sans-serif" }}>
-        <div
-          style={{
-            minHeight: "100vh",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "1.5rem",
-            textAlign: "center",
-          }}
-        >
-          <h1 style={{ fontSize: "6rem", fontWeight: 700, margin: 0, lineHeight: 1 }}>404</h1>
-          <p style={{ fontSize: "1.25rem", color: "#888", margin: 0 }}>
-            This page could not be found.
+    <html lang="en" className={figtree.variable}>
+      <body className="font-sans">
+        <main className="flex min-h-svh flex-col justify-between px-8 py-8 sm:px-10">
+          <p className="text-base font-medium tracking-tight text-foreground/60 md:text-lg">
+            Weihang Li
           </p>
-          <Link
-            href="/"
-            style={{
-              marginTop: "1rem",
-              padding: "0.75rem 2rem",
-              border: "1px solid #ededed",
-              borderRadius: "9999px",
-              color: "#ededed",
-              textDecoration: "none",
-              fontSize: "0.95rem",
-              transition: "opacity 0.2s",
-            }}
-          >
-            Go home
-          </Link>
-        </div>
+
+          <div>
+            <h1 className="text-[32vw] font-semibold leading-[0.8] tracking-tighter text-foreground/95 md:text-[24vw]">
+              404
+            </h1>
+            <div className="mt-8 flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+              <p className="max-w-[32ch] text-xl font-medium tracking-tight text-foreground/60 md:text-2xl">
+                This page could not be found.
+              </p>
+              <Link
+                href="/"
+                className="w-fit rounded-full bg-foreground/80 px-6 py-4 text-sm font-bold uppercase text-background transition-colors hover:bg-foreground md:text-base"
+              >
+                Go home ↗
+              </Link>
+            </div>
+          </div>
+        </main>
       </body>
     </html>
   );

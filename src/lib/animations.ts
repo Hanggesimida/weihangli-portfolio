@@ -3,8 +3,8 @@ export const EASE_OUT = [0.22, 1, 0.36, 1] as const;
 
 // 页面入场动画统一时间轴常量
 export const INTRO = {
-  delay: 0.15,
-  duration: 0.8,
+  delay: 0.05,
+  duration: 0.7,
   ease: EASE_IN_OUT,
 };
 
