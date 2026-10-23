@@ -3,17 +3,17 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslations } from "next-intl";
+import { CONTACT_LIMITS, contactSchema, type ContactInput } from "@/lib/contact-schema";
 import { cn } from "@/lib/utils";
 import { FormField } from "./form-field";
 import { FormSubmitButton } from "./form-button";
 import { FormStatusOverlay } from "./form-status";
 
-type FormState = {
-  name: string;
-  email: string;
-  message: string;
-  website: string;
-};
+type FormState = Required<ContactInput>;
+
+const fields = contactSchema.shape;
+const isValid = (field: keyof typeof fields, value: string) =>
+  fields[field].safeParse(value).success;
 
 type SubmitStatus = "idle" | "submitting" | "success" | "error";
 
@@ -75,8 +75,10 @@ export default function ContactForm() {
         <FormField
           placeholder={t("namePlaceholder")}
           aria-label={t("namePlaceholder")}
-          maxLength={100}
-          {...register("name", { required: t("nameRequired") })}
+          maxLength={CONTACT_LIMITS.name}
+          {...register("name", {
+            validate: (v) => isValid("name", v) || t("nameRequired"),
+          })}
           error={errors.name?.message}
         />
 
@@ -84,13 +86,10 @@ export default function ContactForm() {
           type="email"
           placeholder={t("emailPlaceholder")}
           aria-label={t("emailPlaceholder")}
-          maxLength={254}
+          maxLength={CONTACT_LIMITS.email}
           {...register("email", {
             required: t("emailRequired"),
-            pattern: {
-              value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-              message: t("emailInvalid"),
-            },
+            validate: (v) => isValid("email", v) || t("emailInvalid"),
           })}
           error={errors.email?.message}
         />
@@ -98,10 +97,10 @@ export default function ContactForm() {
         <FormField
           placeholder={t("messagePlaceholder")}
           aria-label={t("messagePlaceholder")}
-          maxLength={5000}
+          maxLength={CONTACT_LIMITS.message}
           textarea
           {...register("message", {
-            required: t("messageRequired"),
+            validate: (v) => isValid("message", v) || t("messageRequired"),
           })}
           error={errors.message?.message}
         />

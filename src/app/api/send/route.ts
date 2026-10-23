@@ -1,9 +1,7 @@
 import { EmailTemplate } from '@/components/email/email-template';
 import { CONTACT_EMAIL } from '@/config/site';
+import { contactSchema } from '@/lib/contact-schema';
 import { Resend } from 'resend';
-
-const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const LIMITS = { name: 100, email: 254, message: 5000 } as const;
 
 const RATE_LIMIT = { max: 5, windowMs: 10 * 60 * 1000 };
 const hits = new Map<string, number[]>();
@@ -14,23 +12,6 @@ function isRateLimited(ip: string) {
     recent.push(now);
     hits.set(ip, recent);
     return recent.length > RATE_LIMIT.max;
-}
-
-function parseBody(body: unknown) {
-    if (typeof body !== 'object' || body === null) return null;
-    const { name, email, message, website } = body as Record<string, unknown>;
-    if (typeof name !== 'string' || typeof email !== 'string' || typeof message !== 'string') return null;
-
-    const data = {
-        name: name.replace(/\s+/g, ' ').trim(),
-        email: email.trim(),
-        message: message.trim(),
-    };
-    if (!data.name || data.name.length > LIMITS.name) return null;
-    if (data.email.length > LIMITS.email || !EMAIL_RE.test(data.email)) return null;
-    if (!data.message || data.message.length > LIMITS.message) return null;
-
-    return { data, isBot: typeof website === 'string' && website.length > 0 };
 }
 
 export async function POST(request: Request) {
@@ -44,15 +25,17 @@ export async function POST(request: Request) {
         return Response.json({ error: 'rate_limited' }, { status: 429 });
     }
 
-    const parsed = parseBody(await request.json().catch(() => null));
-    if (!parsed) {
+    const parsed = contactSchema.safeParse(await request.json().catch(() => null));
+    if (!parsed.success) {
         return Response.json({ error: 'invalid_input' }, { status: 400 });
     }
-    if (parsed.isBot) {
+
+    const { email, message, website } = parsed.data;
+    if (website) {
         return Response.json({ success: true });
     }
 
-    const { name, email, message } = parsed.data;
+    const name = parsed.data.name.replace(/\s+/g, ' ');
     try {
         const { error } = await new Resend(apiKey).emails.send({
             from: process.env.CONTACT_FROM_EMAIL ?? 'Weihang Li Portfolio <onboarding@resend.dev>',
