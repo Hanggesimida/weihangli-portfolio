@@ -21,8 +21,11 @@ export default async function Page({
       <HeroSection />
       <WhatIDoSection />
       <SelectedWorksSection />
-      <AboutSection />
-      <ContactSection />
+      {/* About sticks above a blank gap of --recede-gap while Contact slides over it; this wrapper bounds the stick. */}
+      <div className="[--recede-gap:10vh] md:[--recede-gap:14vh]">
+        <AboutSection />
+        <ContactSection />
+      </div>
       <Footer />
     </main>
   );

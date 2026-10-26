@@ -22,7 +22,8 @@ export function FormField({
   ...props
 }: FormFieldProps) {
   const baseClass = cn(
-    "w-full resize-none border-0 border-b bg-transparent px-0 py-4 text-lg sm:text-xl tracking-tight text-secondary-foreground placeholder:text-secondary-foreground/35 transition-colors duration-300 focus:outline-none",
+    "w-full resize-none border-0 border-b bg-transparent px-0 py-3 sm:py-4 text-lg sm:text-xl tracking-tight text-secondary-foreground placeholder:text-secondary-foreground/35 transition-colors duration-300 focus:outline-none",
+    textarea && "h-28 sm:h-auto",
     error
       ? "border-destructive"
       : "border-secondary-foreground/20 hover:border-secondary-foreground/40 focus:border-secondary-foreground",
