@@ -6,16 +6,18 @@ import LocaleSwitcher from "@/components/layout/LocaleSwitcher";
 import SplitText from "@/components/text/SplitText";
 import { HERO_BASE_DELAY, HERO_VARIANTS, HERO_IMAGE_VARIANTS } from "@/lib/animations";
 import { ArrowDownRight, ArrowUpRight } from "lucide-react";
-import { useLenis } from "lenis/react";
-import { motion, useMotionValue, useTransform } from "motion/react";
+import { motion, useTransform } from "motion/react";
 import Image from "next/image";
 import { useMemo, useRef } from "react";
 import { useLocale, useTranslations } from "next-intl";
 import { useScrollTo } from "@/hooks/useScrollTo";
 import { useHydrated } from "@/hooks/useHydrated";
+import { useScrollProgress, type ScrollRange } from "@/hooks/useScrollProgress";
 import { cn } from "@/lib/utils";
 
 const WIPE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
+const heroScrollRange: ScrollRange = (el) => [el.offsetTop, el.offsetTop + el.offsetHeight];
 
 function CtaButton({ label, onClick, className }: { label: string; onClick: () => void; className: string }) {
   return (
@@ -75,15 +77,7 @@ export default function HeroSection() {
     }).format(new Date());
   }, [hydrated, locale]);
 
-  const scrollProgress = useMotionValue(0);
-
-  // actualScroll is the pixel-snapped position the browser rendered, not Lenis's fractional value.
-  useLenis(({ actualScroll }) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const progress = Math.min(Math.max((actualScroll - el.offsetTop) / el.offsetHeight, 0), 1);
-    scrollProgress.set(progress);
-  });
+  const scrollProgress = useScrollProgress(containerRef, heroScrollRange);
 
   const y = useTransform(scrollProgress, [0, 1], ["0%", "60%"]);
   const opacity = useTransform(scrollProgress, [0, 0.7], [1, 0]);

@@ -4,15 +4,54 @@ import DecryptedText from "@/components/text/DecryptedText";
 import FadeUp from "@/components/text/FadeUp";
 import SplitText from "@/components/text/SplitText";
 import Image from "next/image";
+import { useLenis } from "lenis/react";
+import { motion, useMotionValue, useTransform } from "motion/react";
 import { useTranslations } from "next-intl";
+import { useRef } from "react";
 import { SKILL_GROUPS } from "@/config/site";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+// Counter-translating against native momentum scroll jitters, so only recede when scrolling goes through Lenis.
+const RECEDE_QUERY = "(pointer: fine) and (prefers-reduced-motion: no-preference)";
 
 export default function AboutSection() {
   const t = useTranslations("About");
+  const sectionRef = useRef<HTMLElement>(null);
+  const recede = useMediaQuery(RECEDE_QUERY);
+  const hold = useMotionValue(0);
+  const progress = useMotionValue(0);
+
+  // Once About's bottom reaches the viewport bottom, hold it there while the next section (Contact)
+  // slides over it. Holding for min(Contact height, viewport) keeps About's bottom behind Contact afterwards.
+  useLenis(({ actualScroll }) => {
+    const el = sectionRef.current;
+    if (!el) return;
+    const vh = window.innerHeight;
+    const start = el.offsetTop + el.offsetHeight - vh;
+    const next = el.nextElementSibling as HTMLElement | null;
+    const distance = Math.min(next?.offsetHeight ?? vh, vh);
+    const held = Math.min(Math.max(actualScroll - start, 0), distance);
+    hold.set(held);
+    progress.set(distance > 0 ? held / distance : 0);
+  });
+
+  const scale = useTransform(progress, [0, 1], [1, 0.9]);
+  const dim = useTransform(progress, [0, 1], [0, 0.6]);
 
   return (
-    <section id="about" className="mt-[-2vh]">
-      <div className="relative z-10">
+    <section ref={sectionRef} id="about" className="mt-[-2vh]">
+      <motion.div
+        className="relative z-10"
+        // Origin at the viewport's center once held, so the visible part shrinks toward the middle.
+        style={recede ? { y: hold, scale, transformOrigin: "50% calc(100% - 50vh)" } : undefined}
+      >
+        {recede && (
+          <motion.div
+            aria-hidden="true"
+            style={{ opacity: dim }}
+            className="pointer-events-none absolute inset-0 z-10 rounded-b-3xl bg-black"
+          />
+        )}
         <div className="rounded-b-3xl bg-secondary px-6 sm:px-10 pt-16 md:pt-[14vh] pb-20 sm:pb-32 text-secondary-foreground space-y-20 md:space-y-32">
           <div className="grid grid-cols-12 gap-x-6 gap-y-14">
             <h2 className="col-span-12 flex flex-col font-semibold tracking-tighter leading-[0.9] uppercase lg:col-span-6 text-[15vw] sm:text-7xl md:text-[88px] lg:text-[7vw]">
@@ -80,7 +119,7 @@ export default function AboutSection() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
