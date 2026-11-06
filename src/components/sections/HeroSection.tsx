@@ -127,7 +127,7 @@ export default function HeroSection() {
               </motion.div>
 
               <motion.div
-                className="col-span-4 overflow-hidden rounded-xl"
+                className="col-span-4 overflow-hidden"
                 variants={HERO_IMAGE_VARIANTS}
                 initial="hidden"
                 animate="visible"
@@ -185,7 +185,7 @@ export default function HeroSection() {
 
               <div className="col-span-4 flex justify-center items-end">
                 <motion.div
-                  className="h-[46vh] max-h-[560px] aspect-[3/4] overflow-hidden rounded-xl"
+                  className="h-[46vh] max-h-[560px] aspect-[3/4] overflow-hidden"
                   variants={HERO_IMAGE_VARIANTS}
                   initial="hidden"
                   animate="visible"

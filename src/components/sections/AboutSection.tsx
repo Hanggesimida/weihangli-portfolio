@@ -17,43 +17,53 @@ const RECEDE_SCALE = 0.9;
 const RECEDE_SCALE_MOBILE = 0.8;
 /** Matches Tailwind's `md` breakpoint. */
 const MOBILE_MAX_WIDTH = 768;
+/** Fraction of the scroll About keeps following while held, so it drifts up slower than Contact and reads as pushed away. */
+const RECEDE_DRIFT = 0.4;
 
 export default function AboutSection() {
   const t = useTranslations("About");
   const sectionRef = useRef<HTMLElement>(null);
   const reducedMotion = useReducedMotion();
   const progress = useMotionValue(0);
+  const drift = useMotionValue(0);
   const endScale = useMotionValue(RECEDE_SCALE);
   const { scrollY } = useScroll();
 
   // The section is sticky (compositor-driven, so it holds steady under native touch scroll too) with its
   // bottom resting --recede-gap above the viewport bottom. Its parent ends with Contact, so it is released
-  // once Contact's bottom lines up with it. JS only drives the recede, which starts when Contact reaches
-  // About's bottom edge and ends when Contact covers it (or fills the space above the gap).
+  // once Contact's bottom lines up with it. While held, JS shifts the content back up by a fraction of the
+  // held distance so About keeps moving, just slower than Contact. The recede starts as soon as About is
+  // held (Contact entering the viewport) and ends when Contact covers it (or fills the space above the gap).
   useEffect(() => {
     const el = sectionRef.current;
     const next = el?.nextElementSibling;
     if (!el || !next) return;
+    let gap = 0;
 
     const update = () => {
       const aboutBottom = el.getBoundingClientRect().bottom;
       const { top, height } = next.getBoundingClientRect();
-      const distance = Math.min(height, aboutBottom);
-      progress.set(distance > 0 ? Math.min(Math.max((aboutBottom - top) / distance, 0), 1) : 0);
+      // Contact stays in normal flow, so this is how far the sticky has held About past its natural spot.
+      const held = Math.max(aboutBottom + gap - top, 0);
+      const distance = gap + Math.min(height, aboutBottom);
+      drift.set(-held * RECEDE_DRIFT);
+      progress.set(distance > 0 ? Math.min(held / distance, 1) : 0);
     };
 
     const observer = new ResizeObserver(() => {
       el.style.setProperty("--about-h", `${el.offsetHeight}px`);
+      gap = parseFloat(getComputedStyle(next).marginTop) || 0;
       endScale.set(window.innerWidth < MOBILE_MAX_WIDTH ? RECEDE_SCALE_MOBILE : RECEDE_SCALE);
       update();
     });
     observer.observe(el);
+    observer.observe(next);
     const unsubscribe = scrollY.on("change", update);
     return () => {
       observer.disconnect();
       unsubscribe();
     };
-  }, [scrollY, progress, endScale]);
+  }, [scrollY, progress, drift, endScale]);
 
   const scale = useTransform([progress, endScale], ([p, end]: number[]) => 1 - (1 - end) * p);
   const dim = useTransform(progress, [0, 1], [0, 0.6]);
@@ -68,7 +78,7 @@ export default function AboutSection() {
       >
         <motion.div
           className="relative"
-          style={reducedMotion ? undefined : { scale, transformOrigin: RECEDE_ORIGIN }}
+          style={reducedMotion ? undefined : { y: drift, scale, transformOrigin: RECEDE_ORIGIN }}
         >
           {!reducedMotion && (
             <motion.div

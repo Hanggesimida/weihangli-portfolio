@@ -22,7 +22,7 @@ export default async function Page({
       <WhatIDoSection />
       <SelectedWorksSection />
       {/* About sticks above a blank gap of --recede-gap while Contact slides over it; this wrapper bounds the stick. */}
-      <div className="[--recede-gap:10vh] md:[--recede-gap:14vh]">
+      <div className="[--recede-gap:10vh]">
         <AboutSection />
         <ContactSection />
       </div>

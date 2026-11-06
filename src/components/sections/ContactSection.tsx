@@ -8,7 +8,7 @@ export default function ContactSection() {
   const t = useTranslations("Contact");
 
   return (
-    // z-20 so the card slides over About, which is held in place while it recedes.
+    // z-20 so the card slides over About, which drifts up slowly while it recedes.
     // The top margin is the blank space About settles on before Contact arrives (--recede-gap, set in page.tsx).
     <section id="contact" className="relative z-20 mt-(--recede-gap) px-3 pt-3 sm:px-6 sm:pt-6">
       <div className="grid grid-cols-12 gap-y-10 rounded-3xl bg-secondary px-6 py-10 text-secondary-foreground shadow-[inset_0_1px_0_0_rgb(255_255_255/0.1)] sm:gap-y-14 sm:px-10 sm:py-14 md:py-20 lg:gap-x-16 lg:px-16 lg:py-24">
