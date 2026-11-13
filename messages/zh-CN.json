@@ -1,63 +1,63 @@
 {
   "Metadata": {
-    "title": "李伟航 - 全栈开发者",
-    "description": "我致力于打造高性能、现代化的软件。作为全栈开发者，我为全球客户提供开发服务"
+    "title": "李伟航 - 全栈开发工程师",
+    "description": "李伟航，全栈开发工程师。从界面、后端到部署上线，独立交付完整的 Web 产品。欢迎项目合作与工作邀约。"
   },
   "Nav": {
     "home": "首页",
-    "services": "服务",
+    "services": "专长",
     "works": "作品",
     "about": "关于",
     "contact": "联系"
   },
   "Header": {
     "roleMobile1": "全栈",
-    "roleMobile2": "开发者",
-    "roleDesktop": "全栈开发者"
+    "roleMobile2": "开发工程师",
+    "roleDesktop": "全栈开发工程师"
   },
   "Dock": {
     "label": "页面导航",
-    "toggle": "跳转到章节"
+    "toggle": "跳转到板块"
   },
   "Hero": {
-    "tagline": "我致力于打造高性能、现代化的软件。作为全栈开发者，我为全球客户提供开发服务",
+    "tagline": "我是一名全栈开发工程师，能够独自完成一个产品从界面设计、后端编写、部署上线到后续维护的全过程。",
     "cta": "联系我",
-    "imageAlt": "个人照片",
-    "availabilityDesktop": "我在空闲中"
+    "imageAlt": "李伟航的肖像",
+    "availabilityDesktop": "欢迎合作与工作邀约"
   },
   "WhatIDo": {
     "heading": "我能做什么 /",
-    "label": "（提供服务）",
-    "intro": "我专注于构建高性能、稳定且易用的全栈应用，将复杂的想法落地为可上线的产品，帮助业务实现持续增长。",
+    "label": "（专长）",
+    "intro": "作为一名全栈开发工程师，我熟悉从前端到后端，再到维护的完整链路。一个产品从想法到上线，对我来说不在话下，真正宝贵的是想法和创造力。",
     "services": [
       {
         "number": "01",
-        "title": "全栈",
-        "description": "我提供从直观的前端体验到稳定的后端架构的完整开发服务，并使用现代技术栈构建可扩展、可上线的应用。",
+        "title": "全栈开发",
+        "description": "目前主流的各类框架及数据库，我都有用过。但它们只有一个共同点：都是为了解决各种业务问题而存在的不同技术方案。",
         "skills": [
-          "React、Vue、Tailwind CSS",
-          "Node.js、Spring Boot",
-          "Git、Docker、Vercel、Alibaba Cloud"
+          "React、Next.js、Vue",
+          "Node.js、NestJS、Spring Boot",
+          "PostgreSQL、MySQL、Redis"
         ]
       },
       {
         "number": "02",
-        "title": "性能与优化",
-        "description": "我构建可靠且可扩展的系统，基于扎实的工程原则，让应用保持快速、稳定，并具备长期迭代的可扩展性。",
+        "title": "交互与可视化",
+        "description": "数据看板、地图、实时 3D 和动效——这些看似复杂、难以搞定的部分，刚好是我的舒适区。",
         "skills": [
-          "数据结构与算法",
-          "数据库、面向对象、操作系统基础",
-          "可扩展系统与数据管道"
+          "ECharts 与 MapLibre 数据看板",
+          "Three.js 实时 3D",
+          "GSAP 与 Motion 动效"
         ]
       },
       {
         "number": "03",
-        "title": "AI 辅助",
-        "description": "在AI时代下，我使用各种 AI 工具加速开发，同时坚持高质量的工程标准——从快速原型到结构清晰、可扩展的系统。",
+        "title": "上线与自动化",
+        "description": "写完代码只是一部分。我熟悉容器化部署和相关运维，更熟悉其中的每一个坑；并且我认为，在 AI 时代，不用 AI = 淘汰。",
         "skills": [
-          "Cursor、Codex、Claude",
-          "快速原型与迭代",
-          "代码质量与评审"
+          "Docker、Vercel",
+          "阿里云、腾讯云",
+          "Cursor、Codex、Claude"
         ]
       }
     ]
@@ -65,19 +65,19 @@
   "Works": {
     "heading": "精选作品 /",
     "label": "（项目）",
-    "intro": "致力于打造兼具实用与美感的产品体验，让产品流畅、易用且富有质感。",
+    "intro": "下面是由我独立设计并开发的几个项目，其中有我的开源项目，也有商业平台。",
     "overviewLabel": "简介",
     "visitLabel": "访问网站",
     "projects": {
       "portfolio": {
-        "category": "现代作品集网站",
+        "category": "个人网站",
         "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
           "Framer Motion"
         ],
-        "summary": "独立打造的多个人作品集，用于展示个人的全栈能力与精选项目。接入平滑滚动和动效，控制页面的整体节奏更能抓住访客的注意。"
+        "summary": "就是你正在看的这个网站。从设计到开发独立完成，支持五种语言，配有平滑滚动和精心编排的动效，也可以通过联系表单直接联系我。"
       },
       "keyboardDesigner": {
         "category": "开源工具",
@@ -87,7 +87,7 @@
           "Next.js",
           "Three.js"
         ],
-        "summary": "在浏览器里设计整套键帽的开源工具。支持选配列、调配色、放贴图，实时 3D 预览，并可导出 PNG、SVG、JSON 与生产治具。无需注册，设计仅保存在本地。"
+        "summary": "在浏览器里设计整套键帽的开源工具：选配列、调配色、放图案，实时 3D 预览，可导出 PNG、SVG、JSON 和生产用治具文件。无需注册，只需要你的浏览器。"
       },
       "hynel": {
         "category": "SaaS 平台",
@@ -97,7 +97,7 @@
           "Vue",
           "全栈"
         ],
-        "summary": "电力市场数据分析与电价预测 SaaS，覆盖dashboard可视化、预测对照与订阅支付，实现广东与欧洲的电价市场多维可视化分析。"
+        "summary": "面向广东与欧洲电力市场的数据分析与电价预测 SaaS。时序图表与地图看板、内容管理后台、基于角色的权限控制，以及支付宝订阅支付流程，均由我独立完成。"
       },
       "vehicleSearch": {
         "category": "桌面应用",
@@ -107,7 +107,7 @@
           "Electron",
           "工具"
         ],
-        "summary": "Electron 桌面端车辆协寻工具：批量导入车牌、多线程自动化检索停车记录，命中后实时推送。支持双模式抓取、代理管控与一键打包交付。"
+        "summary": "为车辆协寻业务开发的桌面工具：批量导入车牌，并行查询停车记录，命中后通过 Telegram 实时通知，附带实时进度和数据看板，一键打包交付。"
       }
     },
     "viewLabel": "查看"
@@ -122,43 +122,43 @@
       "frameworks": "框架与库",
       "tools": "工具与数据库"
     },
-    "aboutImageAlt": "关于配图",
-    "lead": "我是全栈开发者与设计师，专注打造高性能数字产品，在复杂业务逻辑与流畅用户体验之间找到平衡。",
+    "aboutImageAlt": "李伟航的照片",
+    "lead": "我是李伟航，常驻中国的全栈开发工程师。我喜欢从 0 到 1 的过程，每一个产品的开发都能让我感到兴奋。",
     "aboutLabel": "（关于我）",
-    "p1": "从 React、Node.js 到 Spring Boot 和 Python，我使用多样化技术栈构建可扩展、稳定且具备高负载能力的应用。无论是 Web、移动端还是桌面端，我都致力于为初创团队与企业提供完整的端到端解决方案。",
-    "p2": "我相信微交互与细节动效能够显著提升产品体验。我的工作方式很直接：以工程保证可靠性，以设计提升体验，并在细节上持续打磨，让产品从“可用”走向“好用”。"
+    "p1": "我的常用语言是 TypeScript，前端用 React 和 Vue，后端用 Node.js 和 NestJS；项目需要时也写 Java（Spring Boot）和 Python。Web 之外，我交付过 Electron 桌面应用，也写过 React Native 和 Flutter 等移动端。",
+    "p2": "我在意那些用户感受得到、却很少说得出口的细节：界面是否美观好用，动画是否丝滑，错误提示是否简单明了。"
   },
   "Contact": {
-    "heading": "一起把想法落地",
-    "subheading": "有项目想聊聊？",
-    "direct": "或直接联系我",
+    "heading": "让想法成为现实",
+    "subheading": "有项目或工作机会想聊聊？",
+    "direct": "或直接发邮件给我",
     "copyEmail": "复制邮箱"
   },
   "Form": {
-    "namePlaceholder": "您的姓名",
-    "emailPlaceholder": "您的邮箱",
-    "messagePlaceholder": "简要描述您的业务或项目",
-    "nameRequired": "请输入姓名",
+    "namePlaceholder": "你的名字",
+    "emailPlaceholder": "你的邮箱",
+    "messagePlaceholder": "说说你的项目或工作机会",
+    "nameRequired": "请输入名字",
     "emailRequired": "请输入邮箱",
     "emailInvalid": "请输入有效的邮箱地址",
-    "messageRequired": "请描述您的项目",
+    "messageRequired": "请简单描述你的需求",
     "submitSending": "发送中…",
-    "submitIdle": "联系我！",
-    "successTitle": "收到！我会尽快回复您。",
+    "submitIdle": "发送",
+    "successTitle": "收到，我会尽快回复你。",
     "successAgain": "再发一条",
-    "errorTitle": "出错了，请重试。",
+    "errorTitle": "发送失败，请重试，或直接发邮件给我。",
     "errorBack": "返回"
   },
   "Footer": {
     "menu": "菜单",
-    "socials": "社媒",
+    "socials": "社交媒体",
     "wechat": "微信",
     "wechatQrAlt": "微信二维码",
-    "github": "Github",
+    "github": "GitHub",
     "telegram": "Telegram",
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
-    "localTime": "广东",
+    "localTime": "当地时间",
     "scrollToTop": "回到顶部",
     "rights": "保留所有权利。"
   },

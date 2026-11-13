@@ -1,93 +1,93 @@
 {
   "Metadata": {
-    "title": "Weihang Li - Full Stack Developer",
-    "description": "I build fast, modern digital products that drive business growth, available for freelance projects worldwide."
+    "title": "Weihang Li — Full-Stack Developer",
+    "description": "Full-stack developer building complete web products, from interface to backend to deployment. Open to freelance projects and full-time roles."
   },
   "Nav": {
     "home": "Home",
-    "services": "Services",
+    "services": "Expertise",
     "works": "Works",
     "about": "About",
     "contact": "Contact"
   },
   "Header": {
-    "roleMobile1": "Web Developer",
-    "roleMobile2": "& Designer",
-    "roleDesktop": "Web Developer & Designer"
+    "roleMobile1": "Full-Stack",
+    "roleMobile2": "Developer",
+    "roleDesktop": "Full-Stack Developer"
   },
   "Dock": {
     "label": "Section navigation",
     "toggle": "Jump to section"
   },
   "Hero": {
-    "tagline": "I build fast, modern digital products that drive business growth, available for freelance projects worldwide.",
-    "cta": "Contact",
-    "imageAlt": "Profile photo",
-    "availabilityDesktop": "Available For Work"
+    "tagline": "A full-stack developer who can design, build, deploy and maintain a product — entirely on my own.",
+    "cta": "Get in touch",
+    "imageAlt": "Portrait of Weihang Li",
+    "availabilityDesktop": "Open to projects & roles"
   },
   "WhatIDo": {
     "heading": "WHAT I DO /",
-    "label": "(Services)",
-    "intro": "I specialize in building fast, reliable, and user-friendly full-stack digital solutions. I bridge the gap between complex ideas and market-ready products that drive real business value and long-term growth.",
+    "label": "(Expertise)",
+    "intro": "As a full-stack developer, I know the whole chain — front end, back end, and the maintenance that follows. Taking a product from idea to launch is the easy part; ideas and creativity are what really count.",
     "services": [
       {
         "number": "01",
         "title": "Full-Stack Development",
-        "description": "I build end-to-end solutions, from intuitive frontend experiences to robust backend systems. Focused on web development and leveraging modern tech to build scalable, real-world applications.",
+        "description": "I've worked with most of today's mainstream frameworks and databases. They all have one thing in common: each is just a different way to solve a business problem.",
         "skills": [
-          "React, Vue, Tailwind CSS",
-          "Node.js, Spring Boot",
-          "Git, Docker, Vercel, Alibaba Cloud"
+          "React, Next.js, Vue",
+          "Node.js, NestJS, Spring Boot",
+          "PostgreSQL, MySQL, Redis"
         ]
       },
       {
         "number": "02",
-        "title": "Optimization",
-        "description": "I build systems that scale reliably, applying solid engineering principles to keep applications fast, stable, and future-ready.",
+        "title": "Interactive Interfaces",
+        "description": "Dashboards, maps, real-time 3D and motion — the parts that look complicated and hard to get right are exactly where I'm most at home.",
         "skills": [
-          "Data Structures & Algorithms",
-          "DBMS, OOP, OS Fundamentals",
-          "Scalable systems & data pipelines"
+          "ECharts & MapLibre dashboards",
+          "Real-time 3D with Three.js",
+          "Motion with GSAP"
         ]
       },
       {
         "number": "03",
-        "title": "AI-Assisted Development",
-        "description": "I use AI tools to speed up development while maintaining solid engineering standards—supporting everything from rapid prototyping to scalable, well-structured systems.",
+        "title": "Ship & Automate",
+        "description": "Writing the code is only part of the job. I know containerised deployment and operations well — including every pitfall along the way. And in the age of AI, I believe developers who don't use it get left behind.",
         "skills": [
-          "Cursor, Codex, Claude",
-          "Rapid prototyping & iteration",
-          "Code quality & review"
+          "Docker, Vercel",
+          "Alibaba Cloud, Tencent Cloud",
+          "Cursor, Codex, Claude"
         ]
       }
     ]
   },
   "Works": {
     "heading": "SELECTED WORKS /",
-    "label": "(PROJECTS)",
-    "intro": "Thoughtfully crafted digital experiences that blend utility and aesthetics into something functional, memorable, and refined.",
+    "label": "(Projects)",
+    "intro": "Here are a few projects I designed and built on my own — some open source, some commercial platforms.",
     "overviewLabel": "Overview",
     "visitLabel": "Visit site",
     "projects": {
       "portfolio": {
-        "category": "Modern Portfolio Website",
+        "category": "Personal Website",
         "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
           "Framer Motion"
         ],
-        "summary": "A self-designed single-page portfolio that presents full-stack craft and selected work to a global audience. Built with Next.js for localized routing and a contact-form email loop, plus GSAP / Motion / Lenis for smooth scroll and entrance motion."
+        "summary": "The site you're looking at. Designed and built from scratch in five languages, with smooth scrolling, choreographed motion, and a contact form that reaches me directly."
       },
       "keyboardDesigner": {
-        "category": "Open Source Tool",
+        "category": "Open-Source Tool",
         "title": "Keyboard Designer",
         "year": "2026",
         "tags": [
           "Next.js",
           "Three.js"
         ],
-        "summary": "An open-source keycap designer that runs in the browser. Pick a layout, tune colors, place artwork, preview in real-time 3D, and export PNG, SVG, JSON, or production jigs. No sign-up; designs stay in your browser."
+        "summary": "A browser-based keycap designer. Pick a layout, set colours, place artwork and check it in real-time 3D, then export PNG, SVG, JSON or production-ready jig files. No sign-up needed — all you need is a browser."
       },
       "hynel": {
         "category": "SaaS Platform",
@@ -97,7 +97,7 @@
           "Vue",
           "Full-stack"
         ],
-        "summary": "An energy-market analytics and price-forecasting SaaS spanning dashboards, CMS, and subscription payments. Delivers multi-dimensional time-series and map visuals with ECharts and MapLibre, plus JWT / RBAC auth and an Alipay subscription loop."
+        "summary": "An electricity-market analytics and price-forecasting SaaS covering Guangdong and Europe. Built solo: the time-series and map dashboards, the CMS, role-based access control and the Alipay subscription flow."
       },
       "vehicleSearch": {
         "category": "Desktop Application",
@@ -107,7 +107,7 @@
           "Electron",
           "Tooling"
         ],
-        "summary": "A desktop vehicle-search tool that batch-imports plates, runs multi-threaded parking lookups, and pushes Telegram alerts on hits. Supports Selenium and pure-HTTP scrapers, proxy pooling with traffic controls, and live status over WebSocket."
+        "summary": "A desktop tool for vehicle-recovery teams. Import plates in bulk, check parking records in parallel, and get a Telegram alert the moment there's a match — with live progress, a data dashboard and one-click packaged builds."
       }
     },
     "viewLabel": "View"
@@ -122,39 +122,39 @@
       "frameworks": "Frameworks & Libraries",
       "tools": "Tools & Databases"
     },
-    "aboutImageAlt": "About image",
-    "lead": "I'm a full-stack developer and designer dedicated to crafting high-performance digital products that bridge the gap between complex logic and fluid design.",
+    "aboutImageAlt": "Photo of Weihang Li",
+    "lead": "I'm Weihang, a full-stack developer based in China. I love going from zero to one — every new product still gets me excited.",
     "aboutLabel": "(About Me)",
-    "p1": "Leveraging a versatile stack from React and Node.js to Spring Boot and Python, I build scalable applications that thrive under pressure. Whether it's Web platforms, Mobile apps, or Desktop software, I focus on delivering seamless, end-to-end solutions for startups and businesses.",
-    "p2": "I believe in the power of micro-interactions and refined motion. My approach is simple: engineer for reliability, design for impact, and obsess over the details that elevate a product from functional to exceptional."
+    "p1": "Most of my work is in TypeScript — React and Vue on the front end, Node.js and NestJS on the back — with Java (Spring Boot) and Python when a project calls for it. Beyond the web, I've shipped Electron desktop apps and built mobile apps with React Native and Flutter.",
+    "p2": "I care about the details people feel but rarely put into words: whether an interface looks good and works well, whether motion feels smooth, whether an error message is short and clear."
   },
   "Contact": {
-    "heading": "Let's Make It Happen",
-    "subheading": "Have a project in mind?",
-    "direct": "Or reach me directly",
+    "heading": "Let's make it real",
+    "subheading": "Have a project or a role in mind?",
+    "direct": "Or email me directly",
     "copyEmail": "Copy email"
   },
   "Form": {
     "namePlaceholder": "Your name",
-    "emailPlaceholder": "Your email address",
-    "messagePlaceholder": "Tell me about your business or project",
+    "emailPlaceholder": "Your email",
+    "messagePlaceholder": "What are you working on?",
     "nameRequired": "Please enter your name",
     "emailRequired": "Please enter your email",
     "emailInvalid": "Please enter a valid email address",
-    "messageRequired": "Please describe your project",
+    "messageRequired": "Please tell me a bit about it",
     "submitSending": "Sending…",
-    "submitIdle": "Let's Talk",
-    "successTitle": "Got it! I'll get back to you shortly.",
+    "submitIdle": "Send message",
+    "successTitle": "Thanks — I'll get back to you soon.",
     "successAgain": "Send another message",
-    "errorTitle": "Something went wrong. Please try again.",
+    "errorTitle": "Couldn't send that. Try again, or email me directly.",
     "errorBack": "Go back"
   },
   "Footer": {
     "menu": "Menu",
     "socials": "Socials",
     "wechat": "WeChat",
-    "wechatQrAlt": "WeChat QR Code",
-    "github": "Github",
+    "wechatQrAlt": "WeChat QR code",
+    "github": "GitHub",
     "telegram": "Telegram",
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",

@@ -1,63 +1,63 @@
 {
   "Metadata": {
-    "title": "李偉航 - 全端開發者",
-    "description": "我致力於打造高效能、現代化的軟體。作為全端開發者，我為全球客戶提供開發服務"
+    "title": "李偉航 - 全端工程師",
+    "description": "李偉航，全端工程師。從介面、後端到部署上線，獨立交付完整的 Web 產品。歡迎專案合作與工作邀約。"
   },
   "Nav": {
     "home": "首頁",
-    "services": "服務",
+    "services": "專長",
     "works": "作品",
     "about": "關於",
     "contact": "聯絡"
   },
   "Header": {
     "roleMobile1": "全端",
-    "roleMobile2": "開發者",
-    "roleDesktop": "全端開發者"
+    "roleMobile2": "工程師",
+    "roleDesktop": "全端工程師"
   },
   "Dock": {
     "label": "頁面導覽",
-    "toggle": "跳至章節"
+    "toggle": "跳至區塊"
   },
   "Hero": {
-    "tagline": "我致力於打造高效能、現代化的軟體。作為全端開發者，我為全球客戶提供開發服務",
+    "tagline": "我是一名全端工程師，能夠獨自完成一個產品從介面設計、後端開發、部署上線到後續維護的全過程。",
     "cta": "聯絡我",
-    "imageAlt": "個人照片",
-    "availabilityDesktop": "我在空閒中"
+    "imageAlt": "李偉航的肖像",
+    "availabilityDesktop": "歡迎合作與工作邀約"
   },
   "WhatIDo": {
     "heading": "我能做什麼 /",
-    "label": "（提供服務）",
-    "intro": "我專注於建構高效能、穩定且易用的全端應用，將複雜的想法落地為可上線的產品，幫助業務實現持續成長。",
+    "label": "（專長）",
+    "intro": "身為一名全端工程師，我熟悉從前端到後端、再到維運的完整流程。一個產品從構想到上線，對我來說不在話下，真正珍貴的是想法與創造力。",
     "services": [
       {
         "number": "01",
-        "title": "全端",
-        "description": "我提供從直覺的前端體驗到穩定的後端架構的完整開發服務，並使用現代技術堆疊建構可擴充、可上線的應用。",
+        "title": "全端開發",
+        "description": "目前主流的各類框架與資料庫，我都用過。但它們只有一個共同點：都是為了解決各種業務問題而存在的不同技術方案。",
         "skills": [
-          "React、Vue、Tailwind CSS",
-          "Node.js、Spring Boot",
-          "Git、Docker、Vercel、Alibaba Cloud"
+          "React、Next.js、Vue",
+          "Node.js、NestJS、Spring Boot",
+          "PostgreSQL、MySQL、Redis"
         ]
       },
       {
         "number": "02",
-        "title": "效能與最佳化",
-        "description": "我建構可靠且可擴充的系統，基於扎實的工程原則，讓應用保持快速、穩定，並具備長期迭代的可擴充性。",
+        "title": "互動與視覺化",
+        "description": "數據儀表板、地圖、即時 3D 與動態效果——這些看似複雜、難以搞定的部分，剛好是我的舒適圈。",
         "skills": [
-          "資料結構與演算法",
-          "資料庫、物件導向、作業系統基礎",
-          "可擴充系統與資料管道"
+          "ECharts 與 MapLibre 儀表板",
+          "Three.js 即時 3D",
+          "GSAP 與 Motion 動畫"
         ]
       },
       {
         "number": "03",
-        "title": "AI 輔助",
-        "description": "在 AI 時代下，我使用各種 AI 工具加速開發，同時堅持高品質的工程標準——從快速原型到結構清晰、可擴充的系統。",
+        "title": "上線與自動化",
+        "description": "寫完程式碼只是一部分。我熟悉容器化部署與相關維運，更熟悉其中的每一個坑；而且我認為，在 AI 時代，不用 AI = 淘汰。",
         "skills": [
-          "Cursor、Codex、Claude",
-          "快速原型與迭代",
-          "程式碼品質與審查"
+          "Docker、Vercel",
+          "阿里雲、騰訊雲",
+          "Cursor、Codex、Claude"
         ]
       }
     ]
@@ -65,19 +65,19 @@
   "Works": {
     "heading": "精選作品 /",
     "label": "（專案）",
-    "intro": "致力於打造兼具實用與美感的產品體驗，讓產品流暢、易用且富有質感。",
+    "intro": "以下是由我獨立設計並開發的幾個專案，其中有我的開源專案，也有商業平台。",
     "overviewLabel": "簡介",
-    "visitLabel": "訪問網站",
+    "visitLabel": "前往網站",
     "projects": {
       "portfolio": {
-        "category": "現代作品集網站",
+        "category": "個人網站",
         "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
           "Framer Motion"
         ],
-        "summary": "獨立打造的多個人作品集，用於展示個人的全端能力與精選專案。接入平滑滾動和動效，控制頁面的整體節奏更能抓住訪客的注意。"
+        "summary": "就是你正在看的這個網站。從設計到開發獨立完成，支援五種語言，搭配平滑捲動與精心編排的動態效果，也可以透過聯絡表單直接聯絡我。"
       },
       "keyboardDesigner": {
         "category": "開源工具",
@@ -87,7 +87,7 @@
           "Next.js",
           "Three.js"
         ],
-        "summary": "在瀏覽器裡設計整套鍵帽的開源工具。支援選配列、調配色、放貼圖，即時 3D 預覽，並可匯出 PNG、SVG、JSON 與生產治具。無需註冊，設計僅儲存在本機。"
+        "summary": "在瀏覽器裡設計整套鍵帽的開源工具：選配列、調配色、放圖案，即時 3D 預覽，可匯出 PNG、SVG、JSON 與生產用治具檔案。無需註冊，只需要你的瀏覽器。"
       },
       "hynel": {
         "category": "SaaS 平台",
@@ -97,17 +97,17 @@
           "Vue",
           "全端"
         ],
-        "summary": "電力市場數據分析與電價預測 SaaS，覆蓋dashboard視覺化、預測對照與訂閱支付，實現廣東與歐洲的電價市場多維可视化分析。"
+        "summary": "針對廣東與歐洲電力市場的數據分析與電價預測 SaaS。時序圖表與地圖儀表板、內容管理後台、角色權限控管，以及支付寶訂閱付款流程，皆由我獨立完成。"
       },
       "vehicleSearch": {
-        "category": "桌面應用",
+        "category": "桌面應用程式",
         "title": "Vehicle Search Script",
         "year": "2025",
         "tags": [
           "Electron",
           "工具"
         ],
-        "summary": "Electron 桌面端車輛協尋工具：批量匯入車牌、多執行緒自動化檢索停車紀錄，命中後即時推送。支援雙模式抓取、代理管控與一鍵打包交付。"
+        "summary": "為車輛協尋業務開發的桌面工具：批次匯入車牌、平行查詢停車紀錄，比對成功即透過 Telegram 即時通知，並提供即時進度與數據儀表板，一鍵打包交付。"
       }
     },
     "viewLabel": "查看"
@@ -116,49 +116,49 @@
     "line1": "開發者",
     "line2": "設計師",
     "line3": "創造者/",
-    "skillsHeading": "技術",
+    "skillsHeading": "技術棧",
     "skillGroups": {
       "languages": "語言",
-      "frameworks": "框架與庫",
+      "frameworks": "框架與函式庫",
       "tools": "工具與資料庫"
     },
-    "aboutImageAlt": "關於配圖",
-    "lead": "我是全端開發者與設計師，專注打造高效能數位產品，在複雜業務邏輯與流暢使用者體驗之間找到平衡。",
+    "aboutImageAlt": "李偉航的照片",
+    "lead": "我是李偉航，常駐中國的全端工程師。我喜歡從 0 到 1 的過程，每一個產品的開發都能讓我感到興奮。",
     "aboutLabel": "（關於我）",
-    "p1": "從 React、Node.js 到 Spring Boot 和 Python，我使用多樣化技術堆疊建構可擴充、穩定且具備高負載能力的應用。無論是 Web、行動端還是桌面端，我都致力於為新創團隊與企業提供完整的端到端解決方案。",
-    "p2": "我相信微互動與細節動效能夠顯著提升產品體驗。我的工作方式很直接：以工程保證可靠性，以設計提升體驗，並在細節上持續打磨，讓產品從「可用」走向「好用」。"
+    "p1": "我的常用語言是 TypeScript，前端用 React 和 Vue，後端用 Node.js 和 NestJS；專案需要時也寫 Java（Spring Boot）和 Python。Web 之外，我交付過 Electron 桌面應用程式，也寫過 React Native 和 Flutter 等行動端應用。",
+    "p2": "我在意那些使用者感受得到、卻很少說得出口的細節：介面是否美觀好用，動畫是否流暢，錯誤提示是否簡單明瞭。"
   },
   "Contact": {
-    "heading": "一起把想法落地",
-    "subheading": "有專案想聊聊？",
-    "direct": "或直接聯絡我",
-    "copyEmail": "複製郵件"
+    "heading": "讓想法成為現實",
+    "subheading": "有專案或工作機會想聊聊？",
+    "direct": "或直接寄信給我",
+    "copyEmail": "複製 Email"
   },
   "Form": {
-    "namePlaceholder": "您的姓名",
-    "emailPlaceholder": "您的電子郵件",
-    "messagePlaceholder": "簡要描述您的業務或專案",
-    "nameRequired": "請輸入姓名",
+    "namePlaceholder": "你的名字",
+    "emailPlaceholder": "你的電子郵件",
+    "messagePlaceholder": "說說你的專案或工作機會",
+    "nameRequired": "請輸入名字",
     "emailRequired": "請輸入電子郵件",
     "emailInvalid": "請輸入有效的電子郵件地址",
-    "messageRequired": "請描述您的專案",
+    "messageRequired": "請簡單描述你的需求",
     "submitSending": "傳送中…",
-    "submitIdle": "聯絡我！",
-    "successTitle": "收到！我會盡快回覆您。",
-    "successAgain": "再傳一則",
-    "errorTitle": "發生錯誤，請再試一次。",
+    "submitIdle": "送出",
+    "successTitle": "收到了，我會盡快回覆你。",
+    "successAgain": "再傳一則訊息",
+    "errorTitle": "傳送失敗，請再試一次，或直接寄信給我。",
     "errorBack": "返回"
   },
   "Footer": {
     "menu": "選單",
-    "socials": "社媒",
+    "socials": "社群",
     "wechat": "微信",
     "wechatQrAlt": "微信 QR Code",
-    "github": "Github",
+    "github": "GitHub",
     "telegram": "Telegram",
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
-    "localTime": "廣東",
+    "localTime": "當地時間",
     "scrollToTop": "回到頂部",
     "rights": "保留所有權利。"
   },

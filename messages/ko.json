@@ -1,12 +1,12 @@
 {
   "Metadata": {
     "title": "이위항 - 풀스택 개발자",
-    "description": "고성능의 현대적인 소프트웨어를 만듭니다. 풀스택 개발자로서 전 세계 고객에게 개발 서비스를 제공합니다"
+    "description": "풀스택 개발자 이위항입니다. 인터페이스부터 백엔드, 배포까지 웹 제품을 처음부터 끝까지 혼자 완성합니다. 프로젝트 협업과 채용 제안을 환영합니다."
   },
   "Nav": {
     "home": "홈",
-    "services": "서비스",
-    "works": "작품",
+    "services": "전문 분야",
+    "works": "작업",
     "about": "소개",
     "contact": "문의"
   },
@@ -20,64 +20,64 @@
     "toggle": "섹션으로 이동"
   },
   "Hero": {
-    "tagline": "고성능의 현대적인 소프트웨어를 만듭니다. 풀스택 개발자로서 전 세계 고객에게 개발 서비스를 제공합니다",
-    "cta": "문의하기",
-    "imageAlt": "프로필 사진",
-    "availabilityDesktop": "현재 작업 가능"
+    "tagline": "인터페이스 설계부터 백엔드 개발, 배포, 이후 유지보수까지. 하나의 제품을 혼자서 끝까지 완성하는 풀스택 개발자입니다.",
+    "cta": "연락하기",
+    "imageAlt": "이위항 프로필 사진",
+    "availabilityDesktop": "프로젝트·채용 제안 환영"
   },
   "WhatIDo": {
-    "heading": "무엇을 하나요 /",
-    "label": "(서비스)",
-    "intro": "고성능이고 안정적이며 사용하기 쉬운 풀스택 앱 구축에 집중합니다. 복잡한 아이디어를 출시 가능한 제품으로 구현해 비즈니스의 지속적인 성장을 돕습니다.",
+    "heading": "하는 일 /",
+    "label": "(전문 분야)",
+    "intro": "풀스택 개발자로서 프론트엔드부터 백엔드, 유지보수까지 전 과정을 잘 알고 있습니다. 아이디어를 출시까지 가져가는 일은 어렵지 않습니다. 정말 소중한 것은 아이디어와 창의력입니다.",
     "services": [
       {
         "number": "01",
-        "title": "풀스택",
-        "description": "직관적인 프론트엔드 경험부터 견고한 백엔드 아키텍처까지 완전한 개발 서비스를 제공합니다. 현대적인 기술 스택으로 확장 가능하고 출시 가능한 앱을 구축합니다.",
+        "title": "풀스택 개발",
+        "description": "현재 주류인 프레임워크와 데이터베이스는 대부분 써 봤습니다. 이들의 공통점은 단 하나, 비즈니스 문제를 해결하기 위한 서로 다른 기술적 해법이라는 것입니다.",
         "skills": [
-          "React, Vue, Tailwind CSS",
-          "Node.js, Spring Boot",
-          "Git, Docker, Vercel, Alibaba Cloud"
+          "React, Next.js, Vue",
+          "Node.js, NestJS, Spring Boot",
+          "PostgreSQL, MySQL, Redis"
         ]
       },
       {
         "number": "02",
-        "title": "성능과 최적화",
-        "description": "탄탄한 엔지니어링 원칙을 바탕으로 신뢰할 수 있고 확장 가능한 시스템을 구축합니다. 앱이 빠르고 안정적이며 장기 개선에도 대응할 수 있게 합니다.",
+        "title": "인터랙티브 UI",
+        "description": "대시보드, 지도, 실시간 3D, 모션. 복잡하고 까다로워 보이는 이런 부분이 오히려 제가 가장 편한 영역입니다.",
         "skills": [
-          "자료구조와 알고리즘",
-          "데이터베이스, OOP, OS 기초",
-          "확장 가능한 시스템과 데이터 파이프라인"
+          "ECharts·MapLibre 대시보드",
+          "Three.js 실시간 3D",
+          "GSAP·Motion 애니메이션"
         ]
       },
       {
         "number": "03",
-        "title": "AI 지원",
-        "description": "AI 시대에 다양한 AI 도구로 개발을 가속하면서도 높은 엔지니어링 기준을 유지합니다. 빠른 프로토타입부터 구조가 명확하고 확장 가능한 시스템까지 대응합니다.",
+        "title": "배포와 자동화",
+        "description": "코드를 작성하는 건 일의 일부일 뿐입니다. 컨테이너 배포와 운영에 익숙하고, 그 과정의 함정도 하나하나 잘 알고 있습니다. 그리고 AI 시대에 AI를 쓰지 않으면 도태된다고 생각합니다.",
         "skills": [
-          "Cursor, Codex, Claude",
-          "빠른 프로토타이핑과 반복",
-          "코드 품질과 리뷰"
+          "Docker, Vercel",
+          "Alibaba Cloud, Tencent Cloud",
+          "Cursor, Codex, Claude"
         ]
       }
     ]
   },
   "Works": {
-    "heading": "선정 작품 /",
+    "heading": "주요 작업 /",
     "label": "(프로젝트)",
-    "intro": "실용성과 미감을 겸비한 제품 경험을 지향하며, 매끄럽고 쓰기 쉬우며 질감 있는 결과물을 만듭니다.",
+    "intro": "제가 혼자 설계하고 개발한 프로젝트들입니다. 오픈소스 프로젝트도 있고, 상용 플랫폼도 있습니다.",
     "overviewLabel": "개요",
     "visitLabel": "사이트 방문",
     "projects": {
       "portfolio": {
-        "category": "모던 포트폴리오 웹사이트",
+        "category": "개인 웹사이트",
         "title": "My Portfolio",
         "year": "2026",
         "tags": [
           "Next.js",
           "Framer Motion"
         ],
-        "summary": "풀스택 역량과 선정 프로젝트를 보여 주기 위해 직접 만든 포트폴리오. 부드러운 스크롤과 모션으로 페이지 리듬을 다듬어 방문자의 시선을 끌어냅니다."
+        "summary": "지금 보고 계신 이 사이트입니다. 디자인부터 개발까지 혼자 완성했으며 5개 언어를 지원합니다. 부드러운 스크롤과 세심하게 연출한 모션을 갖췄고, 문의 폼으로 저에게 바로 연락할 수 있습니다."
       },
       "keyboardDesigner": {
         "category": "오픈소스 도구",
@@ -87,7 +87,7 @@
           "Next.js",
           "Three.js"
         ],
-        "summary": "브라우저에서 키캡 세트를 디자인하는 오픈소스 도구. 레이아웃·색상·이미지 배치, 실시간 3D 미리보기, PNG·SVG·JSON 및 생산 지그 내보내기를 지원합니다. 가입 없이 사용하며 디자인은 브라우저에만 저장됩니다."
+        "summary": "브라우저에서 키캡 세트를 디자인하는 오픈소스 도구입니다. 배열을 고르고, 색을 정하고, 이미지를 배치한 뒤 실시간 3D로 확인할 수 있습니다. PNG, SVG, JSON이나 생산용 지그 파일로 내보낼 수 있습니다. 가입 없이 브라우저만 있으면 됩니다."
       },
       "hynel": {
         "category": "SaaS 플랫폼",
@@ -97,7 +97,7 @@
           "Vue",
           "풀스택"
         ],
-        "summary": "전력 시장 데이터 분석과 가격 예측 SaaS. 대시보드 시각화, 예측 비교, 구독 결제를 포함하며 광둥과 유럽 전력 가격 시장을 다차원으로 시각화·분석합니다."
+        "summary": "광둥과 유럽 전력 시장을 다루는 데이터 분석·전력 가격 예측 SaaS입니다. 시계열 차트와 지도 대시보드, CMS, 역할 기반 접근 제어, Alipay 구독 결제까지 혼자 구축했습니다."
       },
       "vehicleSearch": {
         "category": "데스크톱 앱",
@@ -107,7 +107,7 @@
           "Electron",
           "도구"
         ],
-        "summary": "Electron 기반 차량 협조 검색 데스크톱 도구. 번호판 일괄 가져오기, 멀티스레드 주차 기록 자동 검색, 적중 시 실시간 알림을 지원합니다. 이중 스크래핑 모드, 프록시 관리, 원클릭 패키징도 가능합니다."
+        "summary": "차량 회수 팀을 위한 데스크톱 도구입니다. 번호판을 일괄로 불러와 주차 기록을 병렬로 조회하고, 일치하는 결과가 나오면 즉시 Telegram으로 알립니다. 실시간 진행 상황과 데이터 대시보드, 원클릭 패키징도 지원합니다."
       }
     },
     "viewLabel": "보기"
@@ -119,34 +119,34 @@
     "skillsHeading": "기술 스택",
     "skillGroups": {
       "languages": "언어",
-      "frameworks": "프레임워크와 라이브러리",
-      "tools": "도구와 데이터베이스"
+      "frameworks": "프레임워크·라이브러리",
+      "tools": "도구·데이터베이스"
     },
-    "aboutImageAlt": "소개 이미지",
-    "lead": "풀스택 개발자이자 디자이너로서 고성능 디지털 제품 제작에 집중하며, 복잡한 비즈니스 로직과 매끄러운 사용자 경험 사이의 균형을 찾습니다.",
+    "aboutImageAlt": "이위항 사진",
+    "lead": "중국을 기반으로 활동하는 풀스택 개발자 이위항입니다. 0에서 1을 만들어 가는 과정을 좋아하고, 새로운 제품을 개발할 때마다 여전히 설렙니다.",
     "aboutLabel": "(소개)",
-    "p1": "React, Node.js부터 Spring Boot, Python까지 다양한 기술 스택으로 확장 가능하고 안정적이며 고부하에도 견디는 앱을 구축합니다. 웹, 모바일, 데스크톱을 막론하고 스타트업과 기업에 완전한 엔드투엔드 솔루션을 제공합니다.",
-    "p2": "마이크로 인터랙션과 세밀한 모션이 제품 경험을 크게 끌어올린다고 믿습니다. 방식은 단순합니다. 엔지니어링으로 신뢰성을 확보하고, 디자인으로 경험을 높이며, 세부까지 다듬어 ‘쓸 수 있는’ 제품을 ‘쓰기 좋은’ 제품으로 만듭니다."
+    "p1": "주력은 TypeScript입니다. 프론트엔드는 React와 Vue, 백엔드는 Node.js와 NestJS를 쓰고, 필요하면 Java(Spring Boot)와 Python도 다룹니다. 웹 밖에서는 Electron 데스크톱 앱을 출시했고, React Native와 Flutter로 모바일 앱도 만들었습니다.",
+    "p2": "인터페이스가 아름답고 쓰기 편한지, 애니메이션이 매끄러운지, 오류 메시지가 간결하고 명확한지. 사용자가 느끼지만 말로 표현하긴 어려운 디테일을 챙깁니다."
   },
   "Contact": {
-    "heading": "아이디어를 함께 실현해요",
-    "subheading": "이야기하고 싶은 프로젝트가 있나요?",
-    "direct": "또는 직접 연락하세요",
+    "heading": "아이디어를 현실로",
+    "subheading": "함께하고 싶은 프로젝트나 포지션이 있나요?",
+    "direct": "또는 이메일로 바로 연락하세요",
     "copyEmail": "이메일 복사"
   },
   "Form": {
     "namePlaceholder": "이름",
     "emailPlaceholder": "이메일 주소",
-    "messagePlaceholder": "비즈니스나 프로젝트를 간단히 설명해 주세요",
+    "messagePlaceholder": "프로젝트나 포지션에 대해 알려 주세요",
     "nameRequired": "이름을 입력해 주세요",
     "emailRequired": "이메일을 입력해 주세요",
     "emailInvalid": "유효한 이메일 주소를 입력해 주세요",
-    "messageRequired": "프로젝트에 대해 설명해 주세요",
+    "messageRequired": "내용을 입력해 주세요",
     "submitSending": "전송 중…",
-    "submitIdle": "문의하기!",
-    "successTitle": "받았습니다! 빠르게 답변드리겠습니다.",
-    "successAgain": "다시 보내기",
-    "errorTitle": "오류가 발생했습니다. 다시 시도해 주세요.",
+    "submitIdle": "보내기",
+    "successTitle": "감사합니다. 곧 답장드릴게요.",
+    "successAgain": "다른 메시지 보내기",
+    "errorTitle": "전송하지 못했습니다. 다시 시도하거나 이메일로 직접 연락해 주세요.",
     "errorBack": "돌아가기"
   },
   "Footer": {
@@ -154,13 +154,13 @@
     "socials": "소셜",
     "wechat": "위챗",
     "wechatQrAlt": "위챗 QR 코드",
-    "github": "Github",
+    "github": "GitHub",
     "telegram": "Telegram",
     "instagram": "Instagram",
     "whatsapp": "WhatsApp",
-    "localTime": "광둥",
+    "localTime": "현지 시간",
     "scrollToTop": "맨 위로",
-    "rights": "모든 권리 보유."
+    "rights": "All rights reserved."
   },
   "LocaleSwitcher": {
     "label": "언어",
