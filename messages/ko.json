@@ -69,6 +69,16 @@
     "overviewLabel": "개요",
     "visitLabel": "사이트 방문",
     "projects": {
+      "hynelWeb": {
+        "category": "기업 웹사이트",
+        "title": "Hynel Energy",
+        "year": "2026",
+        "tags": [
+          "Next.js",
+          "GSAP"
+        ],
+        "summary": "Hynel Energy의 상업·산업용 태양광·에너지 저장 사업 공식 웹사이트입니다. 디자인부터 개발까지 혼자 완성했으며 스크롤 모션, 인터랙티브 공동 투자 시뮬레이터, 플랫폼 UI 미리보기를 담았습니다."
+      },
       "portfolio": {
         "category": "개인 웹사이트",
         "title": "My Portfolio",
@@ -91,13 +101,13 @@
       },
       "hynel": {
         "category": "SaaS 플랫폼",
-        "title": "Hynel Energy",
+        "title": "Hynel HEEPS",
         "year": "2025",
         "tags": [
           "Vue",
           "풀스택"
         ],
-        "summary": "광둥과 유럽 전력 시장을 다루는 데이터 분석·전력 가격 예측 SaaS입니다. 시계열 차트와 지도 대시보드, CMS, 역할 기반 접근 제어, Alipay 구독 결제까지 혼자 구축했습니다."
+        "summary": "초기에 구축한 광둥·유럽 전력 시장 데이터 분석·전력 가격 예측 SaaS입니다. 시계열 차트와 지도 대시보드, CMS, 역할 기반 접근 제어, Alipay 구독 결제까지 혼자 개발했습니다."
       },
       "vehicleSearch": {
         "category": "데스크톱 앱",

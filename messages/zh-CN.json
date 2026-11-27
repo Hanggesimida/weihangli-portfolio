@@ -69,6 +69,16 @@
     "overviewLabel": "简介",
     "visitLabel": "访问网站",
     "projects": {
+      "hynelWeb": {
+        "category": "企业官网",
+        "title": "Hynel Energy",
+        "year": "2026",
+        "tags": [
+          "Next.js",
+          "GSAP"
+        ],
+        "summary": "昊仑新能源工商业光储业务双语官网。独立负责设计与全栈开发，涵盖平滑滚动与动效编排、交互式合作出资测算器，以及能源管理平台界面演示。"
+      },
       "portfolio": {
         "category": "个人网站",
         "title": "My Portfolio",
@@ -91,13 +101,13 @@
       },
       "hynel": {
         "category": "SaaS 平台",
-        "title": "Hynel Energy",
+        "title": "Hynel HEEPS",
         "year": "2025",
         "tags": [
           "Vue",
           "全栈"
         ],
-        "summary": "面向广东与欧洲电力市场的数据分析与电价预测 SaaS。时序图表与地图看板、内容管理后台、基于角色的权限控制，以及支付宝订阅支付流程，均由我独立完成。"
+        "summary": "早期面向广东与欧洲电力市场的数据分析与电价预测 SaaS。时序图表与地图看板、内容管理后台、基于角色的权限控制，以及支付宝订阅支付流程，均由我独立完成。"
       },
       "vehicleSearch": {
         "category": "桌面应用",

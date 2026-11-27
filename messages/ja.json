@@ -69,6 +69,16 @@
     "overviewLabel": "概要",
     "visitLabel": "サイトを見る",
     "projects": {
+      "hynelWeb": {
+        "category": "コーポレートサイト",
+        "title": "Hynel Energy",
+        "year": "2026",
+        "tags": [
+          "Next.js",
+          "GSAP"
+        ],
+        "summary": "Hynel Energy の産業用太陽光・蓄電事業向けバイリンガル公式サイト。設計から実装まで一人で手がけ、スクロール演出、インタラクティブな共同投資シミュレーター、管理画面プレビューを備えています。"
+      },
       "portfolio": {
         "category": "個人サイト",
         "title": "My Portfolio",
@@ -91,13 +101,13 @@
       },
       "hynel": {
         "category": "SaaS プラットフォーム",
-        "title": "Hynel Energy",
+        "title": "Hynel HEEPS",
         "year": "2025",
         "tags": [
           "Vue",
           "フルスタック"
         ],
-        "summary": "広東と欧州の電力市場を対象とした、データ分析・電力価格予測の SaaS。時系列グラフと地図のダッシュボード、CMS、ロールベースのアクセス制御、Alipay によるサブスクリプション決済まで、一人で構築しました。"
+        "summary": "初期に手がけた、広東と欧州の電力市場向けデータ分析・電力価格予測 SaaS。時系列グラフと地図のダッシュボード、CMS、ロールベースのアクセス制御、Alipay によるサブスクリプション決済まで、一人で構築しました。"
       },
       "vehicleSearch": {
         "category": "デスクトップアプリ",

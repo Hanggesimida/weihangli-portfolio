@@ -13,6 +13,12 @@ export type SocialId = (typeof SOCIAL_LINKS)[number]["id"];
 
 export const PROJECTS = [
   {
+    id: "hynelWeb",
+    bgImage: "/images/projects/works_bg_05.webp",
+    previewImage: "/images/projects/works_hynel_web.png",
+    siteUrl: "https://www.hynel-energy.com",
+  },
+  {
     id: "keyboardDesigner",
     bgImage: "/images/projects/works_bg_04.webp",
     previewImage: "/images/projects/works_kbd.png",
@@ -29,7 +35,6 @@ export const PROJECTS = [
     id: "hynel",
     bgImage: "/images/projects/works_bg_02.webp",
     previewImage: "/images/projects/works_hynel.png",
-    siteUrl: "https://www.hynel-energy.com",
   },
   {
     id: "vehicleSearch",

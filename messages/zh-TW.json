@@ -69,6 +69,16 @@
     "overviewLabel": "簡介",
     "visitLabel": "前往網站",
     "projects": {
+      "hynelWeb": {
+        "category": "企業官網",
+        "title": "Hynel Energy",
+        "year": "2026",
+        "tags": [
+          "Next.js",
+          "GSAP"
+        ],
+        "summary": "昊侖新能源工商業光儲業務雙語官網。獨立負責設計與全端開發，涵蓋平滑捲動與動態編排、互動式合作出資試算器，以及能源管理平台介面展示。"
+      },
       "portfolio": {
         "category": "個人網站",
         "title": "My Portfolio",
@@ -91,13 +101,13 @@
       },
       "hynel": {
         "category": "SaaS 平台",
-        "title": "Hynel Energy",
+        "title": "Hynel HEEPS",
         "year": "2025",
         "tags": [
           "Vue",
           "全端"
         ],
-        "summary": "針對廣東與歐洲電力市場的數據分析與電價預測 SaaS。時序圖表與地圖儀表板、內容管理後台、角色權限控管，以及支付寶訂閱付款流程，皆由我獨立完成。"
+        "summary": "早期針對廣東與歐洲電力市場的數據分析與電價預測 SaaS。時序圖表與地圖儀表板、內容管理後台、角色權限控管，以及支付寶訂閱付款流程，皆由我獨立完成。"
       },
       "vehicleSearch": {
         "category": "桌面應用程式",

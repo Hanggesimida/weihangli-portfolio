@@ -69,6 +69,16 @@
     "overviewLabel": "Overview",
     "visitLabel": "Visit site",
     "projects": {
+      "hynelWeb": {
+        "category": "Corporate Website",
+        "title": "Hynel Energy",
+        "year": "2026",
+        "tags": [
+          "Next.js",
+          "GSAP"
+        ],
+        "summary": "Official bilingual website for Hynel Energy's solar and storage business. Built solo with choreographed scroll motion, an interactive co-investment calculator, and a live platform preview."
+      },
       "portfolio": {
         "category": "Personal Website",
         "title": "My Portfolio",
@@ -91,13 +101,13 @@
       },
       "hynel": {
         "category": "SaaS Platform",
-        "title": "Hynel Energy",
+        "title": "Hynel HEEPS",
         "year": "2025",
         "tags": [
           "Vue",
           "Full-stack"
         ],
-        "summary": "An electricity-market analytics and price-forecasting SaaS covering Guangdong and Europe. Built solo: the time-series and map dashboards, the CMS, role-based access control and the Alipay subscription flow."
+        "summary": "An earlier electricity-market analytics and price-forecasting SaaS covering Guangdong and Europe. Built solo: the time-series and map dashboards, the CMS, role-based access control and the Alipay subscription flow."
       },
       "vehicleSearch": {
         "category": "Desktop Application",
